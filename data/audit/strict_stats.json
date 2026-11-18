@@ -1,0 +1,51 @@
+{
+  "source": "fgbench_v1",
+  "kept_rules": {
+    "Relation": [
+      "behind | in front of",
+      "on | under"
+    ],
+    "Action": [
+      "running on | walking on",
+      "sitting on | standing on"
+    ]
+  },
+  "cycles": 88024,
+  "rows": 352096,
+  "clean": 176048,
+  "noisy": 176048,
+  "removed_rows": 1104,
+  "removed_cycles": 276,
+  "removed_by_rule": {
+    "above | below": 105,
+    "drinking | eating": 1,
+    "inside | outside": 60,
+    "left of | right of": 6,
+    "over | under": 66,
+    "riding | walking": 38
+  },
+  "cycles_per_facet": {
+    "COCO|Entity": 32589,
+    "COCO|Quantity": 2940,
+    "VG|Action": 567,
+    "VG|Attribute": 49042,
+    "VG|Relation": 2886
+  },
+  "cycles_per_facet_split": {
+    "COCO|Entity|test": 2298,
+    "COCO|Entity|train": 28000,
+    "COCO|Entity|val": 2291,
+    "COCO|Quantity|test": 114,
+    "COCO|Quantity|train": 2707,
+    "COCO|Quantity|val": 119,
+    "VG|Action|test": 166,
+    "VG|Action|train": 399,
+    "VG|Action|val": 2,
+    "VG|Attribute|test": 14281,
+    "VG|Attribute|train": 32677,
+    "VG|Attribute|val": 2084,
+    "VG|Relation|test": 706,
+    "VG|Relation|train": 2099,
+    "VG|Relation|val": 81
+  }
+}

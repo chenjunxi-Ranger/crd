@@ -1,0 +1,13 @@
+method,facet,style_value,official_value,official_scope,official_n_test,note
+LEMoN,Entity,0.9990,0.9990,full FGBench test,9192,official adapter; use in main table
+LEMoN,Quantity,0.8495,0.8266,full FGBench test,456,official adapter; use in main table
+LEMoN,Attribute,0.6843,0.6755,full FGBench test,57124,official adapter; use in main table
+LEMoN,Action,0.5964,0.5923,full FGBench test,664,official adapter; use in main table
+LEMoN,Relation,0.5436,0.5218,full FGBench test,2824,official adapter; use in main table
+TRACED,Entity,0.9985,0.99975,full COCO Entity test,9192,official BLIP COCO ITM; not backbone-comparable with CLIP-style row
+TRACED,Quantity,0.8412,0.94830,full COCO Quantity test,456,official BLIP COCO ITM; not backbone-comparable with CLIP-style row
+TRACED,Entity,0.9985,1.0000,100-pair pilot,100,pilot only
+TRACED,Quantity,0.8412,0.9199,100-pair pilot,100,pilot only
+TRACED,Attribute,0.6875,0.7321,100-pair pilot,100,pilot only
+TRACED,Action,0.6102,0.6636,100-pair pilot,100,pilot only
+TRACED,Relation,0.5356,0.6506,100-pair pilot,100,pilot only

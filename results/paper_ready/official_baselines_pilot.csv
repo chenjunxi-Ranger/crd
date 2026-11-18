@@ -1,0 +1,6 @@
+facet,lemon_style,lemon_official,lemon_delta_pp,traced_style,traced_official,traced_delta_pp,traced_n_test,note
+Entity,0.9990,0.9990,0.00,0.9985,1.0000,+0.15,100,TRACED subset 500/100/100
+Quantity,0.8495,0.8266,-2.29,0.8412,0.9199,+7.87,100,TRACED subset 500/100/100
+Attribute,0.6843,0.6755,-0.88,0.6875,0.7321,+4.46,100,TRACED subset 500/100/100
+Action,0.5964,0.5923,-0.41,0.6102,0.6636,+5.34,100,TRACED subset 500/100/100
+Relation,0.5436,0.5218,-2.18,0.5356,0.6506,+11.50,100,TRACED subset 500/100/100

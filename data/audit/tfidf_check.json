@@ -1,0 +1,7 @@
+{
+  "COCO|Entity": 0.5,
+  "COCO|Quantity": 0.5,
+  "VG|Action": 0.5,
+  "VG|Attribute": 0.5,
+  "VG|Relation": 0.5
+}
