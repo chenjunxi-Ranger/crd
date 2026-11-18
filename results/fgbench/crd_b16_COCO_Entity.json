@@ -1,0 +1,16 @@
+{
+  "dataset": "COCO",
+  "facet": "Entity",
+  "parts": "both",
+  "lam_from_val": 1.0,
+  "r2_val": 0.1583,
+  "mae_val": 0.0143,
+  "r2_test": 0.1588,
+  "mae_test": 0.0139,
+  "cos_auc": 0.9991408031807278,
+  "crd_auc": 0.9994909392584918,
+  "cos_2afc": 1.0,
+  "crd_2afc": 1.0,
+  "auprc_cos": 0.9992,
+  "auprc_crd": 0.9995
+}

@@ -1,0 +1,53 @@
+{
+  "variant": "global",
+  "lam": 1.0,
+  "steps": 600,
+  "cycles_per_facet": 1500,
+  "rows": [
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "variant": "global",
+      "n_noisy": 4596,
+      "auc": 0.9960112134440134,
+      "acc2afc": 1.0,
+      "n_cycles": 2298
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "variant": "global",
+      "n_noisy": 228,
+      "auc": 0.8135580178516466,
+      "acc2afc": 0.9210526315789473,
+      "n_cycles": 114
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "variant": "global",
+      "n_noisy": 362,
+      "auc": 0.5979823570709075,
+      "acc2afc": 0.7624309392265194,
+      "n_cycles": 181
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "variant": "global",
+      "n_noisy": 28562,
+      "auc": 0.6907291799508599,
+      "acc2afc": 0.8185701281422869,
+      "n_cycles": 14281
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "variant": "global",
+      "n_noisy": 1512,
+      "auc": 0.5542529254500154,
+      "acc2afc": 0.6375661375661376,
+      "n_cycles": 756
+    }
+  ]
+}

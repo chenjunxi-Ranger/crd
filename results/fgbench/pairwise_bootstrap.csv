@@ -1,0 +1,9 @@
+﻿facet,baseline,crd_auc,base_auc,delta_pp,ci_lo,ci_hi,p_gt0
+Attribute,cosine,0.7096,0.6806,2.9,2.8,2.99,1.0
+Attribute,lemon,0.7096,0.6843,2.53,2.43,2.63,1.0
+Attribute,traced,0.7096,0.6875,2.21,2.07,2.34,1.0
+Attribute,csls,0.7096,0.6866,2.3,2.2,2.4,1.0
+Relation,cosine,0.5549,0.5429,1.19,0.9,1.47,1.0
+Relation,lemon,0.5549,0.546,0.88,0.54,1.23,1.0
+Relation,traced,0.5549,0.5375,1.72,0.99,2.43,1.0
+Relation,csls,0.5549,0.5442,1.06,0.77,1.35,1.0

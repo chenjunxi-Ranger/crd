@@ -1,0 +1,10 @@
+{
+  "dataset": "COCO",
+  "facet": "Entity",
+  "n_train": 8000,
+  "n_test": 9192,
+  "auc_cosine": 0.9991,
+  "auc_traced": 0.9985,
+  "delta": -0.0007,
+  "acc2afc_traced": 1.0
+}

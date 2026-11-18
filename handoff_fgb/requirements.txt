@@ -1,0 +1,13 @@
+torch==2.5.1
+torchvision==0.20.1
+transformers==4.46.3
+timm==0.9.16
+xgboost
+faiss-cpu
+netcal
+pandas
+pyarrow
+scikit-learn
+tqdm
+ftfy
+regex

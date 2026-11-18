@@ -1,0 +1,64 @@
+{
+  "rows": [
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "auc_cos": 0.6806,
+      "auc_gmm": 0.6806,
+      "ap_cos": 0.668,
+      "ap_gmm": 0.6678,
+      "noise_rate_train": 0.7059,
+      "noise_rate_test": 0.6851,
+      "true_train_noise": 0.5,
+      "means": [
+        0.1928,
+        0.2449
+      ]
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "auc_cos": 0.5413,
+      "auc_gmm": 0.5413,
+      "ap_cos": 0.5323,
+      "ap_gmm": 0.5323,
+      "noise_rate_train": 0.4298,
+      "noise_rate_test": 0.443,
+      "true_train_noise": 0.5,
+      "means": [
+        0.2103,
+        0.2678
+      ]
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "auc_cos": 0.8305,
+      "auc_gmm": 0.8305,
+      "ap_cos": 0.832,
+      "ap_gmm": 0.832,
+      "noise_rate_train": 0.3144,
+      "noise_rate_test": 0.3136,
+      "true_train_noise": 0.5,
+      "means": [
+        0.2565,
+        0.3148
+      ]
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "auc_cos": 0.9991,
+      "auc_gmm": 0.9991,
+      "ap_cos": 0.9992,
+      "ap_gmm": 0.9992,
+      "noise_rate_train": 0.4669,
+      "noise_rate_test": 0.4985,
+      "true_train_noise": 0.5,
+      "means": [
+        0.1525,
+        0.3061
+      ]
+    }
+  ]
+}

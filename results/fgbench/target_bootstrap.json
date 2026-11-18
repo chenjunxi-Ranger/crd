@@ -1,0 +1,17 @@
+{
+  "facet": "VG_Attribute",
+  "auc_cycle": 0.7104,
+  "auc_row": 0.7156,
+  "delta_pp": 0.52,
+  "ci": [
+    0.48,
+    0.57
+  ],
+  "p_gt0": 1.0,
+  "per_seed_delta_pp": [
+    0.547,
+    0.52,
+    0.522
+  ],
+  "boot": 10000
+}

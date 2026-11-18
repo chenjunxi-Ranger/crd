@@ -1,0 +1,18 @@
+{
+  "backbone": "clip",
+  "dataset": "COCO",
+  "facet": "Entity",
+  "target": "row",
+  "parts": "both",
+  "seed": 1,
+  "lam": 0.8,
+  "r2_val": -0.0529,
+  "r2_test": -0.094,
+  "auc_raw": 0.9991,
+  "auc_crd": 0.9995,
+  "auprc_raw": 0.9992,
+  "auprc_crd": 0.9996,
+  "acc2afc_raw": 1.0,
+  "acc2afc_crd": 1.0,
+  "delta_pp": 0.04
+}

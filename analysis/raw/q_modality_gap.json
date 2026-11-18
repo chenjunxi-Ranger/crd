@@ -1,0 +1,207 @@
+[
+  {
+    "title": "Cross-Modal Redundancy and the Geometry of Vision-Language Embeddings",
+    "doi": "10.48550/arxiv.2602.06218",
+    "authors": [
+      "Grégoire Dhimoïla",
+      "Thomas Fel",
+      "Victor Boutin",
+      "Agustin Martin Picard"
+    ],
+    "year": 2026,
+    "publication_date": "2026-02-05",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Vision-language models (VLMs) align images and text with remarkable success, yet the geometry of their shared embedding space remains poorly understood. To probe this geometry, we begin from the Iso-Energy Assumption, which exploits cross-modal redundancy: a concept that is truly shared should exhibit the same average energy across modalities. We operationalize this assumption with an Aligned Sparse Autoencoder (SAE) that encourages energy consistency during training while preserving reconstruct",
+    "openalex_id": "https://openalex.org/W7128404182",
+    "relevance_score": 77.41409
+  },
+  {
+    "title": "Probabilistic Embeddings for Cross-Modal Retrieval",
+    "doi": "10.1109/cvpr46437.2021.00831",
+    "authors": [
+      "Sanghyuk Chun",
+      "Seong Joon Oh",
+      "Rafael Sampaio de Rezende",
+      "Yannis Kalantidis",
+      "Diane Larlus"
+    ],
+    "year": 2021,
+    "publication_date": "2021-06-01",
+    "cited_by_count": 272,
+    "journal": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+    "abstract": "Cross-modal retrieval methods build a common representation space for samples from multiple modalities, typically from the vision and the language domains. For images and their captions, the multiplicity of the correspondences makes the task particularly challenging. Given an image (respectively a caption), there are multiple captions (respectively images) that equally make sense. In this paper, we argue that deterministic functions are not sufficiently powerful to capture such one-to-many corre",
+    "openalex_id": "https://openalex.org/W3168433561",
+    "relevance_score": 73.59509
+  },
+  {
+    "title": "Connect, Collapse, Corrupt: Learning Cross-Modal Tasks with Uni-Modal Data",
+    "doi": "10.48550/arxiv.2401.08567",
+    "authors": [
+      "Yuhui Zhang",
+      "Elaine Sui",
+      "Serena Y. Yeung"
+    ],
+    "year": 2024,
+    "publication_date": "2024-01-16",
+    "cited_by_count": 4,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Building cross-modal applications is challenging due to limited paired multi-modal data. Recent works have shown that leveraging a pre-trained multi-modal contrastive representation space enables cross-modal tasks to be learned from uni-modal data. This is based on the assumption that contrastive optimization makes embeddings from different modalities interchangeable. However, this assumption is under-explored due to the poorly understood geometry of the multi-modal contrastive space, where a mo",
+    "openalex_id": "https://openalex.org/W4390963134",
+    "relevance_score": 66.544685
+  },
+  {
+    "title": "One Geometry, Different Outcomes: Readout-Dependent Effects of the Modality Gap in Vision-Language Models",
+    "doi": "10.48550/arxiv.2609.36101",
+    "authors": [
+      "Aditya Sharma",
+      "Divya Saxena"
+    ],
+    "year": 2026,
+    "publication_date": "2026-09-28",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Contrastive vision-language models learn shared embedding spaces by aligning matched image-text pairs, yet their representations remain separated by a modality gap. Prior work reports divergent effects of modifying this gap: reducing it can improve zero-shot classification and cross-modal alignment, whereas removing gap-related structure can degrade image-text retrieval. In this paper, we provide a unified geometric explanation for these task-dependent effects. Across CLIP and SigLIP encoders, w",
+    "openalex_id": "https://openalex.org/W7214989496",
+    "relevance_score": 59.736305
+  },
+  {
+    "title": "GeoUniPR: A Geometry-Consistent Unified Framework for Cross-Modal Place Recognition",
+    "doi": "10.48550/arxiv.2608.11263",
+    "authors": [
+      "Wonbong Kim",
+      "Jiatong Xiao",
+      "Rui Li",
+      "Xufei Wang",
+      "Qiwen Gu"
+    ],
+    "year": 2026,
+    "publication_date": "2026-08-10",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Cross-modal place recognition (CMPR) aims to identify the same location across heterogeneous sensing modalities, such as vision and LiDAR. Existing methods commonly bridge the modality gap using complex alignment modules, multi-stage training, or full fine-tuning of pretrained backbones. In this work, we revisit CMPR from the perspective of geometric consistency and propose GeoUniPR, a unified and concise geometry-consistent framework. GeoUniPR reduces cross-modal discrepancy at the representati",
+    "openalex_id": "https://openalex.org/W7202363446",
+    "relevance_score": 59.259518
+  },
+  {
+    "title": "Closing the Modality Gap via Simplex-Constrained Representations",
+    "doi": "10.48550/arxiv.2610.32890",
+    "authors": [
+      "Shubham Gupta",
+      "Siva Reddy",
+      "Perouz Taslakian",
+      "Valentina Zantedeschi",
+      "Cem Subakan"
+    ],
+    "year": 2026,
+    "publication_date": "2026-10-23",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "While multimodal contrastive models like CLIP and CLAP successfully learn shared representations, their embeddings typically exhibit a persistent \\emph{modality gap}. We propose addressing this separation through a purely geometric approach: changing the embedding domain from the unit sphere, $S^{d-1}$, to the probability simplex, $Δ^{d-1}$. Although both manifolds share the same intrinsic dimension, the simplex acts as a structural prior; its nonnegative, unit-mass constraints serve as a cross-",
+    "openalex_id": "https://openalex.org/W7223661260",
+    "relevance_score": 59.057636
+  },
+  {
+    "title": "CrossFlowDG: Bridging the Modality Gap with Cross-modal Flow Matching for Domain Generalization",
+    "doi": "10.48550/arxiv.2604.16892",
+    "authors": [
+      "Antonios Kritikos",
+      "Nikolaos Spanos",
+      "Athanasios S. Voulodimos"
+    ],
+    "year": 2026,
+    "publication_date": "2026-04-18",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Domain generalization (DG) aims to maintain performance under domain shift, which in computer vision appears primarily as stylistic variations that cause models to overfit to domain-specific appearance cues rather than class semantics. To overcome this, recent methods use textual representations as stable, domain-invariant anchors. However, multimodal approaches that rely on cosine similarity-based contrastive alignment leave a modality gap where image and text embeddings remain geometrically se",
+    "openalex_id": "https://openalex.org/W7155041065",
+    "relevance_score": 56.76181
+  },
+  {
+    "title": "e5-omni: Explicit Cross-modal Alignment for Omni-modal Embeddings",
+    "doi": "10.48550/arxiv.2601.03666",
+    "authors": [
+      "Haonan Chen",
+      "Sicheng Gao",
+      "Radu Timofte",
+      "Tetsuya Sakai",
+      "Zhicheng Dou"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-07",
+    "cited_by_count": 1,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Modern information systems often involve different types of items, e.g., a text query, an image, a video clip, or an audio segment. This motivates omni-modal embedding models that map heterogeneous modalities into a shared space for direct comparison. However, most recent omni-modal embeddings still rely heavily on implicit alignment inherited from pretrained vision-language model (VLM) backbones. In practice, this causes three common issues: (i) similarity logits have modality-dependent sharpne",
+    "openalex_id": "https://openalex.org/W7119503345",
+    "relevance_score": 54.670506
+  },
+  {
+    "title": "e5-omni: Explicit Cross-modal Alignment for Omni-modal Embeddings",
+    "doi": "10.18653/v1/2026.findings-acl.970",
+    "authors": [
+      "Haonan Chen",
+      "Sicheng Gao",
+      "Radu Timofte",
+      "Tetsuya Sakai",
+      "Zhicheng Dou"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-01",
+    "cited_by_count": 0,
+    "journal": "Findings of the Association for Computational Linguistics: ACL (Findings of ACL)",
+    "abstract": "Modern information systems often involve different types of items, e.g., a text query, an image, a video clip, or an audio segment.This motivates omni-modal embedding models that map heterogeneous modalities into a shared space for direct comparison.However, most recent omni-modal embeddings still rely heavily on implicit alignment inherited from pretrained vision-language model (VLM) backbones.In practice, this causes three common issues: (i) similarity logits have modality-dependent sharpness,",
+    "openalex_id": "https://openalex.org/W7166847088",
+    "relevance_score": 54.128643
+  },
+  {
+    "title": "On the Cone Effect and Modality Gap in Medical Vision-Language Embeddings",
+    "doi": "10.48550/arxiv.2603.17246",
+    "authors": [
+      "David S. Restrepo",
+      "Miguel L. Martins",
+      "Chenwei Wu",
+      "Luis Filipe Nakayama",
+      "Diego M. Lopez"
+    ],
+    "year": 2026,
+    "publication_date": "2026-03-18",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Vision-Language Models (VLMs) exhibit a characteristic \"cone effect\" in which nonlinear encoders map embeddings into highly concentrated regions of the representation space, contributing to cross-modal separation known as the modality gap. While this phenomenon has been widely observed, its practical impact on supervised multimodal learning -- particularly in medical domains -- remains unclear. In this work, we introduce a lightweight post-hoc mechanism that keeps pretrained VLM encoders frozen ",
+    "openalex_id": "https://openalex.org/W7138954397",
+    "relevance_score": 53.78139
+  },
+  {
+    "title": "Modality Compensation Network: Cross-Modal Adaptation for Action Recognition",
+    "doi": "10.1109/tip.2020.2967577",
+    "authors": [
+      "Sijie Song",
+      "Jiaying Liu",
+      "Yanghao Li",
+      "Zongming Guo"
+    ],
+    "year": 2020,
+    "publication_date": "2020-01-01",
+    "cited_by_count": 69,
+    "journal": "IEEE Transactions on Image Processing",
+    "abstract": "With the prevalence of RGB-D cameras, multimodal video data have become more available for human action recognition. One main challenge for this task lies in how to effectively leverage their complementary information. In this work, we propose a Modality Compensation Network (MCN) to explore the relationships of different modalities, and boost the representations for human action recognition. We regard RGB/ optical flow videos as source modalities, skeletons as auxiliary modality. Our goal is to",
+    "openalex_id": "https://openalex.org/W3002271958",
+    "relevance_score": 52.87145
+  },
+  {
+    "title": "On the modality gap and the contrastive loss in multi-modal representation learning",
+    "doi": "10.48550/arxiv.2607.10698",
+    "authors": [
+      "Fabian Mager",
+      "Hiba Nassar",
+      "Lars Kai Hansen"
+    ],
+    "year": 2026,
+    "publication_date": "2026-07-12",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "We study the modality gap in CLIP-style dual-encoder contrastive learning, where image and text embeddings remain misaligned despite being trained in a shared space. We argue that the gap is induced by a failure of the InfoNCE formulation with independent encoders. We conduct a uni-modal experiment with two independent encoders and identical initialization conditions and find that InfoNCE actively generates a gap at low temperatures. We provide a theoretical analysis of this phenomenon and show ",
+    "openalex_id": "https://openalex.org/W7168293791",
+    "relevance_score": 52.639194
+  }
+]

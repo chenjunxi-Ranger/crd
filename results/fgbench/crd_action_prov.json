@@ -1,0 +1,53 @@
+{
+  "facet": "Action",
+  "dataset": "VG",
+  "backbone": "clip",
+  "protocol": "internal_val_split",
+  "data_seed": 0,
+  "val_frac": 0.2,
+  "n_train_cycles": 319,
+  "n_val_cycles": 80,
+  "n_test_cycles": 166,
+  "overlap_images_after_fix": 0,
+  "train_order_sha": "956712704c224fdc",
+  "mu": 0.25396063923835754,
+  "sd": 0.04354700701070786,
+  "steps": 1200,
+  "runs": [
+    {
+      "seed": 0,
+      "lam": 0.6,
+      "auroc_raw": 0.5913,
+      "auroc_crd": 0.6152,
+      "auprc_raw": 0.569,
+      "auprc_crd": 0.5906,
+      "acc2afc_raw": 0.783133,
+      "acc2afc_crd": 0.783133,
+      "delta_pp": 2.39
+    },
+    {
+      "seed": 1,
+      "lam": 0.7,
+      "auroc_raw": 0.5913,
+      "auroc_crd": 0.6148,
+      "auprc_raw": 0.569,
+      "auprc_crd": 0.5966,
+      "acc2afc_raw": 0.783133,
+      "acc2afc_crd": 0.783133,
+      "delta_pp": 2.35
+    },
+    {
+      "seed": 2,
+      "lam": 0.7,
+      "auroc_raw": 0.5913,
+      "auroc_crd": 0.6135,
+      "auprc_raw": 0.569,
+      "auprc_crd": 0.5943,
+      "acc2afc_raw": 0.783133,
+      "acc2afc_crd": 0.783133,
+      "delta_pp": 2.22
+    }
+  ],
+  "auroc_crd_mean": 0.6145,
+  "auroc_crd_sd": 0.0009
+}

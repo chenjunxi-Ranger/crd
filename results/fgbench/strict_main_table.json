@@ -1,0 +1,309 @@
+{
+  "rows": [
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "method": "cos",
+      "n_noisy": 4596,
+      "cycles": 2298,
+      "auroc": 0.9991,
+      "auprc": 0.9992,
+      "acc2afc": 1.0
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "method": "csls",
+      "n_noisy": 4596,
+      "cycles": 2298,
+      "auroc": 0.9996,
+      "auprc": 0.9997,
+      "acc2afc": 1.0
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "method": "gmm",
+      "n_noisy": 4596,
+      "cycles": 2298,
+      "auroc": 0.9991,
+      "auprc": 0.9992,
+      "acc2afc": 0.9996
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "method": "lemon",
+      "n_noisy": 4596,
+      "cycles": 2298,
+      "auroc": 0.999,
+      "auprc": 0.9991,
+      "acc2afc": 1.0
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "method": "traced",
+      "n_noisy": 4596,
+      "cycles": 2298,
+      "auroc": 0.9985,
+      "auprc": 0.9986,
+      "acc2afc": 1.0
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "method": "crd",
+      "n_noisy": 4596,
+      "cycles": 2298,
+      "auroc": 0.9996,
+      "auprc": 0.9996,
+      "acc2afc": 1.0,
+      "n_seeds": 3,
+      "auroc_seedmean": 0.9995,
+      "auroc_seedsd": 0.0
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "method": "cos",
+      "n_noisy": 228,
+      "cycles": 114,
+      "auroc": 0.8305,
+      "auprc": 0.832,
+      "acc2afc": 0.9649
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "method": "csls",
+      "n_noisy": 228,
+      "cycles": 114,
+      "auroc": 0.8882,
+      "auprc": 0.8859,
+      "acc2afc": 0.9649
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "method": "gmm",
+      "n_noisy": 228,
+      "cycles": 114,
+      "auroc": 0.8305,
+      "auprc": 0.832,
+      "acc2afc": 0.9298
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "method": "lemon",
+      "n_noisy": 228,
+      "cycles": 114,
+      "auroc": 0.8495,
+      "auprc": 0.8403,
+      "acc2afc": 0.9649
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "method": "traced",
+      "n_noisy": 228,
+      "cycles": 114,
+      "auroc": 0.8412,
+      "auprc": 0.8479,
+      "acc2afc": 0.9561
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "method": "crd",
+      "n_noisy": 228,
+      "cycles": 114,
+      "auroc": 0.8848,
+      "auprc": 0.8858,
+      "acc2afc": 0.9649,
+      "n_seeds": 3,
+      "auroc_seedmean": 0.8837,
+      "auroc_seedsd": 0.0011
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "method": "cos",
+      "n_noisy": 28562,
+      "cycles": 14281,
+      "auroc": 0.6806,
+      "auprc": 0.668,
+      "acc2afc": 0.8282
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "method": "csls",
+      "n_noisy": 28562,
+      "cycles": 14281,
+      "auroc": 0.6866,
+      "auprc": 0.6744,
+      "acc2afc": 0.8282
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "method": "gmm",
+      "n_noisy": 28562,
+      "cycles": 14281,
+      "auroc": 0.6806,
+      "auprc": 0.6678,
+      "acc2afc": 0.8158
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "method": "lemon",
+      "n_noisy": 28562,
+      "cycles": 14281,
+      "auroc": 0.6843,
+      "auprc": 0.6689,
+      "acc2afc": 0.8268
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "method": "traced",
+      "n_noisy": 28562,
+      "cycles": 14281,
+      "auroc": 0.6875,
+      "auprc": 0.6769,
+      "acc2afc": 0.8186
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "method": "crd",
+      "n_noisy": 28562,
+      "cycles": 14281,
+      "auroc": 0.719,
+      "auprc": 0.718,
+      "acc2afc": 0.8282,
+      "n_seeds": 3,
+      "auroc_seedmean": 0.7187,
+      "auroc_seedsd": 0.0001
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "method": "cos",
+      "n_noisy": 332,
+      "cycles": 166,
+      "auroc": 0.5913,
+      "auprc": 0.569,
+      "acc2afc": 0.7831
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "method": "csls",
+      "n_noisy": 332,
+      "cycles": 166,
+      "auroc": 0.5869,
+      "auprc": 0.5668,
+      "acc2afc": 0.7831
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "method": "lemon",
+      "n_noisy": 332,
+      "cycles": 166,
+      "auroc": 0.5964,
+      "auprc": 0.5699,
+      "acc2afc": 0.7892
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "method": "traced",
+      "n_noisy": 332,
+      "cycles": 166,
+      "auroc": 0.6102,
+      "auprc": 0.5769,
+      "acc2afc": 0.753
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "method": "crd",
+      "n_noisy": 332,
+      "cycles": 166,
+      "auroc": 0.6145,
+      "auprc": 0.5933,
+      "acc2afc": 0.7831,
+      "n_seeds": 3,
+      "auroc_seedmean": 0.6145,
+      "auroc_seedsd": 0.0009
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "method": "cos",
+      "n_noisy": 1412,
+      "cycles": 706,
+      "auroc": 0.5413,
+      "auprc": 0.5323,
+      "acc2afc": 0.6501
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "method": "csls",
+      "n_noisy": 1412,
+      "cycles": 706,
+      "auroc": 0.5417,
+      "auprc": 0.5331,
+      "acc2afc": 0.6501
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "method": "gmm",
+      "n_noisy": 1412,
+      "cycles": 706,
+      "auroc": 0.5413,
+      "auprc": 0.5323,
+      "acc2afc": 0.6601
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "method": "lemon",
+      "n_noisy": 1412,
+      "cycles": 706,
+      "auroc": 0.5436,
+      "auprc": 0.5311,
+      "acc2afc": 0.6487
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "method": "traced",
+      "n_noisy": 1412,
+      "cycles": 706,
+      "auroc": 0.5356,
+      "auprc": 0.535,
+      "acc2afc": 0.6176
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "method": "crd",
+      "n_noisy": 1412,
+      "cycles": 706,
+      "auroc": 0.5531,
+      "auprc": 0.5448,
+      "acc2afc": 0.6501,
+      "n_seeds": 3,
+      "auroc_seedmean": 0.553,
+      "auroc_seedsd": 0.0001
+    }
+  ]
+}

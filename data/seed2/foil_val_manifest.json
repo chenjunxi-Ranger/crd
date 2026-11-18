@@ -1,0 +1,18 @@
+{
+  "source": "D:\\PyCharm\\PythonProject\\异常标签检测\\数据集\\FOIL-COCO\\pairs_train.csv",
+  "output": "data\\seed2\\foil_val_5k.csv",
+  "seed": 2,
+  "requested_pairs": 5000,
+  "val_pairs": 5000,
+  "val_images": 1645,
+  "train_pool_images": 65697,
+  "held_out_pairs": 192788,
+  "held_out_images": 64052,
+  "image_disjoint": true,
+  "val_image_hash": "e25fcfd9322fac0cee61f5d27a080fb9",
+  "val_pair_hash": "38cf22950bf69c6080fa930bff50927e",
+  "mean_caption_len": {
+    "positive": 10.7076,
+    "negative": 10.7072
+  }
+}

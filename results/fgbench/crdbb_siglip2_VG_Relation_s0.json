@@ -1,0 +1,18 @@
+{
+  "backbone": "siglip2",
+  "dataset": "VG",
+  "facet": "Relation",
+  "target": "row",
+  "parts": "both",
+  "seed": 0,
+  "lam": 0.4,
+  "r2_val": -0.5359,
+  "r2_test": 0.7021,
+  "auc_raw": 0.5578,
+  "auc_crd": 0.5722,
+  "auprc_raw": 0.5468,
+  "auprc_crd": 0.5631,
+  "acc2afc_raw": 0.694051,
+  "acc2afc_crd": 0.694051,
+  "delta_pp": 1.45
+}

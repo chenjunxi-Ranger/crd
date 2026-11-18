@@ -1,0 +1,12 @@
+{
+  "dataset": "VG",
+  "facet": "Attribute",
+  "k": 32,
+  "library": 20000,
+  "n_test": 57124,
+  "cos_auc": 0.6806,
+  "lemon_auc": 0.6843,
+  "delta": 0.0037,
+  "auprc": 0.6689,
+  "acc2afc": 0.8268
+}

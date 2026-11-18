@@ -1,0 +1,16 @@
+{
+  "backbone": "blip-itm",
+  "dataset": "VG",
+  "facet": "Attribute",
+  "seed": 0,
+  "lam": 0.8,
+  "r2_val": 0.0726,
+  "r2_test": 0.2975,
+  "auc_raw": 0.8207,
+  "auc_crd": 0.8481,
+  "auprc_raw": 0.8124,
+  "auprc_crd": 0.8441,
+  "acc2afc_raw": 0.936839,
+  "acc2afc_crd": 0.936839,
+  "delta_pp": 2.74
+}

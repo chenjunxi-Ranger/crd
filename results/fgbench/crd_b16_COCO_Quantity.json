@@ -1,0 +1,16 @@
+{
+  "dataset": "COCO",
+  "facet": "Quantity",
+  "parts": "both",
+  "lam_from_val": 0.9,
+  "r2_val": 0.6001,
+  "mae_val": 0.0124,
+  "r2_test": 0.5004,
+  "mae_test": 0.0135,
+  "cos_auc": 0.8305247768544167,
+  "crd_auc": 0.8891389658356418,
+  "cos_2afc": 0.9649122807017544,
+  "crd_2afc": 0.9649122807017544,
+  "auprc_cos": 0.832,
+  "auprc_crd": 0.8937
+}

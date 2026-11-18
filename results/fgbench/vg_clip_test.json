@@ -1,0 +1,49 @@
+{
+  "rows": 60872,
+  "images": 28674,
+  "bank": 8000,
+  "results": [
+    {
+      "facet": "Attribute",
+      "detector": "cosine",
+      "n_noisy": 28562,
+      "auc": 0.6785609611265548,
+      "auprc": 0.6618834182800041
+    },
+    {
+      "facet": "Attribute",
+      "detector": "csls",
+      "n_noisy": 28562,
+      "auc": 0.6660855466240558,
+      "auprc": 0.651458482575969
+    },
+    {
+      "facet": "Action",
+      "detector": "cosine",
+      "n_noisy": 362,
+      "auc": 0.5885275174750465,
+      "auprc": 0.5611982976765301
+    },
+    {
+      "facet": "Action",
+      "detector": "csls",
+      "n_noisy": 362,
+      "auc": 0.5776456762614084,
+      "auprc": 0.5549122268025248
+    },
+    {
+      "facet": "Relation",
+      "detector": "cosine",
+      "n_noisy": 1512,
+      "auc": 0.5439333655272809,
+      "auprc": 0.5330109416907367
+    },
+    {
+      "facet": "Relation",
+      "detector": "csls",
+      "n_noisy": 1512,
+      "auc": 0.5386371112230901,
+      "auprc": 0.5309487680206376
+    }
+  ]
+}

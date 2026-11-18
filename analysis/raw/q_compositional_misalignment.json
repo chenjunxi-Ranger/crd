@@ -1,0 +1,213 @@
+[
+  {
+    "title": "Text-Anchored Score Composition: Tackling Condition Misalignment in Text-to-Image Diffusion Models",
+    "doi": "10.1007/978-3-031-72970-6_2",
+    "authors": [
+      "Luozhou Wang",
+      "Guibao Shen",
+      "Wenhang Ge",
+      "Guangyong Chen",
+      "Yijun Li"
+    ],
+    "year": 2024,
+    "publication_date": "2024-11-22",
+    "cited_by_count": 6,
+    "journal": "Lecture notes in computer science",
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4404613153",
+    "relevance_score": 28.203625
+  },
+  {
+    "title": "How Do VLMs Fail? Vision-Operation Misalignment in Compositional VQA",
+    "doi": "10.25447/sit.33296502",
+    "authors": [
+      "Navya Gupta",
+      "Bingjie Xu",
+      "Avinash Anand",
+      "Timothy Liu",
+      "Zhengchen Zhang"
+    ],
+    "year": 2026,
+    "publication_date": "2026-07-17",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Compositional visual question answering requires Vision-Language Models (VLMs) to execute multiple reasoning operations like object selection, spatial relation resolution, and attribute verification. Despite strong aggregate performance, the mechanistic basis of VLM failures on this task remains underexplored. To address this gap, we analyze vision-operation misalignment in VLMs by examining how failures relate to specific reasoning operations and the internal computational pathways through whic",
+    "openalex_id": "https://openalex.org/W7169794533",
+    "relevance_score": 28.078669
+  },
+  {
+    "title": "TIE: Training-free CLIP Embedding Guidance for Compositional Text-to-Image Alignment",
+    "doi": "10.48550/arxiv.2610.32407",
+    "authors": [
+      "Sujung Hong",
+      "Tae Eun Choi",
+      "Youngjun Jun",
+      "Chanyong Yoon",
+      "Seong Jae Hwang"
+    ],
+    "year": 2026,
+    "publication_date": "2026-10-23",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Text-to-image (T2I) diffusion models have advanced notably, but still fail to satisfy prompt conditions, resulting in attribute mismatches and missing objects. These errors normally fall into two categories: concept loss, when an object or attribute (i.e., concept) goes missing, and concept confusion, when an attribute is assigned to the wrong object or multiple objects blend together. Recent studies suggest that these challenges are caused by the limited capacity of CLIP text encoder to capture",
+    "openalex_id": "https://openalex.org/W7223651720",
+    "relevance_score": 27.771929
+  },
+  {
+    "title": "Region-Aware Text-to-Image Generation via Hard Binding and Soft Refinement",
+    "doi": "10.48550/arxiv.2411.06558",
+    "authors": [
+      "Zhennan Chen",
+      "Yajie Li",
+      "Haofan Wang",
+      "Zhibo Chen",
+      "Zhengkai Jiang"
+    ],
+    "year": 2024,
+    "publication_date": "2024-11-10",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Regional prompting, or compositional generation, which enables fine-grained spatial control, has gained increasing attention for its practicality in real-world applications. However, previous methods either introduce additional trainable modules, thus only applicable to specific models, or manipulate on score maps within cross-attention layers using attention masks, resulting in limited control strength when the number of regions increases. To handle these limitations, we present RAG, a Regional",
+    "openalex_id": "https://openalex.org/W4404401749",
+    "relevance_score": 21.530691
+  },
+  {
+    "title": "Self-Correcting Text-to-Video Generation with Misalignment Detection and Localized Refinement",
+    "doi": "10.18653/v1/2026.findings-acl.1817",
+    "authors": [
+      "Daeun Lee",
+      "Jaehong Yoon",
+      "Jaemin Cho",
+      "Mohit Bansal"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-01",
+    "cited_by_count": 1,
+    "journal": "Findings of the Association for Computational Linguistics: ACL (Findings of ACL)",
+    "abstract": "Recent text-to-video (T2V) diffusion models have made remarkable progress in generating high-quality videos.However, they often struggle to align with complex text prompts, particularly when multiple objects, attributes, or spatial relations are specified.We introduce VIDEOREPAIR, the first self-correcting, training-free, and model-agnostic video refinement framework that automatically detects finegrained text-video misalignments and performs targeted, localized corrections.Our key insight is th",
+    "openalex_id": "https://openalex.org/W4404987757",
+    "relevance_score": 21.425829
+  },
+  {
+    "title": "Mismatch Quest: Visual and Textual Feedback for Image-Text Misalignment",
+    "doi": "10.1007/978-3-031-72998-0_18",
+    "authors": [
+      "Brian Gordon",
+      "Yonatan Bitton",
+      "Yonatan Shafir",
+      "Roopal Garg",
+      "Xi Chen"
+    ],
+    "year": 2024,
+    "publication_date": "2024-09-29",
+    "cited_by_count": 3,
+    "journal": "Lecture notes in computer science",
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4402959528",
+    "relevance_score": 21.246773
+  },
+  {
+    "title": "VELOCITI: Benchmarking Video-Language Compositional Reasoning with Strict Entailment",
+    "doi": "10.1109/cvpr52734.2025.01762",
+    "authors": [
+      "Darshana Saravanan",
+      "Varun Gupta",
+      "Darshan Singh",
+      "Zeeshan Khan",
+      "Vineet Gandhi"
+    ],
+    "year": 2025,
+    "publication_date": "2025-06-10",
+    "cited_by_count": 1,
+    "journal": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+    "abstract": "A fundamental aspect of compositional reasoning in a video is associating people and their actions across time. Recent years have seen great progress in general-purpose vision/video models and a move towards long-video understanding. While exciting, we take a step back and ask: are today’s models good at compositional reasoning on short videos? To this end, we introduce VELOCITI, a benchmark to study Video-LLMs by disentangling and assessing the comprehension of agents, actions, and their associ",
+    "openalex_id": "https://openalex.org/W4413146897",
+    "relevance_score": 13.933086
+  },
+  {
+    "title": "Where to Look Is Not How to Fix: Pre-Denoising Diagnostics and Modality-Dependent Control in Diffusion Composition",
+    "doi": "10.48550/arxiv.2610.03068",
+    "authors": [
+      "Fangzheng Wu",
+      "Brian Summa"
+    ],
+    "year": 2026,
+    "publication_date": "2026-10-02",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Understanding compositional failures in text-to-image diffusion requires identifying both where stress is detectable and how intervention changes the output. We study these questions through a controlled anchor--stress protocol that jointly evaluates text-encoder diagnostics and denoiser interventions. We introduce a text-only Compositional Stress Index (CSI), which separates common from rare compositions across SD1.5, SDXL, and the SD3 text path and provides an upstream diagnostic coordinate. A",
+    "openalex_id": "https://openalex.org/W7220748515",
+    "relevance_score": 11.851825
+  },
+  {
+    "title": "Semantic bias in image-text matching in humans versus vision-language pretraining AI models",
+    "doi": null,
+    "authors": [
+      "Jinhan Zhang",
+      "Qichun DUAN",
+      "Chenyang Zhao",
+      "Antoni B. Chan",
+      "Janet H. Hsiao"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-01",
+    "cited_by_count": 0,
+    "journal": "eScholarship (California Digital Library)",
+    "abstract": "Recent research has shown that vision-language pretrain-ing (VLP) models using contrastive learning (Contrastive Language Image Pretraining, CLIP) has a semantic bias to-wards using concrete words during image-text matching. Here we showed that as compared with CLIP, humans at-tended more to abstract words during image-text matching. This difference likely results from CLIP’s difficulty in de-veloping grounded understanding of abstract concepts and capturing contextual dependencies between image",
+    "openalex_id": "https://openalex.org/W7204016150",
+    "relevance_score": 10.672666
+  },
+  {
+    "title": "Contrastive vision-language learning with paraphrasing and negation",
+    "doi": "10.48550/arxiv.2511.16527",
+    "authors": [
+      "Kwun Ho Ngan",
+      "Saman Sadeghi Afgeh",
+      "Joe A Townsend",
+      "Artur d’Avila Garcez"
+    ],
+    "year": 2025,
+    "publication_date": "2025-11-20",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Contrastive vision-language models continue to be the dominant approach for image-text retrieval. Contrastive Language-Image Pre-training (CLIP) trains two neural networks to align their image and text embeddings in a shared latent space. As a challenging case-study for neurosymbolic AI, recent results evaluating CLIP on negated or paraphrased text have shown mixed performance as these are difficult to define formally for text data. Negation produces the opposite meaning using various possible b",
+    "openalex_id": "https://openalex.org/W4416550658",
+    "relevance_score": 9.577382
+  },
+  {
+    "title": "RMP-adapter: A region-based Multiple Prompt Adapter for multi-concept customization in text-to-image diffusion model",
+    "doi": "10.1016/j.eswa.2025.126936",
+    "authors": [
+      "Zeyu Jiang",
+      "Lai-Man Po",
+      "Xuyuan Xu",
+      "Yexin Wang",
+      "Haoxuan Wu"
+    ],
+    "year": 2025,
+    "publication_date": "2025-02-25",
+    "cited_by_count": 6,
+    "journal": "Expert Systems with Applications",
+    "abstract": "This paper introduces a novel framework for multi-concept customization in text-to-image diffusion models . At its core is a Multiple Prompt Adapter (MP-Adapter) capable of processing multiple image prompts in parallel, extracting features from target concepts and projecting them into the same latent space as the text prompt. This enables simultaneous handling of multiple concepts using just one reference image per concept. To address challenges in fusing multiple concepts with complex interacti",
+    "openalex_id": "https://openalex.org/W4407943866",
+    "relevance_score": 9.436986
+  },
+  {
+    "title": "Co-developing Georgia’s National Digital Health Strategy through a multistakeholder convergence workshop: An implementation case study from the WHO European Region",
+    "doi": "10.1371/journal.pdig.0001787",
+    "authors": [
+      "Nato Gzirishili",
+      "Mehar Grover",
+      "Resham Sethi",
+      "Mariam Beridze",
+      "Tomáš Roubal"
+    ],
+    "year": 2026,
+    "publication_date": "2026-10-14",
+    "cited_by_count": 0,
+    "journal": "PLOS Digital Health",
+    "abstract": "National digital health strategies (DHS) are widely recognized as essential for advancing universal health coverage. However, published evidence on operational, multi-stakeholder approaches to co-development-particularly beyond the Asian and African settings where convergence methodology has previously been applied-remains limited. This study details the application of a convergence-based methodology to validate and refine the draft National DHS of Georgia, an upper-middle-income country, aligni",
+    "openalex_id": "https://openalex.org/W7221784804",
+    "relevance_score": 8.212825
+  }
+]

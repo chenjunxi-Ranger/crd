@@ -1,0 +1,30 @@
+{
+  "backbone": "clip",
+  "dataset": "VG",
+  "facet": "Relation",
+  "parts": "both",
+  "target": "row",
+  "seed": 2,
+  "data_seed": 0,
+  "manifest_sha": {
+    "train": "29d05c74e3298d9f",
+    "val": "2456f0ecbba2b97c",
+    "test": "f823e2ca42bf5e79"
+  },
+  "cache_sha": {
+    "U": "a164143d3f16cc6e",
+    "V": "cbfe948bec00f121",
+    "S_train": "8e7368c0fe48f459",
+    "S_test": "31fd45178d2ca3ba"
+  },
+  "train_order_sha": "f4300c63d0c78142",
+  "n_train_rows": 8000,
+  "n_val_rows": 324,
+  "n_test_rows": 2824,
+  "mu": 0.2414495050907135,
+  "sd": 0.0438639472587204,
+  "lam": 0.4,
+  "steps": 1200,
+  "batch": 256,
+  "lr": 0.001
+}

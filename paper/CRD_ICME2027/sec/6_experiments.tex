@@ -1,0 +1,247 @@
+% ============================================================
+%  Experiments
+% ============================================================
+\section{Experiments}
+\label{sec:exp}
+
+\subsection{Experimental Setup}
+All methods share one frozen CLIP ViT-B/16 encoder unless stated, so rows of
+Table~\ref{tab:main} differ in post-processing and auxiliary inputs, not in the
+representation; Section~\ref{sec:cross} repeats the comparison on two further frozen
+encoders (ViT-L/14 and SigLIP2). Heads are optimised with AdamW for $1{,}500$ iterations at batch size
+$256$, learning rate $10^{-3}$, weight decay $10^{-4}$ and the Huber loss with its
+default transition; three seeds share a fixed training subset, row order and therefore
+$\mu,\sigma$, and hashes of the manifest, feature cache and row order are verified to
+agree. The primary metric is AUROC over pairs; AUPRC is secondary; 2AFC is reported
+separately because it is not interchangeable with AUROC. Values are mean $\pm$
+standard deviation over three seeds; the data subset is fixed. Comparisons use a cycle-clustered paired
+bootstrap with Holm correction over the $24$ cells;
+CSLS's $\lambda$ is selected on the same validation split; re-selecting it on a
+$0$--$30$ grid leaves the Quantity/Entity ordering unchanged. The Action facet's
+official validation split contains two cycles, so for that facet only $20\%$ of the
+training cycles ($80$ of $399$) are held out, with no image shared with the retained
+cycles; this is a single fixed draw and a protocol deviation. Its $166$ test cycles
+are untouched, and the Action cells are marked $\dagger$ and treated as exploratory.
+
+\subsection{Comparison with Same-Backbone Detectors}
+Table~\ref{tab:main} compares CRD with a cosine threshold, CSLS, a GMM density
+detector, LEMoN-style and TRACED-style reproductions, two parameter-free
+feature-debiasing baselines (mean-centred and all-but-the-top (ABTT) cosine), and a
+supervised probe used as a reference ceiling. The
+two debiasing baselines are the null hypothesis: they ask whether the gain comes from
+the learned heads or merely from removing first-order feature structure. Both are
+fitted on the training split only, with no gradient training; the single
+hyper-parameter ($k$ for ABTT) is selected on the same validation split as $\lambda$.
+LEMoN uses the official adapter on the same cached CLIP features and test split:
+IndexFlatIP neighbour retrieval with $k{=}5$, the official
+$d_1+\beta d_n+\gamma d_m$ score, and hyperparameters fitted on the validation split.
+TRACED is a mechanism-level reproduction: it builds a deletion-only caption trajectory
+of three steps; because its token-replacement operator is not reproduced, it is treated
+as a lower bound.
+
+\begin{table*}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{9pt}
+\caption{AUROC on FGBench v1-strict, frozen CLIP ViT-B/16. CRD is mean $\pm$ std over
+seeds; baselines are single-run. $^\dagger$Action uses an internal validation split.
+GMM/mean-centred/ABTT are controls; the LR probe is reported in the text. The Holm
+family is five method rows $\times$ five facets minus GMM/Action ($24$ cells; four
+GMM duplicates leave $20$ independent).}
+\label{tab:main}
+\begin{tabular}{lccccc}
+\toprule
+Method & Entity & Quantity & Attribute & Action$^\dagger$ & Relation \\
+\midrule
+CLIP cosine                & 0.9991 & 0.8305 & 0.6806 & 0.5913 & 0.5413 \\
+CLIP + CSLS                & \textbf{0.9996} & 0.8882 & 0.6866 & 0.5869 & 0.5417 \\
+LEMoN (official)           & 0.9990 & 0.8266 & 0.6755 & 0.5923 & 0.5218 \\
+TRACED-style               & 0.9985 & 0.8412 & 0.6875 & 0.6102 & 0.5356 \\
+\midrule
+\multicolumn{6}{l}{\emph{Controls (not detectors)}}\\
+GMM (monotone)             & 0.9991 & 0.8305 & 0.6806 & --- & 0.5413 \\
+Mean-centred cosine        & 0.9989 & 0.8570 & 0.6790 & 0.5890 & 0.5389 \\
+ABTT cosine                & 0.9985 & 0.8481 & 0.6765 & 0.5394 & 0.5464 \\
+\midrule
+\textbf{CRD (ours)}        & \shortstack{0.9995\\\scriptsize$\pm$0.0000} & \shortstack{0.8837\\\scriptsize$\pm$0.0011} & \shortstack{0.7187\\\scriptsize$\pm$0.0001} & \shortstack{0.6145\\\scriptsize$\pm$0.0009} & \shortstack{\textbf{0.5530}\\\scriptsize$\pm$0.0001} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+On Attribute, CRD improves AUROC by $3.81$ points on the seed mean (arithmetic
+difference; the bootstrap mean is $3.84$) and by $3.12$ to $4.32$ points over the
+five detector/control rows in Table~\ref{tab:main} (cosine, CSLS, GMM, LEMoN official
+and TRACED-style), with a 95\% CI of $[3.73,3.96]$ against cosine. The absolute gain is larger on Quantity ($+5.32$), but CSLS already
+accounts for most of it. On Action CRD reaches $0.6145$ against $0.6102$ for TRACED,
+a paired-bootstrap difference of $+0.43$\,pp (95\% CI $[-1.75,2.54]$), which does
+not survive Holm; we claim parity rather than superiority. On Quantity and Entity the ordering reverses
+on the seed-mean convention (CSLS $0.8882$ against $0.8837$; $0.9996$ against
+$0.9995$; seed-mean Entity scores are tied), so CRD is not described as uniformly
+better. Across the $24$ cells, $21$ are significant after Holm; four of these are the
+monotone GMM control, whose AUROC is identical to cosine by construction, so the
+independent count is $17$ of $20$. The exceptions are Entity against CSLS, Quantity
+against CSLS and Action against TRACED. The Entity gain
+over cosine, although significant, is $0.04$ points where every method exceeds
+$0.9985$ and is not read as a practical gain.
+
+The comparison against the debiasing baselines is consistent. As a separate family of
+ten tests, CRD is better than mean-centred cosine, on the seed-mean score, by
+$3.97$ (Attribute), $2.67$ (Quantity), $2.55$ (Action), $1.41$ (Relation) and $0.06$
+(Entity) pp, and better than ABTT by $4.22$, $3.56$, $7.51$, $0.66$ and $0.10$\,pp
+on the same facets. The Relation-vs-ABTT cell is the weakest ($+0.66$\,pp, CI
+$[-0.03,1.32]$) and is not treated as decisive.
+Neither baseline exceeds raw cosine on Attribute ($0.6790$ and $0.6765$ against
+$0.6806$), so removing first-order feature structure does not reproduce the effect.
+
+\textbf{From ranking to top-$10\%$ label precision.} Precision here is the fraction
+of flagged pairs that are noisy. Of the $10\%$ of Attribute test pairs
+flagged as most suspicious, $84.9\%$ are noisy, against $76.8\%$ for cosine and
+$77.5\%$ for CSLS (paired $+8.0$\,pp over cosine, arithmetic $+8.1$;
+cycle-clustered 95\% CI $[7.1,8.9]$). It is not significant elsewhere
+($p=0.245$--$0.37$); Entity is a tie. This is a label-precision proxy, not evidence
+of a downstream training benefit.
+
+\textbf{Supervised reference.} The same features and training subset are also given
+to probes that consume the pair label: a logistic regression on $[u;v;u\odot v]$ and
+a two-layer MLP of CRD's width. They are not competitors under the same budget, but
+they bound what a classifier extracts. On Attribute the LR probe reaches $0.7234$,
+$0.47$\,pp above CRD (bootstrap CI $[0.28,0.60]$); the MLP reaches $0.7214$. On
+Quantity the probe is $1.60$ ahead and the MLP $1.85$; on Action the MLP is $7.62$
+ahead on the $166$-cycle test split, where $\lambda$ is selected on $80$ internal
+validation cycles. With the $320$-row ($80$-cycle) budget, the Action LR probe falls
+to $0.5687$ ($-4.59$) while the MLP remains at $0.6517$ ($+3.71$), so the budget
+penalty is model-dependent. On Relation the MLP overfits and falls
+$3.93$ below CRD. A probe on $[u;v]$ alone is at chance ($0.5000$), as required by
+the reciprocal design: any per-side additive score gives identical clean and noisy
+sums within a cycle. The interaction $u\odot v$ reaches $0.6977$: the linearly
+extractable signal resides there, and nonlinear per-side heads recover only part of
+it ($0.6944$/$0.6956$). Trained on the same $8{,}336$-row budget used to select
+$\lambda$, the LR probe falls to $0.6751$ on Attribute ($-4.36$ vs CRD) and $0.7949$
+on Quantity ($-8.88$): its earlier advantage used $32{,}000$ rows, about four times
+CRD's label budget.
+
+\textbf{Head class.} A closed-form ridge version of the same additive form matches
+CRD on Attribute and Entity ($0.7187$/$0.9996$), is $0.9$\,pp higher on Quantity,
+and ties Relation, so the gain does not require nonlinear heads. The fitted $g$
+reaches $R^2=0.326$ on Attribute, while caption length and numeral count reach
+$R^2=0.005$, so it is not a surface shortcut.
+
+\subsection{Cross-Backbone Evaluation}
+\label{sec:cross}
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{3.5pt}
+\caption{CRD on three frozen backbones for Attribute (seed-mean AUROC; $\Delta$ in
+points). Heads and $\lambda$ are refitted per cell.}
+\label{tab:cross}
+\begin{tabular}{llccc}
+\toprule
+Backbone & Facet & Raw & CRD & $\Delta$ \\
+\midrule
+CLIP B/16  & Attribute & 0.6806 & 0.7187 & +3.81 \\
+CLIP L/14  & Attribute & 0.6779 & 0.7139 & +3.60 \\
+SigLIP2    & Attribute & 0.7026 & 0.7509 & +4.83 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:cross} reports the three Attribute backbones. CRD improves raw AUROC
+by $+3.60$ to $+4.83$ points on these cells; we do not extrapolate to unshown facets.
+Scaling within CLIP leaves Attribute essentially unchanged (ViT-L/14, $2.9\times$
+parameters, $0.6779$ against $0.6806$).
+
+\subsection{Ablation Studies}
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\caption{Ablation on Visual Genome Attribute with CLIP ViT-B/16, mean over three
+seeds. All rows share the frozen features, training split and $\lambda$ grid.}
+\label{tab:ablation}
+\begin{tabular}{lccc}
+\toprule
+Configuration & AUROC & AUPRC & $\Delta$ (pp) \\
+\midrule
+CLIP cosine (base)      & 0.6806 & 0.6680 & ---    \\
+Image-only $a_\phi(u)$  & 0.6944 & 0.6807 & +1.38  \\
+Text-only $b_\psi(v)$   & 0.6956 & 0.6904 & +1.50  \\
+\textbf{Additive (CRD)} & \textbf{0.7187} & \textbf{0.7177} & \textbf{+3.81} \\
+Cycle-level target      & 0.7125 & 0.7077 & +3.19  \\
+Shuffled placebo        & 0.6806 & 0.6680 & 0.00   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:ablation} isolates the design choices. Image-only reaches $0.6944$ and
+text-only $0.6956$, against $0.7187$ for the additive form; the sum of the individual
+gains ($1.38+1.50=2.88$) is smaller than the joint gain ($3.81$) by $0.93$, which is
+consistent with complementary rather than duplicated information. Supervising on cycle means costs $0.62$ points
+($0.7125$), consistent with a target that is constant within the ranked group. The
+placebo trains structurally identical heads on permuted cycle means and returns the
+baseline ($0.6806$, gain $0.00$) because validation selects $\lambda=0$. Paired
+bootstraps give additive minus image-only $+2.43$\,pp, minus text-only $+2.31$,
+minus cycle-level $+0.62$ and minus placebo $+3.81$, with all seeds agreeing in sign
+and a spread of at most $0.15$\,pp.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Same cached features, 1,500-step row target, $\lambda$ grid and three seeds;
+$65{,}795$ vs $65{,}665$ parameters. Action excluded (internal split). The additive
+column is a same-cache re-run and differs from Table~\ref{tab:main} by at most
+$0.003$ AUROC ($0.3$ points). Joint moves Relation 2AFC from $0.6501$ to
+$0.6535$; additivity is sufficient, not a ceiling.}
+\label{tab:joint}
+\begin{tabular}{lcccc}
+\toprule
+Head & Attribute & Quantity & Entity & Relation \\
+\midrule
+Additive (CRD) & 0.7187 & 0.8866 & 0.9995 & 0.5538 \\
+Joint $[u;v]$  & 0.7182 & 0.8759 & 0.9991 & 0.5537 \\
+$\Delta$       & $-0.05$ & $-1.07$ & $-0.04$ & $-0.01$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{What the Calibration Changes}
+\label{sec:analysis}
+The 2AFC used here is a cycle-level group comparison: for each cycle it compares the
+sum of the two clean scores with the sum of the two noisy scores. Within a cycle both
+sides involve the same two images and captions, so summing \eqref{eq:calib} gives
+\begin{equation}
+\begin{aligned}
+\Delta' &= \Delta
+- \lambda\Big[\textstyle\sum_{\text{clean}}(a+b+b_0)
+- \sum_{\text{noisy}}(a+b+b_0)\Big],
+\end{aligned}
+\end{equation}
+where the bracketed term is identically zero, since both sums contain
+$a(u_A)+a(u_B)+b(v_A)+b(v_B)+2b_0$. Any additive correction therefore leaves this
+metric unchanged, for any $a$, $b$ and $\lambda$. CRD's 2AFC equals cosine's by
+construction ($0.8282$, $11{,}827/14{,}281$ cycles, on Attribute; $0.9649$ Quantity;
+$1.0000$ Entity, saturated; $0.7831$, $130/166$, Action; $0.6501$ Relation); CSLS is
+invariant for the same reason.
+
+The invariance is a property of the metric, not evidence of harmlessness; it does
+not extend to same-image candidate comparison, where only the fixed-side head cancels.
+Mean-centred and ABTT cosine are not separable additive corrections and move the
+metric (up to $0.0089$ Attribute, $0.1686$ Action), and a monotone rescaling moves it
+by $-1.24$ and $-3.51$ points; both metrics are reported.
+
+\subsection{External Transfer}
+A head fitted on COCO Entity is applied, without target labels or statistics, to five
+protocols. CRD improves on SugarCrepe (+5.08), Flickr noun (+1.04), FOIL (+0.95) and
+Flickr random (+0.18), and loses $0.35$ on MM-IMDb; with the VG Attribute source only
+SugarCrepe is significantly positive ($+0.98$). Transfer is source-dependent; a
+supervised probe is never significantly better.
+
+\subsection{Limitations}
+Equation~\eqref{eq:decomp} asserts a predictable additive component; it does not
+claim that the component is identifiable as image or text bias. Labels are silver,
+with a known substitution failure mode, and are not human-adjudicated. Relation
+remains weak (best AUROC $0.5530$, $+1.17$ points). CSLS remains ahead on Quantity
+and Entity, and Action is statistically indistinguishable from TRACED. A supervised
+classifier is stronger on three facets but needs full labels; CRD is a light-budget
+calibration.

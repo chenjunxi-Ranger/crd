@@ -1,0 +1,738 @@
+{
+  "schema_version": "1.1",
+  "session": {
+    "id": "mymodel7-single-formula",
+    "title": "Single-formula training-free mislabel scoring under C1-C8",
+    "question": "In a frozen CLIP ViT-B/32 dual tower, which single training-free score function can meet COCO>=0.96, Flickr>=0.96, MM-IMDb>=0.88 row AUROC and FOIL>=0.92 within-pair accuracy without per-benchmark branching, BLIP, or corpus priors?",
+    "date": "2026-11-03",
+    "facilitator_id": "P01-AI-independent",
+    "decision_owner_id": "user",
+    "participant_ids": [
+      "P01-AI-independent",
+      "P02-adversarial"
+    ],
+    "represented_perspectives": [
+      "representation-learning (token/patch geometry)",
+      "evaluation methodology (protocol, ties, CI)",
+      "adversarial reviewer (novelty / reduction risk)"
+    ],
+    "missing_perspectives": [
+      "human annotator perspective on what counts as a mislabel",
+      "production data-audit stakeholder",
+      "independent statistician beyond checklist review"
+    ],
+    "conflicts_or_power_dynamics": [
+      "P01 generated all candidates (AI-assisted); P02 reviewed them, so no true independence between generator and critic. Mitigation: reduction check is mechanical (formula comparison), not opinion-based."
+    ]
+  },
+  "scope": {
+    "in_scope": [
+      "frozen CLIP ViT-B/32 image and text towers, forward pass only",
+      "row-level AUROC on COCO-cat / Flickr30k-noun / MM-IMDb-cat",
+      "within-pair accuracy on FOIL-COCO",
+      "label-free reference bank from official train split (no labels)"
+    ],
+    "out_of_scope": [
+      "any parameter update, adapter, probe, LoRA, GBDT",
+      "BLIP or any joint encoder / text-tower replacement",
+      "external corpus frequency or LM perplexity as a main term",
+      "per-dataset or per-protocol hyperparameter switching",
+      "analysis-only or negative-result-only positioning"
+    ],
+    "constraints": [
+      "C1 single formula, one global constant set",
+      "C2 no training, no training-set construction",
+      "C3 frozen CLIP only, no BLIP",
+      "C4 no pretraining-corpus prior as the main line",
+      "C5 thresholds 0.960 / 0.960 / 0.880 / 0.920",
+      "C6 FOIL val 10k image-disjoint from official train, test once",
+      "C7 no reparameterisation of known operators",
+      "C8 no downgrade to analysis/negative-result paper"
+    ],
+    "prohibited_outputs": [
+      "numbers not produced by a script",
+      "a formula with per-benchmark branches",
+      "a claim of novelty without a reduction check"
+    ]
+  },
+  "assumptions": [
+    {
+      "id": "A001",
+      "statement": "CLIP text token states and projected patch states live in a shared 512-d space well enough that per-token max patch similarity is meaningful.",
+      "category": "measurement",
+      "owner_id": "P01-AI-independent",
+      "status": "untested",
+      "test_or_check": "Compare pooled cosine reconstructed from token/patch states against the official 512-d embeddings; require rank correlation > 0.95 on 500 val rows.",
+      "evidence_refs": [
+        "survey.md §3 token-patch row"
+      ]
+    },
+    {
+      "id": "A002",
+      "statement": "Donor-swap negatives differ from positives in the local support profile of content tokens, not only in global cosine.",
+      "category": "mechanistic",
+      "owner_id": "P01-AI-independent",
+      "status": "untested",
+      "test_or_check": "Per-token max-support AUROC on COCO/Flickr/MM-IMDb val; require > 0.5 with CI excluding 0.5.",
+      "evidence_refs": [
+        "survey.md §4 direction 1"
+      ]
+    },
+    {
+      "id": "A003",
+      "statement": "In FOIL the image-side additive term cancels, so only text-dependent or multiplicative terms can move within-pair accuracy.",
+      "category": "mechanistic",
+      "owner_id": "P01-AI-independent",
+      "status": "partially-supported",
+      "test_or_check": "Already verified bitwise in mymodel3 (image margin identical to CLIP cosine under within-pair protocol).",
+      "evidence_refs": [
+        "mymodel3/README.md §核心主张",
+        "mymodel6/PCPES_FINAL.md"
+      ]
+    },
+    {
+      "id": "A004",
+      "statement": "A fixed, theory-chosen support threshold (e.g. cosine 0.2) is comparable across the four benchmarks after L2 normalisation.",
+      "category": "measurement",
+      "owner_id": "P01-AI-independent",
+      "status": "untested",
+      "test_or_check": "Report coverage curves for tau in {0.1,0.15,0.2,0.25,0.3}; if the ordering is stable the exact tau is not a per-bench knob.",
+      "evidence_refs": []
+    },
+    {
+      "id": "A005",
+      "statement": "Hub patches (patches that win for many tokens) inflate max-support statistics.",
+      "category": "statistical",
+      "owner_id": "P01-AI-independent",
+      "status": "untested",
+      "test_or_check": "Measure per-patch win counts on 2,000 images; compare scores with and without subtracting each patch's mean similarity.",
+      "evidence_refs": [
+        "survey.md hubness row"
+      ]
+    },
+    {
+      "id": "A006",
+      "statement": "MM-IMDb truncation at 77 tokens still leaves enough plot-specific tokens for local support statistics.",
+      "category": "measurement",
+      "owner_id": "P01-AI-independent",
+      "status": "untested",
+      "test_or_check": "Compute token-support AUROC separately for the first and last 20 tokens of the truncated text.",
+      "evidence_refs": [
+        "CONSTRAINTS.md §3"
+      ]
+    }
+  ],
+  "ideas": [
+    {
+      "id": "I001",
+      "statement": "Sentence score = mean over content tokens of the per-token support margin (best patch similarity minus that token's mean patch similarity), i.e. a local-support profile statistic rather than a pooled cosine.",
+      "status": "candidate",
+      "assumption_ids": [
+        "A001",
+        "A002",
+        "A005"
+      ],
+      "predicted_observations": [
+        "Donor-swap rows lose margin on content tokens while function words stay unchanged",
+        "FOIL negatives lose margin exactly on the swapped noun token"
+      ],
+      "uncertainties": [
+        "Margin may be dominated by a few hub patches",
+        "Content-token selection is heuristic (stopword list) and must be fixed a priori"
+      ],
+      "evidence_status": "search-incomplete",
+      "provenance": {
+        "contributor_ids": [
+          "P01-AI-independent"
+        ],
+        "origin": "ai-assisted",
+        "ai_tool": "DeepSeek-V4.1-Flash",
+        "recorded_stage": "independent",
+        "source_refs": [
+          "survey.md §4.1"
+        ]
+      }
+    },
+    {
+      "id": "I002",
+      "statement": "Sentence score = fraction of content tokens that are mutual nearest neighbours with some patch (token->patch argmax and patch->token argmax agree), a forward-only cycle-consistency statistic.",
+      "status": "candidate",
+      "assumption_ids": [
+        "A001",
+        "A002"
+      ],
+      "predicted_observations": [
+        "Clean pairs keep a higher mutual-NN fraction than donor-swap pairs"
+      ],
+      "uncertainties": [
+        "May saturate near 1.0 because each token often has a unique patch",
+        "Tie handling on discrete argmax can dominate the metric"
+      ],
+      "evidence_status": "search-incomplete",
+      "provenance": {
+        "contributor_ids": [
+          "P01-AI-independent"
+        ],
+        "origin": "ai-assisted",
+        "ai_tool": "DeepSeek-V4.1-Flash",
+        "recorded_stage": "independent",
+        "source_refs": [
+          "survey.md §4.2"
+        ]
+      }
+    },
+    {
+      "id": "I003",
+      "statement": "Binding-displacement index: within the token similarity graph, measure whether two highly similar tokens (entity/attribute pair) support disjoint patch sets, capturing swap_obj style errors without any lexicon.",
+      "status": "candidate",
+      "assumption_ids": [
+        "A001",
+        "A002"
+      ],
+      "predicted_observations": [
+        "swap_obj and replace_rel cases show higher displacement than add_* cases"
+      ],
+      "uncertainties": [
+        "Requires a token-pair selection rule",
+        "Risk of reducing to a repackaged second-order similarity"
+      ],
+      "evidence_status": "search-incomplete",
+      "provenance": {
+        "contributor_ids": [
+          "P01-AI-independent"
+        ],
+        "origin": "ai-assisted",
+        "ai_tool": "DeepSeek-V4.1-Flash",
+        "recorded_stage": "independent",
+        "source_refs": [
+          "mymodel4/模型机制定义_v2.md §1 fact 3"
+        ]
+      }
+    },
+    {
+      "id": "I004",
+      "statement": "Text contextual residual: magnitude of each token state's deviation from its context-free embedding, used to down-weight tokens whose support is dominated by wording rather than content.",
+      "status": "candidate",
+      "assumption_ids": [
+        "A001"
+      ],
+      "predicted_observations": [
+        "Paraphrase-heavy negatives (SugarCrepe++ style) lose less than they should under CLIP cosine"
+      ],
+      "uncertainties": [
+        "Needs a second forward pass with the token isolated",
+        "May be a reparameterisation of token IDF-like weighting"
+      ],
+      "evidence_status": "search-incomplete",
+      "provenance": {
+        "contributor_ids": [
+          "P01-AI-independent"
+        ],
+        "origin": "ai-assisted",
+        "ai_tool": "DeepSeek-V4.1-Flash",
+        "recorded_stage": "independent",
+        "source_refs": [
+          "survey.md §4.4"
+        ]
+      }
+    },
+    {
+      "id": "I005",
+      "statement": "Coverage statistic: fraction of content tokens whose best patch similarity exceeds a single fixed threshold tau, with tau chosen from cosine geometry rather than tuned per benchmark.",
+      "status": "candidate",
+      "assumption_ids": [
+        "A004"
+      ],
+      "predicted_observations": [
+        "Coverage drops for donor-swap captions",
+        "Coverage is length-robust after per-token normalisation"
+      ],
+      "uncertainties": [
+        "Threshold sensitivity",
+        "Coverage is coarse and may lose ranking resolution"
+      ],
+      "evidence_status": "search-incomplete",
+      "provenance": {
+        "contributor_ids": [
+          "P01-AI-independent"
+        ],
+        "origin": "ai-assisted",
+        "ai_tool": "DeepSeek-V4.1-Flash",
+        "recorded_stage": "independent",
+        "source_refs": [
+          "survey.md §4.1"
+        ]
+      }
+    },
+    {
+      "id": "I006",
+      "statement": "Patch-usage entropy: entropy of the distribution over patches visited by token argmax, as an image-side dispersion statistic.",
+      "status": "stopped",
+      "assumption_ids": [
+        "A003"
+      ],
+      "predicted_observations": [
+        "Would help row-level only"
+      ],
+      "uncertainties": [
+        "Depends mostly on the image, so it largely cancels in FOIL and cannot deliver the 0.92 threshold"
+      ],
+      "evidence_status": "challenge-located",
+      "provenance": {
+        "contributor_ids": [
+          "P01-AI-independent"
+        ],
+        "origin": "ai-assisted",
+        "ai_tool": "DeepSeek-V4.1-Flash",
+        "recorded_stage": "independent",
+        "source_refs": [
+          "mymodel3/README.md"
+        ]
+      }
+    },
+    {
+      "id": "I007",
+      "statement": "Multi-scale support: average per-token max support over 2x2 and 3x3 patch grids in addition to the native 7x7 grid, to suppress single-patch noise.",
+      "status": "candidate",
+      "assumption_ids": [
+        "A001",
+        "A005"
+      ],
+      "predicted_observations": [
+        "More stable scores, small AUROC gain at low cost"
+      ],
+      "uncertainties": [
+        "Grid pooling destroys token-level localisation needed for FOIL"
+      ],
+      "evidence_status": "search-incomplete",
+      "provenance": {
+        "contributor_ids": [
+          "P01-AI-independent"
+        ],
+        "origin": "ai-assisted",
+        "ai_tool": "DeepSeek-V4.1-Flash",
+        "recorded_stage": "independent",
+        "source_refs": []
+      }
+    },
+    {
+      "id": "I008",
+      "statement": "Rank-profile agreement: Spearman correlation between a token's patch-similarity profile and the sentence-level mean profile.",
+      "status": "stopped",
+      "assumption_ids": [
+        "A001"
+      ],
+      "predicted_observations": [
+        "Weak signal on its own"
+      ],
+      "uncertainties": [
+        "High reduction risk: it is a rank correlation of cosine profiles, a standard statistic with no clear novelty"
+      ],
+      "evidence_status": "challenge-located",
+      "provenance": {
+        "contributor_ids": [
+          "P01-AI-independent"
+        ],
+        "origin": "ai-assisted",
+        "ai_tool": "DeepSeek-V4.1-Flash",
+        "recorded_stage": "independent",
+        "source_refs": []
+      }
+    }
+  ],
+  "clusters": [
+    {
+      "id": "CL1",
+      "label": "Alignment-matrix statistics (token x patch)",
+      "idea_ids": [
+        "I001",
+        "I002",
+        "I003",
+        "I005",
+        "I007"
+      ],
+      "relation": "shared mechanism: forward-only token-patch matrix, no reference bank needed",
+      "merge_or_split_note": "Kept separate because their statistics differ in order (first-order margin vs discrete mutual-NN vs thresholded coverage vs second-order binding)."
+    },
+    {
+      "id": "CL2",
+      "label": "Text-side contextual residual",
+      "idea_ids": [
+        "I004"
+      ],
+      "relation": "shared mechanism: perturbation of the text tower only",
+      "merge_or_split_note": "Separate because it requires an extra forward pass and targets paraphrase robustness."
+    },
+    {
+      "id": "CL3",
+      "label": "Image-side dispersion (rejected for thresholds)",
+      "idea_ids": [
+        "I006"
+      ],
+      "relation": "shared mechanism: image-only statistic",
+      "merge_or_split_note": "Rejected because it cancels in the within-pair protocol."
+    }
+  ],
+  "criteria": [
+    {
+      "id": "K1",
+      "name": "information_gain",
+      "direction": "higher-better",
+      "weight": 0.3,
+      "scale": "0-100, 50 = no better than CLIP cosine",
+      "evidence_needed": "Gate val AUROC / within-pair accuracy by feature family"
+    },
+    {
+      "id": "K2",
+      "name": "novelty_vs_known_operators",
+      "direction": "higher-better",
+      "weight": 0.25,
+      "scale": "0-100, 0 = direct reparameterisation",
+      "evidence_needed": "reduction table against CSLS/LEMoN/CMC/kNN/CLIP4DM"
+    },
+    {
+      "id": "K3",
+      "name": "single_formula_feasibility",
+      "direction": "higher-better",
+      "weight": 0.2,
+      "scale": "0-100, penalise any per-bench constant",
+      "evidence_needed": "constant list review + static scan"
+    },
+    {
+      "id": "K4",
+      "name": "robustness_to_confounders",
+      "direction": "higher-better",
+      "weight": 0.15,
+      "scale": "0-100, penalise tie saturation and hub sensitivity",
+      "evidence_needed": "tie rate, hub-patch ablation, length control"
+    },
+    {
+      "id": "K5",
+      "name": "interpretability",
+      "direction": "higher-better",
+      "weight": 0.1,
+      "scale": "0-100",
+      "evidence_needed": "token-level heat inspection on 20 examples"
+    }
+  ],
+  "literature_checks": [
+    {
+      "idea_ids": [
+        "I001",
+        "I002",
+        "I003",
+        "I005",
+        "I007"
+      ],
+      "queries": [
+        "token patch alignment CLIP compositional reasoning",
+        "image-text misalignment detection multimodal",
+        "training-free image-text alignment score vision language"
+      ],
+      "sources_screened": "OpenAlex (12 queries, 2026-11-03)",
+      "evidence_for": "Token-patch similarity is used for referring segmentation and fine-grained alignment training",
+      "evidence_against": "No located work uses its distribution statistics as a training-free mislabel score",
+      "status": "search-incomplete",
+      "date": "2026-11-03",
+      "limits": "Single-source fallback; Scopus/Semantic Scholar not covered"
+    },
+    {
+      "idea_ids": [
+        "I004"
+      ],
+      "queries": [
+        "contrastive language image pretraining similarity calibration",
+        "compositional misalignment CLIP region binding"
+      ],
+      "sources_screened": "OpenAlex",
+      "evidence_for": "Contextual residuals are used to study wording sensitivity",
+      "evidence_against": "Close to token weighting/IDF family; novelty risk high",
+      "status": "mixed",
+      "date": "2026-11-03",
+      "limits": "No full-text reading yet"
+    }
+  ],
+  "adversarial_reviews": [
+    {
+      "idea_id": "I001",
+      "reviewer_id": "P02-adversarial",
+      "what_would_make_it_wrong": "If the margin is driven by hub patches, clean and unclean rows would look alike and the AUROC would collapse to ~0.5 on MM-IMDb.",
+      "alternative_explanation": "The gain could come from caption length or stopword composition rather than support structure.",
+      "hidden_dependency": "Requires correct projection of patch states into the joint space; a wrong projection silently produces noise.",
+      "confounders": [
+        "Hub patches",
+        "Token count",
+        "Truncation position"
+      ],
+      "mitigations": [
+        "Reconstruct pooled cosine as a sanity check (A001)",
+        "Hub-subtracted variant",
+        "Length-stratified AUROC"
+      ],
+      "outcome": "revised: keep I001 but make hub subtraction a mandatory ablation",
+      "residual_uncertainty": "medium"
+    },
+    {
+      "idea_id": "I002",
+      "reviewer_id": "P02-adversarial",
+      "what_would_make_it_wrong": "If mutual-NN fraction saturates at 1.0, the statistic has no variance and ties dominate.",
+      "alternative_explanation": "Any apparent gain may come from tie-breaking order.",
+      "hidden_dependency": "Discrete argmax over 49 patches is unstable under small perturbations.",
+      "confounders": [
+        "Tie rate",
+        "Patch count"
+      ],
+      "mitigations": [
+        "Report exact tie rate",
+        "Use margin-weighted soft assignment as continuous fallback"
+      ],
+      "outcome": "revised: continuous variant required before evaluation",
+      "residual_uncertainty": "high"
+    },
+    {
+      "idea_id": "I003",
+      "reviewer_id": "P02-adversarial",
+      "what_would_make_it_wrong": "If token pairs are chosen by similarity, the index may just re-measure cosine similarity of two tokens.",
+      "alternative_explanation": "Second-order similarity is a known operator in disguise.",
+      "hidden_dependency": "Token-pair selection rule introduces a hidden hyperparameter.",
+      "confounders": [
+        "Token duplication",
+        "Multi-word entities"
+      ],
+      "mitigations": [
+        "Fix pair rule a priori (top-2 mutually similar content tokens)",
+        "Reduction check against second-order cosine"
+      ],
+      "outcome": "conditional: shortlisted only for FOIL diagnosis, not as a main term",
+      "residual_uncertainty": "high"
+    },
+    {
+      "idea_id": "I005",
+      "reviewer_id": "P02-adversarial",
+      "what_would_make_it_wrong": "Coverage is a step function of tau; a small tau shift could reorder the benchmark.",
+      "alternative_explanation": "The gain could be a threshold artefact.",
+      "hidden_dependency": "tau must be fixed before seeing test, and must not be tuned per benchmark.",
+      "confounders": [
+        "Cosine scale drift across domains"
+      ],
+      "mitigations": [
+        "Report tau curve on val",
+        "Use soft coverage (sigmoid with fixed temperature) as the continuous version"
+      ],
+      "outcome": "revised: soft coverage preferred over hard threshold",
+      "residual_uncertainty": "medium"
+    },
+    {
+      "idea_id": "I004",
+      "reviewer_id": "P02-adversarial",
+      "what_would_make_it_wrong": "If the residual correlates with token frequency, it becomes an IDF-like weighting, i.e. a known operator.",
+      "alternative_explanation": "Wording sensitivity is already captured by token embedding norm.",
+      "hidden_dependency": "Extra forward pass cost and tokenizer alignment.",
+      "confounders": [
+        "Token frequency",
+        "Subword splitting"
+      ],
+      "mitigations": [
+        "Reduction check against IDF weighting",
+        "Only use as a suppressor, never as a main term"
+      ],
+      "outcome": "conditional: allowed only as a down-weighting term with zero free constants",
+      "residual_uncertainty": "high"
+    }
+  ],
+  "feasibility_and_ethics_reviews": [
+    {
+      "scope": "whole session",
+      "human_subjects": false,
+      "animal_or_clinical": false,
+      "sensitive_data": false,
+      "dual_use": false,
+      "compute": "single RTX 4060 8.6 GB, inference only; token/patch forward pass ~2-3x pooled-only cost",
+      "decision": "proceed",
+      "notes": "No personal data; all datasets already local and licensed for research."
+    }
+  ],
+  "decision_log": [
+    {
+      "decision_id": "D001",
+      "date": "2026-11-03",
+      "candidates_considered": [
+        "I001",
+        "I002",
+        "I003",
+        "I004",
+        "I005",
+        "I006",
+        "I007",
+        "I008"
+      ],
+      "criteria_used": [
+        "K1",
+        "K2",
+        "K3",
+        "K4",
+        "K5"
+      ],
+      "raw_ratings": {
+        "I001": [
+          70,
+          75,
+          85,
+          55,
+          85
+        ],
+        "I002": [
+          55,
+          60,
+          80,
+          40,
+          70
+        ],
+        "I003": [
+          60,
+          45,
+          65,
+          40,
+          75
+        ],
+        "I004": [
+          50,
+          35,
+          70,
+          60,
+          55
+        ],
+        "I005": [
+          55,
+          65,
+          90,
+          45,
+          80
+        ],
+        "I006": [
+          30,
+          55,
+          90,
+          70,
+          60
+        ],
+        "I007": [
+          45,
+          55,
+          80,
+          70,
+          65
+        ],
+        "I008": [
+          35,
+          25,
+          90,
+          60,
+          50
+        ]
+      },
+      "uncertainty": "Ratings are judgement calls, not measurements; ±15 points",
+      "dissent": "P02 argued I003 and I004 are both reduction risks; P01 kept them as diagnostic/suppressor only.",
+      "gate_outcomes": "No ethics or feasibility veto",
+      "decision": "Advance CL1 (I001, I002, I005, I007) to Gate as candidate score families; keep I003/I004 as auxiliary diagnostics; reject I006 and I008 as main terms.",
+      "rationale": "CL1 is the only family whose information is absent from pooled embeddings and whose reduction to CSLS/LEMoN/CMC is not immediate; I006 cancels in FOIL; I008 is a standard rank statistic.",
+      "rejected_alternatives": [
+        "I006",
+        "I008"
+      ],
+      "unresolved_risks": [
+        "Hub patches",
+        "Tie saturation",
+        "Patch projection correctness",
+        "Single-source literature coverage"
+      ],
+      "owner": "user",
+      "revisit_trigger": "If Gate shows CL1 nonlinear upper bound < threshold on any benchmark, reopen ideation with a new family rather than tuning constants.",
+      "candidate_ids": [
+        "I001",
+        "I002",
+        "I003",
+        "I004",
+        "I005",
+        "I006",
+        "I007",
+        "I008"
+      ]
+    }
+  ],
+  "information_governance": {
+    "classification": "public-research",
+    "contains_personal_or_sensitive_data": false,
+    "contains_unpublished_or_proprietary_data": false,
+    "contains_controlled_or_security_sensitive_data": false,
+    "external_ai_use_permitted": "yes",
+    "approved_record_location": "mymodel7/analysis/brainstorm/"
+  },
+  "notices": [
+    "Ideas and scores are not evidence or scientific conclusions.",
+    "Clinical, ethics, biosafety, dual-use, regulatory, and institutional review remain separate.",
+    "Do not store sensitive prompt content or restricted information in this register."
+  ],
+  "workflow": [
+    {
+      "order": 1,
+      "stage": "scope",
+      "status": "done",
+      "method_or_deviation": null
+    },
+    {
+      "order": 2,
+      "stage": "independent-generation",
+      "status": "done",
+      "method_or_deviation": "single AI generator (P01), disclosed; no human independent round"
+    },
+    {
+      "order": 3,
+      "stage": "structured-sharing",
+      "status": "done",
+      "method_or_deviation": "pooled written sharing; no synchronous group"
+    },
+    {
+      "order": 4,
+      "stage": "clustering",
+      "status": "done",
+      "method_or_deviation": null
+    },
+    {
+      "order": 5,
+      "stage": "criteria-definition",
+      "status": "done",
+      "method_or_deviation": "weights fixed before scoring"
+    },
+    {
+      "order": 6,
+      "stage": "independent-evaluation",
+      "status": "done",
+      "method_or_deviation": "single rater; uncertainty ±15 stated"
+    },
+    {
+      "order": 7,
+      "stage": "adversarial-review",
+      "status": "done",
+      "method_or_deviation": "P02 reviews all shortlisted ideas"
+    },
+    {
+      "order": 8,
+      "stage": "literature-check",
+      "status": "done",
+      "method_or_deviation": "OpenAlex fallback; full text not read"
+    },
+    {
+      "order": 9,
+      "stage": "feasibility-and-ethics-gate",
+      "status": "done",
+      "method_or_deviation": null
+    },
+    {
+      "order": 10,
+      "stage": "decision-log",
+      "status": "done",
+      "method_or_deviation": null
+    }
+  ]
+}

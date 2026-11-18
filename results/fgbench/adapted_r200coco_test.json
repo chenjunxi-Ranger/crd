@@ -1,0 +1,155 @@
+{
+  "adapter": "results/gate/r200_teacher_coco.pt",
+  "rows": [
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "detector": "cosine",
+      "n_noisy": 4596,
+      "auc": 0.9989348686298525,
+      "auprc": 0.9990365106134478,
+      "ci_lo": 0.9985316274756648,
+      "ci_hi": 0.9992478773118638
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "detector": "csls",
+      "n_noisy": 4596,
+      "auc": 0.9986749650242652,
+      "auprc": 0.998837144873302,
+      "ci_lo": 0.9981565034888628,
+      "ci_hi": 0.9990958834109351
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "detector": "cosine",
+      "n_noisy": 228,
+      "auc": 0.8417397660818714,
+      "auprc": 0.8505490190150672,
+      "ci_lo": 0.8154821675900277,
+      "ci_hi": 0.8680786395814097
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "detector": "csls",
+      "n_noisy": 228,
+      "auc": 0.8675554016620497,
+      "auprc": 0.869737736865023,
+      "ci_lo": 0.8406779008925823,
+      "ci_hi": 0.896452754693752
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "detector": "2afc",
+      "n_noisy": 2298,
+      "auc": 1.0,
+      "auprc": null,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "detector": "2afc",
+      "n_noisy": 114,
+      "auc": 0.9298245614035088,
+      "auprc": null,
+      "ci_lo": 0.881359649122807,
+      "ci_hi": 0.9649122807017544
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "detector": "cosine",
+      "n_noisy": 362,
+      "auc": 0.5916028204267268,
+      "auprc": 0.5603151499594283,
+      "ci_lo": 0.5741926375873753,
+      "ci_hi": 0.6112899102591496
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "detector": "csls",
+      "n_noisy": 362,
+      "auc": 0.5811864717194225,
+      "auprc": 0.5592921692997268,
+      "ci_lo": 0.5661413342083575,
+      "ci_hi": 0.5974871035682671
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "detector": "cosine",
+      "n_noisy": 28562,
+      "auc": 0.6764425377978542,
+      "auprc": 0.6585114234209697,
+      "ci_lo": 0.6735955120765442,
+      "ci_hi": 0.6794749693371259
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "detector": "csls",
+      "n_noisy": 28562,
+      "auc": 0.6696361112975838,
+      "auprc": 0.6473914596054366,
+      "ci_lo": 0.6667569352289834,
+      "ci_hi": 0.6721607463667969
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "detector": "cosine",
+      "n_noisy": 1512,
+      "auc": 0.5421242056493378,
+      "auprc": 0.5340431627983342,
+      "ci_lo": 0.533484953266286,
+      "ci_hi": 0.5518177879433667
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "detector": "csls",
+      "n_noisy": 1512,
+      "auc": 0.5399773592564598,
+      "auprc": 0.5308537085375581,
+      "ci_lo": 0.5326888857394809,
+      "ci_hi": 0.5472233595084124
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "detector": "2afc",
+      "n_noisy": 181,
+      "auc": 0.7955801104972375,
+      "auprc": null,
+      "ci_lo": 0.7348066298342542,
+      "ci_hi": 0.850828729281768
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "detector": "2afc",
+      "n_noisy": 14281,
+      "auc": 0.8360058819410405,
+      "auprc": null,
+      "ci_lo": 0.8295234927526084,
+      "ci_hi": 0.8420278691968349
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "detector": "2afc",
+      "n_noisy": 756,
+      "auc": 0.6587301587301587,
+      "auprc": null,
+      "ci_lo": 0.6249669312169313,
+      "ci_hi": 0.6898478835978836
+    }
+  ]
+}

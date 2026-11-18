@@ -1,0 +1,16 @@
+{
+  "add_obj": 0.7813,
+  "add_att": 0.6676,
+  "replace_obj": 0.9346,
+  "replace_att": 0.8147,
+  "replace_rel": 0.6679,
+  "swap_obj": 0.6,
+  "swap_att": 0.6486,
+  "overall": 0.7691,
+  "model": "clip",
+  "n": 7511,
+  "n_seen": 5830,
+  "n_unseen": 1681,
+  "acc_seen": 0.7702,
+  "acc_unseen": 0.7656
+}

@@ -1,0 +1,12 @@
+{
+  "dataset": "VG",
+  "facet": "Action",
+  "k": 32,
+  "library": 4000,
+  "n_test": 724,
+  "cos_auc": 0.596,
+  "lemon_auc": 0.6006,
+  "delta": 0.0046,
+  "auprc": 0.5717,
+  "acc2afc": 0.7845
+}

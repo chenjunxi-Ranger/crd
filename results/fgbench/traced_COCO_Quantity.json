@@ -1,0 +1,10 @@
+{
+  "dataset": "COCO",
+  "facet": "Quantity",
+  "n_train": 8000,
+  "n_test": 456,
+  "auc_cosine": 0.8305,
+  "auc_traced": 0.8412,
+  "delta": 0.0107,
+  "acc2afc_traced": 0.9561
+}

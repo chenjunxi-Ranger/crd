@@ -1,0 +1,10 @@
+{
+  "backbone": "b32",
+  "val_mode": "official",
+  "lam": 1.0,
+  "r2_val": 0.0852,
+  "r2_test": 0.4486,
+  "cos_auc": 0.6786,
+  "crd_auc": 0.7095,
+  "acc2afc": 0.832575
+}

@@ -1,0 +1,70 @@
+% ============================================================
+%  FGBench
+% ============================================================
+\section{FGBench: Benchmark Construction}
+\label{sec:fgbench}
+
+FGBench asks which of two unrelated pairs is noisier, and its construction follows
+from that question. Every image and caption is an existing COCO~\cite{lin2014coco} or
+Visual Genome~\cite{krishna2017vg} item; a mismatch is produced by contradicting a
+structured fact attached to the image, so the label rests on an external
+justification. Splits are disjoint at the cycle level, and the construction is
+auditable.
+
+For an image pair $(A,B)$ with captions $(T_A,T_B)$ we emit four records
+\begin{equation}
+\begin{aligned}
+  &(A,T_A,\text{clean}),\quad (B,T_A,\text{noisy}),\\
+  &(B,T_B,\text{clean}),\quad (A,T_B,\text{noisy}),
+\end{aligned}
+\end{equation}
+a reciprocal cycle. Each image and caption occurs once as a match and once as a
+mismatch, so every facet is exactly $50\%$ balanced and the two classes share the
+same distributions over image and text sides. A detector cannot exploit the frequency
+of an image or caption to separate the classes. The cycle is a property of the data,
+not of the method: CRD is trained on individual pairs and scores one pair at
+inference.
+
+Five facets come from two sources. From COCO we build \textbf{Entity} (object
+category substituted) and \textbf{Quantity} (numeral substituted); from Visual Genome
+we build \textbf{Attribute} (colour, material or state), \textbf{Action} (predicate)
+and \textbf{Relation} (spatial or comparative relation), all from VG150-style
+annotations.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{FGBench v1-strict. Every cycle contributes two matched and two mismatched
+pairs, so each facet is exactly balanced. The test split, used by all methods,
+contains $17{,}565$ cycles and $70{,}260$ pairs; per-facet test sizes make the
+statistical power of each column explicit.}
+\label{tab:fgbench}
+\begin{tabular}{llrrr}
+\toprule
+Source & Facet & Cycles & Pairs & Test (cycles) \\
+\midrule
+COCO          & Entity     & 32{,}589 & 130{,}356 &  2{,}298 \\
+COCO          & Quantity   &  2{,}940 &  11{,}760 &    114 \\
+Visual Genome & Attribute  & 49{,}042 & 196{,}168 & 14{,}281 \\
+Visual Genome & Action     &    567   &   2{,}268 &    166 \\
+Visual Genome & Relation   &  2{,}886 &  11{,}544 &    706 \\
+\midrule
+\multicolumn{2}{l}{Total}      & 88{,}024 & 352{,}096 & 17{,}565 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:fgbench} summarizes the construction. Labels are \emph{silver}: they
+follow from a substitution rule applied to a structured annotation, not from human
+adjudication. An annotation records what was
+annotated, not a complete inventory of the image, so unannotated content is treated
+as unknown rather than absent; a strict tier retains only Relation cases with
+unambiguous annotation support and removes $276$ cycles ($1{,}104$ rows) whose labels
+rely on six ambiguous rules; all numbers here refer to v1-strict. All detectors are
+evaluated on the identical manifest. The benchmark audit reports a maximum of one
+split per image and per caption and evidence completeness $1.000$. Because every
+image and caption occurs once in each class, any single-side score has identical
+class-conditional distributions; the TF-IDF check is therefore an analytic invariant
+($0.5000$), not independent evidence, and the construction makes a text-only shortcut
+impossible by design.

@@ -1,0 +1,16 @@
+{
+  "backbone": "blip-itc",
+  "dataset": "COCO",
+  "facet": "Quantity",
+  "seed": 0,
+  "lam": 1.2,
+  "r2_val": 0.2286,
+  "r2_test": 0.1977,
+  "auc_raw": 0.9766,
+  "auc_crd": 0.9824,
+  "auprc_raw": 0.9792,
+  "auprc_crd": 0.9836,
+  "acc2afc_raw": 0.991228,
+  "acc2afc_crd": 0.991228,
+  "delta_pp": 0.58
+}

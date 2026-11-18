@@ -1,0 +1,16 @@
+{
+  "add_obj": 0.9025,
+  "add_att": 0.7962,
+  "replace_obj": 0.9413,
+  "replace_att": 0.8223,
+  "replace_rel": 0.6927,
+  "swap_obj": 0.6286,
+  "swap_att": 0.7162,
+  "overall": 0.8281,
+  "model": "siglip2",
+  "n": 7511,
+  "n_seen": 5830,
+  "n_unseen": 1681,
+  "acc_seen": 0.8295,
+  "acc_unseen": 0.8233
+}

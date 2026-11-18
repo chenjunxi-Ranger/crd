@@ -1,0 +1,210 @@
+[
+  {
+    "title": "BELB: a Biomedical Entity Linking Benchmark",
+    "doi": "10.48550/arxiv.2308.11537",
+    "authors": [
+      "Samuele Garda",
+      "Leon Weber",
+      "Martin, Robert",
+      "Ulf Leser"
+    ],
+    "year": 2023,
+    "publication_date": "2023-08-22",
+    "cited_by_count": 1,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Biomedical entity linking (BEL) is the task of grounding entity mentions to a knowledge base. It plays a vital role in information extraction pipelines for the life sciences literature. We review recent work in the field and find that, as the task is absent from existing benchmarks for biomedical text mining, different studies adopt different experimental setups making comparisons based on published numbers problematic. Furthermore, neural systems are tested primarily on instances linked to the ",
+    "openalex_id": "https://openalex.org/W4386114374",
+    "relevance_score": 35.13958
+  },
+  {
+    "title": "NewsCaption: Named-Entity aware Captioning for Out-of-Context Media",
+    "doi": "10.48550/arxiv.2403.12618",
+    "authors": [
+      "Anurag Kumar Singh",
+      "Shivangi Aneja"
+    ],
+    "year": 2024,
+    "publication_date": "2024-03-19",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "With the increasing influence of social media, online misinformation has grown to become a societal issue. The motivation for our work comes from the threat caused by cheapfakes, where an unaltered image is described using a news caption in a new but false-context. The main challenge in detecting such out-of-context multimedia is the unavailability of large-scale datasets. Several detection methods employ randomly selected captions to generate out-of-context training inputs. However, these rando",
+    "openalex_id": "https://openalex.org/W4393027431",
+    "relevance_score": 33.630253
+  },
+  {
+    "title": "CLIPScore: A Reference-free Evaluation Metric for Image Captioning",
+    "doi": "10.18653/v1/2021.emnlp-main.595",
+    "authors": [
+      "Jack Hessel",
+      "Ari Holtzman",
+      "Maxwell Forbes",
+      "Ronan Joseph Le Bras",
+      "Yejin Choi"
+    ],
+    "year": 2021,
+    "publication_date": "2021-01-01",
+    "cited_by_count": 1236,
+    "journal": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    "abstract": "Image captioning has conventionally relied on reference-based automatic evaluations, where machine captions are compared against captions written by humans.This is in contrast to the reference-free manner in which humans assess caption quality.In this paper, we report the surprising empirical finding that CLIP (Radford et al., 2021), a cross-modal model pretrained on 400M im-age+caption pairs from the web, can be used for robust automatic evaluation of image captioning without the need for refer",
+    "openalex_id": "https://openalex.org/W3153469116",
+    "relevance_score": 32.23849
+  },
+  {
+    "title": "AnyGameRenderer: Entity-Consistent Generative Rendering Across Games and an Entity-Level Benchmark",
+    "doi": "10.48550/arxiv.2610.31466",
+    "authors": [
+      "Ruicong Liu",
+      "Liangyang Ouyang",
+      "Fengbo Lan",
+      "Zhixiang Wang",
+      "Kaipeng Zhang"
+    ],
+    "year": 2026,
+    "publication_date": "2026-10-22",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "AI coding agents can now build small playable games in minutes, but the results usually look like programmer art: gray blockouts, colored geometric primitives, and flat semantic blobs. We present AnyGameRenderer, a video-to-video generative renderer that turns such footage into high-quality visuals with characters, motion detail, and effects. Throughout, it keeps the layout, camera, and every entity's position and timing intact. Our AnyGameRenderer generalizes across a wide range of genres that ",
+    "openalex_id": "https://openalex.org/W7223304378",
+    "relevance_score": 31.364292
+  },
+  {
+    "title": "Advances in Stylised Image Captioning: A Systematic Review of Methods, Benchmarks, Evaluation and Research Gaps",
+    "doi": "10.1049/cvi2.70092",
+    "authors": [
+      "Nishat Tasnim",
+      "Dipannita Biswas"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-01",
+    "cited_by_count": 0,
+    "journal": "IET Computer Vision",
+    "abstract": "ABSTRACT Image captioning has traditionally focused on factual, neutral descriptions, whereas stylised image captioning (SIC) generates captions that preserve visual content while expressing a specified style, such as humour, romance or sentiment. Despite growing interest, SIC's methods, datasets and evaluation practices remain fragmented. This systematic review synthesises methodological and evaluation trends across the literature. From 832 records (2016–2026), 49 primary studies were included ",
+    "openalex_id": "https://openalex.org/W7224889079",
+    "relevance_score": 29.970285
+  },
+  {
+    "title": "To Skip, to Swap or to Not Swap? Identifying Step Transition Types in Instructional Manuals",
+    "doi": "10.63317/5jvvjyarv88s",
+    "authors": [
+      "Hsiu-Yu Yang",
+      "Michael Roth",
+      "Andreas Bulling",
+      "Carina Silberer"
+    ],
+    "year": 2026,
+    "publication_date": "2026-04-30",
+    "cited_by_count": 0,
+    "journal": "Language Resources and Evaluation Conference (LREC)",
+    "abstract": "Large language models (LLMs) are increasingly used as procedural planners that provide guidance across applications.However, in human-assistive scenarios where the environment and users' knowledge constantly change, their ability to detect various step types for generating alternative plans is underexplored.To address this gap, we introduce a novel evaluation task and dataset to assess if models can identify steps that are sequential, interchangeable, and optional in textual instructions across ",
+    "openalex_id": "https://openalex.org/W7160153159",
+    "relevance_score": 29.485167
+  },
+  {
+    "title": "TAC: Timestamped Audio Captioning",
+    "doi": "10.48550/arxiv.2602.15766",
+    "authors": [
+      "Sonal Kumar",
+      "Prem Seetharaman",
+      "Ke Chen",
+      "Oriol Nebot i Nieto",
+      "Jiaqi Su"
+    ],
+    "year": 2026,
+    "publication_date": "2026-02-17",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Large Audio Language Models struggle to disentangle overlapping events in complex acoustic scenes, yielding temporally inconsistent captions and frequent hallucinations. We introduce Timestamped Audio Captioner (TAC), a model that produces temporally grounded audio descriptions at varying degrees of detail and resolution. TAC is trained with a synthetic data pipeline that constructs challenging and dynamic mixtures from real-world audio sources, enabling robust learning under realistic polyphoni",
+    "openalex_id": "https://openalex.org/W7130328325",
+    "relevance_score": 26.522816
+  },
+  {
+    "title": "HNC: Leveraging Hard Negative Captions towards Models with Fine-Grained Visual-Linguistic Comprehension Capabilities",
+    "doi": "10.18653/v1/2023.conll-1.24",
+    "authors": [
+      "Esra Dönmez",
+      "Pascal Tilli",
+      "Hsiu-Yu Yang",
+      "Ngoc Thang Vu",
+      "Carina Silberer"
+    ],
+    "year": 2023,
+    "publication_date": "2023-01-01",
+    "cited_by_count": 1,
+    "journal": "Conference on Computational Natural Language Learning",
+    "abstract": "Image-Text-Matching (ITM) is one of the defacto methods of learning generalized representations from a large corpus in Vision and Language (VL).However, due to the weak association between the web-collected image-text pairs, models fail to show a fine-grained understanding of the combined semantics of these modalities.To address this issue we propose Hard Negative Captions (HNC): an automatically created dataset containing foiled hard negative captions for ITM training towards achieving fine-gra",
+    "openalex_id": "https://openalex.org/W4389521022",
+    "relevance_score": 25.582556
+  },
+  {
+    "title": "GHGbench: A Unified Multi-Entity, Multi-Task Benchmark for Carbon Emission Prediction",
+    "doi": "10.48550/arxiv.2605.13743",
+    "authors": [
+      "Yifan Duan",
+      "Siyuan Zheng",
+      "Lihuan Li",
+      "Chao Xue",
+      "Flora D. Salim"
+    ],
+    "year": 2026,
+    "publication_date": "2026-05-13",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Open datasets and benchmarks for entity-level carbon-emission prediction remain fragmented across access, scale, granularity, and evaluation. We introduce GHGbench, an open dataset and benchmark for company- and building-level greenhouse-gas prediction. The company track contains 32,000+ company-year records from 12,000+ firms with Scope 1+2 and Scope 3 disclosures and financial/sectoral signals; the building track harmonises 491,591 building-year records from 13 open sources into a single schem",
+    "openalex_id": "https://openalex.org/W7161153509",
+    "relevance_score": 25.446295
+  },
+  {
+    "title": "Panda-70M: Captioning 70M Videos with Multiple Cross-Modality Teachers",
+    "doi": "10.1109/cvpr52733.2024.01265",
+    "authors": [
+      "Tsai-Shien Chen",
+      "Aliaksandr Siarohin",
+      "Willi Menapace",
+      "Ekaterina Deyneka",
+      "Hsiang-wei Chao"
+    ],
+    "year": 2024,
+    "publication_date": "2024-06-16",
+    "cited_by_count": 94,
+    "journal": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+    "abstract": "The quality of the data and annotation upper-bounds the quality of a downstream model. While there exist large text corpora and image-text pairs, high-quality video-text data is much harder to collect. First of all, manual labeling is more time-consuming, as it requires an annotator to watch an entire video. Second, videos have a temporal dimension, consisting of several scenes stacked together, and showing multiple actions. Accordingly, to establish a video dataset with high-quality captions, w",
+    "openalex_id": "https://openalex.org/W4402753903",
+    "relevance_score": 25.236498
+  },
+  {
+    "title": "X-LXMERT: Paint, Caption and Answer Questions with Multi-Modal Transformers",
+    "doi": "10.18653/v1/2020.emnlp-main.707",
+    "authors": [
+      "Jaemin Cho",
+      "Jiasen Lu",
+      "Dustin Schwenk",
+      "Hannaneh Hajishirzi",
+      "Aniruddha Kembhavi"
+    ],
+    "year": 2020,
+    "publication_date": "2020-01-01",
+    "cited_by_count": 96,
+    "journal": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    "abstract": "Mirroring the success of masked language models, vision-and-language counterparts like VILBERT, LXMERT and UNITER have achieved state of the art performance on a variety of multimodal discriminative tasks like visual question answering and visual grounding.Recent work has also successfully adapted such models towards the generative task of image captioning.This begs the question: Can these models go the other way and generate images from pieces of text?Our analysis of a popular representative fr",
+    "openalex_id": "https://openalex.org/W3104152799",
+    "relevance_score": 24.61405
+  },
+  {
+    "title": "VELOCITI: Benchmarking Video-Language Compositional Reasoning with Strict Entailment",
+    "doi": "10.1109/cvpr52734.2025.01762",
+    "authors": [
+      "Darshana Saravanan",
+      "Varun Gupta",
+      "Darshan Singh",
+      "Zeeshan Khan",
+      "Vineet Gandhi"
+    ],
+    "year": 2025,
+    "publication_date": "2025-06-10",
+    "cited_by_count": 1,
+    "journal": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+    "abstract": "A fundamental aspect of compositional reasoning in a video is associating people and their actions across time. Recent years have seen great progress in general-purpose vision/video models and a move towards long-video understanding. While exciting, we take a step back and ask: are today’s models good at compositional reasoning on short videos? To this end, we introduce VELOCITI, a benchmark to study Video-LLMs by disentangling and assessing the comprehension of agents, actions, and their associ",
+    "openalex_id": "https://openalex.org/W4413146897",
+    "relevance_score": 24.222055
+  }
+]

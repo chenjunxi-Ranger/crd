@@ -1,0 +1,31 @@
+{
+  "backbone": "clip",
+  "dataset": "VG",
+  "facet": "Attribute",
+  "parts": "text",
+  "target": "row",
+  "seed": 1,
+  "data_seed": 0,
+  "manifest_sha": {
+    "train": "29d05c74e3298d9f",
+    "val": "2456f0ecbba2b97c",
+    "test": "f823e2ca42bf5e79"
+  },
+  "cache_sha": {
+    "U": "65a90b712348156f",
+    "V": "1f5a72dd9599047c",
+    "S_train": "f088468b4b6eefd6",
+    "S_test": "3399806f15a7b997"
+  },
+  "train_order_sha": "7f91f76679fcba45",
+  "n_train_rows": 32000,
+  "n_val_rows": 8336,
+  "n_test_rows": 57124,
+  "mu": 0.21210351586341858,
+  "sd": 0.04174323634935379,
+  "lam": 0.5,
+  "steps": 1500,
+  "batch": 256,
+  "lr": 0.001,
+  "note": "provenance re-serialised from artifacts; values not recomputed"
+}

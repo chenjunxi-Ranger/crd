@@ -1,0 +1,212 @@
+[
+  {
+    "title": "FineMatch: Aspect-Based Fine-Grained Image and Text Mismatch Detection and Correction",
+    "doi": "10.1007/978-3-031-72673-6_26",
+    "authors": [
+      "Hang Hua",
+      "Jing Shi",
+      "Kushal Kafle",
+      "Simon Jenni",
+      "Daoan Zhang"
+    ],
+    "year": 2024,
+    "publication_date": "2024-10-21",
+    "cited_by_count": 7,
+    "journal": "Lecture notes in computer science",
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4403600176",
+    "relevance_score": 52.678577
+  },
+  {
+    "title": "CLIPScore: A Reference-free Evaluation Metric for Image Captioning",
+    "doi": "10.18653/v1/2021.emnlp-main.595",
+    "authors": [
+      "Jack Hessel",
+      "Ari Holtzman",
+      "Maxwell Forbes",
+      "Ronan Joseph Le Bras",
+      "Yejin Choi"
+    ],
+    "year": 2021,
+    "publication_date": "2021-01-01",
+    "cited_by_count": 1236,
+    "journal": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    "abstract": "Image captioning has conventionally relied on reference-based automatic evaluations, where machine captions are compared against captions written by humans.This is in contrast to the reference-free manner in which humans assess caption quality.In this paper, we report the surprising empirical finding that CLIP (Radford et al., 2021), a cross-modal model pretrained on 400M im-age+caption pairs from the web, can be used for robust automatic evaluation of image captioning without the need for refer",
+    "openalex_id": "https://openalex.org/W3153469116",
+    "relevance_score": 46.667114
+  },
+  {
+    "title": "Improving Rumor Detection by Image Captioning and Multi-Cell Bi-RNN With Self-Attention in Social Networks",
+    "doi": "10.4018/ijdwm.313189",
+    "authors": [
+      "Jenq‐Haur Wang",
+      "Chin‐Wei Huang",
+      "Mehdi Norouzi"
+    ],
+    "year": 2022,
+    "publication_date": "2022-10-27",
+    "cited_by_count": 3,
+    "journal": "International Journal of Data Warehousing and Mining",
+    "abstract": "User-generated contents in social media are not verified before being posted. They could bring many problems if they were misused. Among various types of rumors, the authors focus on the type in which there's mismatch between images and their surrounding texts. They can be detected by multimodal feature fusion in RNNs with attention mechanism, but the relations between images and texts are not well-addressed. In this paper, the authors propose to improve rumor detection by image captioning and R",
+    "openalex_id": "https://openalex.org/W4312666818",
+    "relevance_score": 46.60963
+  },
+  {
+    "title": "Removing Partial Mismatches in Unsupervised Image Captioning",
+    "doi": "10.1527/tjsai.37-2_h-l82",
+    "authors": [
+      "Ukyo Honda",
+      "Atsushi Hashimoto",
+      "Taro Watanabe",
+      "Yūji Matsumoto"
+    ],
+    "year": 2022,
+    "publication_date": "2022-02-28",
+    "cited_by_count": 0,
+    "journal": "Transactions of the Japanese Society for Artificial Intelligence",
+    "abstract": "Unsupervised image captioning is a task to describe images without the supervision of image–sentence pairs. With the support of pre-trained object detectors, previous work assigned pseudo-captions, i.e., sentences that contain the detected object labels, to a given image. They focused on aligning the pseudo-captions with input images at the sentence level. However, pseudo-captions contain many words that are irrelevant to a given image. To shed light on the problem of partial mismatches between ",
+    "openalex_id": "https://openalex.org/W4220985650",
+    "relevance_score": 46.216797
+  },
+  {
+    "title": "Deep Learning Approaches on Image Captioning: A Review",
+    "doi": "10.1145/3617592",
+    "authors": [
+      "Taraneh Ghandi",
+      "Hamid Reza Pourreza",
+      "Hamidreza Mahyar"
+    ],
+    "year": 2023,
+    "publication_date": "2023-08-25",
+    "cited_by_count": 198,
+    "journal": "ACM Computing Surveys",
+    "abstract": "Image captioning is a research area of immense importance, aiming to generate natural language descriptions for visual content in the form of still images. The advent of deep learning and more recently vision-language pre-training techniques has revolutionized the field, leading to more sophisticated methods and improved performance. In this survey article, we provide a structured review of deep learning methods in image captioning by presenting a comprehensive taxonomy and discussing each metho",
+    "openalex_id": "https://openalex.org/W4386162736",
+    "relevance_score": 43.11184
+  },
+  {
+    "title": "Unpaired Image Captioning via Scene Graph Alignments",
+    "doi": "10.1109/iccv.2019.01042",
+    "authors": [
+      "Jiuxiang Gu",
+      "Shafiq Joty",
+      "Jianfei Cai",
+      "Handong Zhao",
+      "Xu Yang"
+    ],
+    "year": 2019,
+    "publication_date": "2019-10-01",
+    "cited_by_count": 193,
+    "journal": "IEEE/CVF International Conference on Computer Vision (ICCV)",
+    "abstract": "Most of current image captioning models heavily rely on paired image-caption datasets. However, getting large scale image-caption paired data is labor-intensive and time-consuming. In this paper, we present a scene graph-based approach for unpaired image captioning. Our framework comprises an image scene graph generator, a sentence scene graph generator, a scene graph encoder, and a sentence decoder. Specifically, we first train the scene graph encoder and the sentence decoder on the text modali",
+    "openalex_id": "https://openalex.org/W2992478697",
+    "relevance_score": 41.54237
+  },
+  {
+    "title": "VIXEN: Visual Text Comparison Network for Image Difference Captioning",
+    "doi": "10.1609/aaai.v38i2.27843",
+    "authors": [
+      "Alexander Black",
+      "Jing Shi",
+      "Yifei Fan",
+      "Tu Bui",
+      "John P. Collomosse"
+    ],
+    "year": 2024,
+    "publication_date": "2024-03-24",
+    "cited_by_count": 8,
+    "journal": "Proceedings of the AAAI Conference on Artificial Intelligence",
+    "abstract": "We present VIXEN - a technique that succinctly summarizes in text the visual differences between a pair of images in order to highlight any content manipulation present. Our proposed network linearly maps image features in a pairwise manner, constructing a soft prompt for a pretrained large language model. We address the challenge of low volume of training data and lack of manipulation variety in existing image difference captioning (IDC) datasets by training on synthetically manipulated images ",
+    "openalex_id": "https://openalex.org/W4393150383",
+    "relevance_score": 40.32719
+  },
+  {
+    "title": "ImageCaptioner2: Image Captioner for Image Captioning Bias Amplification Assessment",
+    "doi": "10.1609/aaai.v38i19.30080",
+    "authors": [
+      "Eslam Abdelrahman",
+      "Pengzhan Sun",
+      "Li Erran Li",
+      "Mohamed Elhoseiny"
+    ],
+    "year": 2024,
+    "publication_date": "2024-03-24",
+    "cited_by_count": 6,
+    "journal": "Proceedings of the AAAI Conference on Artificial Intelligence",
+    "abstract": "Most pre-trained learning systems are known to suffer from bias, which typically emerges from the data, the model, or both. Measuring and quantifying bias and its sources is a challenging task and has been extensively studied in image captioning. Despite the significant effort in this direction, we observed that existing metrics lack consistency in the inclusion of the visual signal. In this paper, we introduce a new bias assessment metric, dubbed ImageCaptioner2, for image captioning. Instead o",
+    "openalex_id": "https://openalex.org/W4393146540",
+    "relevance_score": 39.56162
+  },
+  {
+    "title": "Altogether: Image Captioning via Re-aligning Alt-text",
+    "doi": "10.18653/v1/2024.emnlp-main.1075",
+    "authors": [
+      "Hu Xu",
+      "Po-Yao Huang",
+      "Xiaoqing Tan",
+      "Ching-Feng Yeh",
+      "Jacob Kahn"
+    ],
+    "year": 2024,
+    "publication_date": "2024-01-01",
+    "cited_by_count": 5,
+    "journal": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    "abstract": "Hu Xu, Po-Yao Huang, Xiaoqing Tan, Ching-Feng Yeh, Jacob Kahn, Christine Jou, Gargi Ghosh, Omer Levy, Luke Zettlemoyer, Wen-tau Yih, Shang-Wen Li, Saining Xie, Christoph Feichtenhofer. Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing. 2024.",
+    "openalex_id": "https://openalex.org/W4404782023",
+    "relevance_score": 39.243443
+  },
+  {
+    "title": "Learning Visual Relation Priors for Image-Text Matching and Image Captioning with Neural Scene Graph Generators",
+    "doi": "10.48550/arxiv.1909.09953",
+    "authors": [
+      "Kuang-Huei Lee",
+      "Hamid Palangi",
+      "Xi Chen",
+      "Houdong Hu",
+      "Jianfeng Gao"
+    ],
+    "year": 2019,
+    "publication_date": "2019-09-22",
+    "cited_by_count": 29,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Grounding language to visual relations is critical to various language-and-vision applications. In this work, we tackle two fundamental language-and-vision tasks: image-text matching and image captioning, and demonstrate that neural scene graph generators can learn effective visual relation features to facilitate grounding language to visual relations and subsequently improve the two end applications. By combining relation features with the state-of-the-art models, our experiments show significa",
+    "openalex_id": "https://openalex.org/W2973978812",
+    "relevance_score": 38.85849
+  },
+  {
+    "title": "Deliberate Attention Networks for Image Captioning",
+    "doi": "10.1609/aaai.v33i01.33018320",
+    "authors": [
+      "Lianli Gao",
+      "Kaixuan Fan",
+      "Jingkuan Song",
+      "Xianglong Liu",
+      "Xing Xu"
+    ],
+    "year": 2019,
+    "publication_date": "2019-07-17",
+    "cited_by_count": 51,
+    "journal": "Proceedings of the AAAI Conference on Artificial Intelligence",
+    "abstract": "In daily life, deliberation is a common behavior for human to improve or refine their work (e.g., writing, reading and drawing). To date, encoder-decoder framework with attention mechanisms has achieved great progress for image captioning. However, such framework is in essential an one-pass forward process while encoding to hidden states and attending to visual features, but lacks of the deliberation action. The learned hidden states and visual attention are directly used to predict the final ca",
+    "openalex_id": "https://openalex.org/W2965846473",
+    "relevance_score": 38.830406
+  },
+  {
+    "title": "Features to Text: A Comprehensive Survey of Deep Learning on Semantic Segmentation and Image Captioning",
+    "doi": "10.1155/2021/5538927",
+    "authors": [
+      "Ariyo Oluwasanmi",
+      "Muhammad Umar Aftab",
+      "Zhiguang Qin",
+      "Ngo Tung Son",
+      "Thang Van Doan"
+    ],
+    "year": 2021,
+    "publication_date": "2021-01-01",
+    "cited_by_count": 24,
+    "journal": "Complexity",
+    "abstract": "With the emergence of deep learning, computer vision has witnessed extensive advancement and has seen immense applications in multiple domains. Specifically, image captioning has become an attractive focal direction for most machine learning experts, which includes the prerequisite of object identification, location, and semantic understanding. In this paper, semantic segmentation and image captioning are comprehensively investigated based on traditional and state‐of‐the‐art methodologies. In th",
+    "openalex_id": "https://openalex.org/W3139408490",
+    "relevance_score": 38.79101
+  }
+]

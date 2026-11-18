@@ -1,0 +1,10 @@
+{
+  "dataset": "VG",
+  "facet": "Relation",
+  "n_train": 4000,
+  "n_test": 2824,
+  "auc_cosine": 0.5413,
+  "auc_traced": 0.5356,
+  "delta": -0.0058,
+  "acc2afc_traced": 0.6176
+}

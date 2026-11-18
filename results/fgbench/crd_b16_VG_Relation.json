@@ -1,0 +1,16 @@
+{
+  "dataset": "VG",
+  "facet": "Relation",
+  "parts": "both",
+  "lam_from_val": 0.6,
+  "r2_val": -0.2419,
+  "mae_val": 0.0209,
+  "r2_test": 0.6764,
+  "mae_test": 0.0155,
+  "cos_auc": 0.5428754706615156,
+  "crd_auc": 0.5600675198062764,
+  "cos_2afc": 0.6534391534391535,
+  "crd_2afc": 0.6534391534391535,
+  "auprc_cos": 0.5346,
+  "auprc_crd": 0.5531
+}

@@ -1,0 +1,18 @@
+{
+  "backbone": "clipL",
+  "dataset": "COCO",
+  "facet": "Quantity",
+  "target": "row",
+  "parts": "both",
+  "seed": 2,
+  "lam": 1.0,
+  "r2_val": 0.6677,
+  "r2_test": 0.6227,
+  "auc_raw": 0.8677,
+  "auc_crd": 0.9279,
+  "auprc_raw": 0.8792,
+  "auprc_crd": 0.9383,
+  "acc2afc_raw": 0.991228,
+  "acc2afc_crd": 0.991228,
+  "delta_pp": 6.02
+}

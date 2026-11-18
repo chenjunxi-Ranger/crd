@@ -1,0 +1,34 @@
+﻿facet,method,n,cycles,auroc,auprc,acc2afc,delta_pp,ci_lo,ci_hi
+VG/Attribute,cosine,57124.0,14281.0,0.6806,0.668,0.828163,,,
+VG/Attribute,csls,57124.0,14281.0,0.6866,0.6744,0.828163,,,
+VG/Attribute,crd,57124.0,14281.0,0.7156,0.7124,0.828163,,,
+VG/Attribute,lemon,57124.0,14281.0,0.6843,0.6689,0.826833,,,
+VG/Attribute,traced,57124.0,14281.0,0.6875,0.6769,0.81857,,,
+VG/Attribute,gmm,57124.0,14281.0,0.6806,0.6678,0.815769,,,
+VG/Attribute,crd - cosine,,,,,,3.51,3.4,3.6
+VG/Attribute,crd - csls,,,,,,2.91,2.81,3.01
+VG/Attribute,crd - lemon,,,,,,3.14,3.03,3.24
+VG/Attribute,crd - traced,,,,,,2.82,2.68,2.96
+VG/Attribute,crd - gmm,,,,,,3.51,3.4,3.6
+VG/Relation,cosine,3024.0,756.0,0.5429,0.5346,0.653439,,,
+VG/Relation,csls,3024.0,756.0,0.5442,0.5356,0.653439,,,
+VG/Relation,crd,3024.0,756.0,0.5589,0.5518,0.653439,,,
+VG/Relation,lemon,3024.0,756.0,0.546,0.5333,0.652116,,,
+VG/Relation,traced,3024.0,756.0,0.5375,0.5367,0.623016,,,
+VG/Relation,gmm,3024.0,756.0,0.5429,0.5346,0.661376,,,
+VG/Relation,crd - cosine,,,,,,1.61,1.26,1.96
+VG/Relation,crd - csls,,,,,,1.47,1.13,1.84
+VG/Relation,crd - lemon,,,,,,1.29,0.91,1.7
+VG/Relation,crd - traced,,,,,,2.14,1.45,2.89
+VG/Relation,crd - gmm,,,,,,1.61,1.26,1.96
+COCO/Quantity,cosine,456.0,114.0,0.8305,0.832,0.964912,,,
+COCO/Quantity,csls,456.0,114.0,0.8882,0.8859,0.964912,,,
+COCO/Quantity,crd,456.0,114.0,0.8932,0.8945,0.964912,,,
+COCO/Quantity,lemon,456.0,114.0,0.8495,0.8403,0.964912,,,
+COCO/Quantity,traced,456.0,114.0,0.8412,0.8479,0.95614,,,
+COCO/Quantity,gmm,456.0,114.0,0.8305,0.832,0.929825,,,
+COCO/Quantity,crd - cosine,,,,,,6.21,4.16,8.21
+COCO/Quantity,crd - csls,,,,,,0.45,-1.16,2.0
+COCO/Quantity,crd - lemon,,,,,,4.3,2.56,6.09
+COCO/Quantity,crd - traced,,,,,,5.13,3.06,7.23
+COCO/Quantity,crd - gmm,,,,,,6.21,4.16,8.21

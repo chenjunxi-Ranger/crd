@@ -1,0 +1,250 @@
+{
+  "code": {
+    "fgbench/models/crd_backbone.py": "7df13132baed9c2c",
+    "fgbench/models/crd_blip.py": "102ebd1954a66d27",
+    "fgbench/models/crd_action.py": "88380ae44c199548",
+    "fgbench/models/gmm_filter.py": "327cb531bce2fdad",
+    "fgbench/evaluate/strict_main_table.py": "578e2214be9b0f7b",
+    "fgbench/evaluate/final_stats_strict.py": "090d288b9466e10b",
+    "fgbench/evaluate/ablation_report.py": "b76006cb9463e624",
+    "fgbench/evaluate/lemon_fgbench.py": "a77909c25cf48893",
+    "fgbench/evaluate/traced_fgbench.py": "6f4991853f13d25c",
+    "fgbench/evaluate/method_comparison_blip.py": "4a40ed19dc667c13",
+    "fgbench/evaluate/sugarcrepe_eval.py": "3e22161104003676",
+    "fgbench/evaluate/seetrue_eval.py": "c7471884f9022238",
+    "fgbench/evaluate/whatsup_eval.py": "cc917d871b6e3dc8"
+  },
+  "data": {
+    "fgbench/data/fgbench_v1_strict/train.parquet": "29d05c74e3298d9f",
+    "fgbench/data/fgbench_v1_strict/val.parquet": "2456f0ecbba2b97c",
+    "fgbench/data/fgbench_v1_strict/test.parquet": "f823e2ca42bf5e79",
+    "fgbench/data/fgbench_v1_strict/strict_stats.json": "af9a95f28e024835"
+  },
+  "weights": {
+    "clip": {
+      "config.json": {
+        "mb": 0.0
+      },
+      "merges.txt": {
+        "mb": 0.5
+      },
+      "model.safetensors": {
+        "mb": 598.5
+      },
+      "preprocessor_config.json": {
+        "mb": 0.0
+      },
+      "special_tokens_map.json": {
+        "mb": 0.0
+      },
+      "tokenizer_config.json": {
+        "mb": 0.0
+      },
+      "vocab.json": {
+        "mb": 1.0
+      }
+    },
+    "clipL": {
+      "config.json": {
+        "mb": 0.0
+      },
+      "merges.txt": {
+        "mb": 0.5
+      },
+      "model.safetensors": {
+        "mb": 1710.5
+      },
+      "preprocessor_config.json": {
+        "mb": 0.0
+      },
+      "special_tokens_map.json": {
+        "mb": 0.0
+      },
+      "tokenizer_config.json": {
+        "mb": 0.0
+      },
+      "vocab.json": {
+        "mb": 1.0
+      }
+    },
+    "siglip2": {
+      "config.json": {
+        "mb": 0.0
+      },
+      "model.safetensors": {
+        "mb": 1500.8
+      },
+      "preprocessor_config.json": {
+        "mb": 0.0
+      },
+      "special_tokens_map.json": {
+        "mb": 0.0
+      },
+      "tokenizer.json": {
+        "mb": 34.4
+      },
+      "tokenizer_config.json": {
+        "mb": 0.0
+      }
+    },
+    "blip": {
+      "config.json": {
+        "mb": 0.0
+      },
+      "model.safetensors": {
+        "mb": 895.0
+      },
+      "preprocessor_config.json": {
+        "mb": 0.0
+      },
+      "pytorch_model.bin": {
+        "mb": 895.1
+      },
+      "special_tokens_map.json": {
+        "mb": 0.0
+      },
+      "tokenizer_config.json": {
+        "mb": 0.0
+      },
+      "vocab.txt": {
+        "mb": 0.2
+      }
+    },
+    "flava": {
+      "config.json": {
+        "mb": 0.0
+      },
+      "model.safetensors": {
+        "mb": 1431.0
+      },
+      "preprocessor_config.json": {
+        "mb": 0.0
+      },
+      "pytorch_model.bin": {
+        "mb": 1430.8
+      },
+      "special_tokens_map.json": {
+        "mb": 0.0
+      },
+      "tokenizer_config.json": {
+        "mb": 0.0
+      },
+      "vocab.txt": {
+        "mb": 0.2
+      }
+    }
+  },
+  "results": {
+    "results/fgbench/strict_main_table.csv": "f67116f43c458909",
+    "results/fgbench/final_stats_strict.csv": "f7bf00ddf9ac92b2",
+    "results/fgbench/ablation_standardised.csv": "6c7e3ff652e9c281",
+    "results/fgbench/method_comparison_blipitc.csv": "8b35da17ee9bc0c9",
+    "results/fgbench/method_comparison_itm.csv": "f41a1ac8bb6b1ae5",
+    "results/fgbench/method_comparison.csv": "192fcf6be3c72656"
+  },
+  "scores": {
+    "crd_scores": {
+      "n": 12,
+      "files": [
+        "crdbb_scores_clip_COCO_Entity_both_row_s0.npz",
+        "crdbb_scores_clip_COCO_Entity_both_row_s1.npz",
+        "crdbb_scores_clip_COCO_Entity_both_row_s2.npz",
+        "crdbb_scores_clip_COCO_Quantity_both_row_s0.npz",
+        "crdbb_scores_clip_COCO_Quantity_both_row_s1.npz",
+        "crdbb_scores_clip_COCO_Quantity_both_row_s2.npz",
+        "crdbb_scores_clip_VG_Attribute_both_row_s0.npz",
+        "crdbb_scores_clip_VG_Attribute_both_row_s1.npz",
+        "crdbb_scores_clip_VG_Attribute_both_row_s2.npz",
+        "crdbb_scores_clip_VG_Relation_both_row_s0.npz",
+        "crdbb_scores_clip_VG_Relation_both_row_s1.npz",
+        "crdbb_scores_clip_VG_Relation_both_row_s2.npz"
+      ]
+    },
+    "action_scores": {
+      "n": 3,
+      "files": [
+        "crd_action_scores_s0.npz",
+        "crd_action_scores_s1.npz",
+        "crd_action_scores_s2.npz"
+      ]
+    },
+    "baseline_scores": {
+      "n": 8,
+      "files": [
+        "score_lemon_clip_COCO_Quantity.npz",
+        "score_lemon_clip_VG_Action.npz",
+        "score_lemon_clip_VG_Attribute.npz",
+        "score_lemon_clip_VG_Relation.npz",
+        "score_traced_clip_COCO_Quantity.npz",
+        "score_traced_clip_VG_Action.npz",
+        "score_traced_clip_VG_Attribute.npz",
+        "score_traced_clip_VG_Relation.npz"
+      ]
+    },
+    "heads": {
+      "n": 79,
+      "files": [
+        "crd_b16_COCO_Entity_head.pt",
+        "crd_b16_COCO_Quantity_head.pt",
+        "crd_b16_head.pt",
+        "crd_b16_VG_Attribute_head.pt",
+        "crd_b16_VG_Relation_head.pt",
+        "crdbb_blipitc_COCO_Quantity_row_s0_head.pt",
+        "crdbb_blipitc_COCO_Quantity_row_s1_head.pt",
+        "crdbb_blipitc_COCO_Quantity_row_s2_head.pt",
+        "crdbb_blipitc_VG_Attribute_row_s0_head.pt",
+        "crdbb_blipitc_VG_Attribute_row_s1_head.pt",
+        "crdbb_blipitc_VG_Attribute_row_s2_head.pt",
+        "crdbb_blipitc_VG_Attribute_s0_head.pt",
+        "crdbb_blipitc_VG_Relation_row_s0_head.pt",
+        "crdbb_blipitc_VG_Relation_row_s1_head.pt",
+        "crdbb_blipitc_VG_Relation_row_s2_head.pt",
+        "crdbb_blipitm_COCO_Quantity_row_s0_head.pt",
+        "crdbb_blipitm_COCO_Quantity_row_s1_head.pt",
+        "crdbb_blipitm_COCO_Quantity_row_s2_head.pt",
+        "crdbb_blipitm_VG_Attribute_row_s0_head.pt",
+        "crdbb_blipitm_VG_Attribute_row_s1_head.pt",
+        "crdbb_blipitm_VG_Attribute_row_s2_head.pt",
+        "crdbb_blipitm_VG_Attribute_s0_head.pt",
+        "crdbb_blipitm_VG_Relation_row_s0_head.pt",
+        "crdbb_blipitm_VG_Relation_row_s1_head.pt",
+        "crdbb_blipitm_VG_Relation_row_s2_head.pt",
+        "crdbb_clip_COCO_Entity_both_row_s0_head.pt",
+        "crdbb_clip_COCO_Entity_both_row_s1_head.pt",
+        "crdbb_clip_COCO_Entity_both_row_s2_head.pt",
+        "crdbb_clip_COCO_Quantity_both_row_s0_head.pt",
+        "crdbb_clip_COCO_Quantity_both_row_s1_head.pt",
+        "crdbb_clip_COCO_Quantity_both_row_s2_head.pt",
+        "crdbb_clip_COCO_Quantity_s0_head.pt",
+        "crdbb_clip_COCO_Quantity_s1_head.pt",
+        "crdbb_clip_COCO_Quantity_s2_head.pt",
+        "crdbb_clip_VG_Attribute_both_cycle_s0_head.pt",
+        "crdbb_clip_VG_Attribute_both_cycle_s1_head.pt",
+        "crdbb_clip_VG_Attribute_both_cycle_s2_head.pt",
+        "crdbb_clip_VG_Attribute_both_row_s0_head.pt",
+        "crdbb_clip_VG_Attribute_both_row_s1_head.pt",
+        "crdbb_clip_VG_Attribute_both_row_s2_head.pt",
+        "crdbb_clip_VG_Attribute_both_shuffled_s0_head.pt",
+        "crdbb_clip_VG_Attribute_both_shuffled_s1_head.pt",
+        "crdbb_clip_VG_Attribute_both_shuffled_s2_head.pt",
+        "crdbb_clip_VG_Attribute_image_row_s0_head.pt",
+        "crdbb_clip_VG_Attribute_image_row_s1_head.pt",
+        "crdbb_clip_VG_Attribute_image_row_s2_head.pt",
+        "crdbb_clip_VG_Attribute_s0_head.pt",
+        "crdbb_clip_VG_Attribute_s1_head.pt",
+        "crdbb_clip_VG_Attribute_s2_head.pt",
+        "crdbb_clip_VG_Attribute_text_row_s0_head.pt",
+        "crdbb_clip_VG_Attribute_text_row_s1_head.pt",
+        "crdbb_clip_VG_Attribute_text_row_s2_head.pt",
+        "crdbb_clip_VG_Relation_both_row_s0_head.pt",
+        "crdbb_clip_VG_Relation_both_row_s1_head.pt",
+        "crdbb_clip_VG_Relation_both_row_s2_head.pt",
+        "crdbb_clip_VG_Relation_s0_head.pt",
+        "crdbb_clip_VG_Relation_s1_head.pt",
+        "crdbb_clip_VG_Relation_s2_head.pt",
+        "crdbb_clipL_COCO_Quantity_both_row_s0_head.pt",
+        "crdbb_clipL_COCO_Quantity_both_row_s1_head.pt"
+      ]
+    }
+  }
+}

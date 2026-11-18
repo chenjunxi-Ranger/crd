@@ -1,0 +1,24 @@
+% ============================================================
+%  Related Work
+% ============================================================
+\section{Related Work}
+\label{sec:related}
+
+Noise detection on frozen contrastive encoders~\cite{radford2021clip,li2022blip,zhai2023siglip}
+has proceeded along three lines. The first rescales the score: hubness-corrected
+variants such as CSLS~\cite{conneau2018csls} re-normalise each score against a
+neighbour set, and density models threshold an estimated noise rate. The second
+replaces the score with a learned matcher, typically an image--text matching head.
+The third exploits relational structure: LEMoN~\cite{zhang2024lemon} judges a pair
+by its agreement with multimodal neighbours, and TRACED~\cite{afriat2025traced}
+edits the caption and reads the resulting similarity trajectory. The latter two are
+effective but presuppose a reference bank, a batch of other pairs, or an editing
+model; the present setting is one pair in and one score out, with no other sample.
+
+Score incomparability is documented in retrieval; remedies re-normalise against a
+reference set, apply a monotone transform, or fit a distribution. CRD is additive like
+CSLS, but its correction is regressed on the pair's own score and needs no bank. A
+monotone transform leaves ranking unchanged (GMM, Table~\ref{tab:main});
+compositionality benchmarks such as FOIL~\cite{shekhar2017foil} and
+SugarCrepe~\cite{hsieh2023sugarcrepe} compare two captions for one image, so
+per-image offsets cancel.

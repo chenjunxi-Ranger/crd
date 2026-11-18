@@ -1,0 +1,23 @@
+{
+  "variant": "gfa",
+  "steps": 400,
+  "cycles": 2000,
+  "lam_g": 1.0,
+  "alpha": 0.5,
+  "rows": [
+    {
+      "facet": "Attribute",
+      "variant": "gfa",
+      "n_noisy": 28562,
+      "auc": 0.6052746852403454,
+      "acc2afc": 0.8281632938869827
+    },
+    {
+      "facet": "Relation",
+      "variant": "gfa",
+      "n_noisy": 1512,
+      "auc": 0.5312031962990957,
+      "acc2afc": 0.6534391534391535
+    }
+  ]
+}

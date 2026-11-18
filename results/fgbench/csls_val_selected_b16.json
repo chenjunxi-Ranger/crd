@@ -1,0 +1,62 @@
+{
+  "tag": "b16",
+  "locked": {
+    "COCO|Entity": 0.5,
+    "COCO|Quantity": 0.6,
+    "VG|Attribute": 0.2,
+    "VG|Relation": 0.3
+  },
+  "fallback": 0.4,
+  "rows": [
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "lambda_from_val": 0.5,
+      "n_noisy": 4596,
+      "auc_cosine": 0.9991408031807278,
+      "auc_csls_val_selected": 0.9996380286032203,
+      "ci_lo": 0.9994425825120569,
+      "ci_hi": 0.9997780640978154
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "lambda_from_val": 0.6,
+      "n_noisy": 228,
+      "auc_cosine": 0.8305247768544167,
+      "auc_csls_val_selected": 0.8881578947368421,
+      "ci_lo": 0.8649310364727609,
+      "ci_hi": 0.9158495883348724
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "lambda_from_val": 0.4,
+      "n_noisy": 362,
+      "auc_cosine": 0.5959830286010805,
+      "auc_csls_val_selected": 0.5912899484142731,
+      "ci_lo": 0.5721110848264706,
+      "ci_hi": 0.6104453466011416
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "lambda_from_val": 0.2,
+      "n_noisy": 28562,
+      "auc_cosine": 0.6805804843544592,
+      "auc_csls_val_selected": 0.6865888847444017,
+      "ci_lo": 0.6835042633339361,
+      "ci_hi": 0.689387151235242
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "lambda_from_val": 0.3,
+      "n_noisy": 1512,
+      "auc_cosine": 0.5428756893703983,
+      "auc_csls_val_selected": 0.5442067516306934,
+      "ci_lo": 0.5367518406539571,
+      "ci_hi": 0.5524158801895244
+    }
+  ]
+}

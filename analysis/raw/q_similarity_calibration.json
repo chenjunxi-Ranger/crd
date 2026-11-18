@@ -1,0 +1,210 @@
+[
+  {
+    "title": "Domain Pretraining Buys the Ranking, Not the Scale: A Calibration Audit of Medical Vision-Language Models",
+    "doi": "10.5281/zenodo.21310010",
+    "authors": [
+      "Hrushikesh Sanap"
+    ],
+    "year": 2026,
+    "publication_date": "2026-07-11",
+    "cited_by_count": 0,
+    "journal": "Zenodo (CERN European Organization for Nuclear Research)",
+    "abstract": "This paper audits the calibration quality of a domain-pretrained medical vision-language model against a general-domain one, asking whether medical pretraining buys better-calibrated confidence or only better discrimination. Two frozen ViT-B/16 backbones, BiomedCLIP (pretrained on fifteen million biomedical figure-caption pairs) and OpenAI CLIP, are compared on two closed-set classification tasks derived from PMC-VQA (imaging modality and anatomy) under zero-shot similarity and a linear probe, b",
+    "openalex_id": "https://openalex.org/W7168028057",
+    "relevance_score": 48.93678
+  },
+  {
+    "title": "Adapting Contrastive Language-Image Pretrained (CLIP) Models for Out-of-Distribution Detection",
+    "doi": "10.48550/arxiv.2303.05828",
+    "authors": [
+      "Nikolas Adaloglou",
+      "Félix Michels",
+      "Kaiser, Tim",
+      "Markus Kollmann"
+    ],
+    "year": 2023,
+    "publication_date": "2023-03-10",
+    "cited_by_count": 1,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "We present a comprehensive experimental study on pretrained feature extractors for visual out-of-distribution (OOD) detection, focusing on adapting contrastive language-image pretrained (CLIP) models. Without fine-tuning on the training data, we are able to establish a positive correlation ($R^2\\geq0.92$) between in-distribution classification and unsupervised OOD detection for CLIP models in $4$ benchmarks. We further propose a new simple and scalable method called \\textit{pseudo-label probing}",
+    "openalex_id": "https://openalex.org/W4324105789",
+    "relevance_score": 44.104145
+  },
+  {
+    "title": "Contrastive language image pretraining for a cardiac magnetic resonance image embedding with zero-shot capabilities",
+    "doi": "10.1038/s41467-026-73022-2",
+    "authors": [
+      "Makiya Nakashima",
+      "Jielin Qiu",
+      "Peide Huang",
+      "Jihye Lee",
+      "P. M. Chen"
+    ],
+    "year": 2026,
+    "publication_date": "2026-05-21",
+    "cited_by_count": 2,
+    "journal": "Nature Communications",
+    "abstract": "Abstract Self-supervised learning is crucial for clinical imaging applications, given the lack of explicit labels in healthcare. However, conventional approaches that rely on precise vision-language alignment are not always feasible in complex clinical imaging modalities, such as cardiac magnetic resonance (CMR). CMR provides a comprehensive visualization of cardiac anatomy, physiology, and microstructure. The interpreting physician is required to synthesize information from complex sequences of",
+    "openalex_id": "https://openalex.org/W7162020768",
+    "relevance_score": 43.738216
+  },
+  {
+    "title": "EasyHeC++: Fully Automatic Hand-Eye Calibration with Pretrained Image Models",
+    "doi": "10.1109/iros58592.2024.10801359",
+    "authors": [
+      "Zhengdong Hong",
+      "Kangfu Zheng",
+      "Linghao Chen"
+    ],
+    "year": 2024,
+    "publication_date": "2024-10-14",
+    "cited_by_count": 8,
+    "journal": "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+    "abstract": "Hand-eye calibration plays a fundamental role in robotics by directly influencing the efficiency of critical operations such as manipulation and grasping. In this work, we present a novel framework, EasyHeC++, designed for fully automatic hand-eye calibration. In contrast to previous methods that necessitate manual calibration, specialized markers, or the training of arm-specific neural networks, our approach is the first system that enables accurate calibration of any robot arm in a marker-free",
+    "openalex_id": "https://openalex.org/W4405785646",
+    "relevance_score": 42.952724
+  },
+  {
+    "title": "Embedded prompt tuning: Towards enhanced calibration of pretrained models for medical images",
+    "doi": "10.1016/j.media.2024.103258",
+    "authors": [
+      "Wenqiang Zu",
+      "Shenghao Xie",
+      "Zhao Qing",
+      "Guoqi Li",
+      "Лей Ма"
+    ],
+    "year": 2024,
+    "publication_date": "2024-07-04",
+    "cited_by_count": 25,
+    "journal": "Medical Image Analysis",
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W4400321119",
+    "relevance_score": 42.65049
+  },
+  {
+    "title": "Pretraining Data Detection for Large Language Models: A Divergence-based Calibration Method",
+    "doi": "10.18653/v1/2024.emnlp-main.300",
+    "authors": [
+      "Weichao Zhang",
+      "Ruqing Zhang",
+      "Jiafeng Guo",
+      "Maarten de Rijke",
+      "Yixing Fan"
+    ],
+    "year": 2024,
+    "publication_date": "2024-01-01",
+    "cited_by_count": 8,
+    "journal": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    "abstract": "As the scale of training corpora for large language models (LLMs) grows, model developers become increasingly reluctant to disclose details on their data.This lack of transparency poses challenges to scientific evaluation and ethical deployment.Recently, pretraining data detection approaches, which infer whether a given text was part of an LLM's training data through black-box access, have been explored.The Min-K% Prob method, which has achieved state-of-the-art results, assumes that a non-train",
+    "openalex_id": "https://openalex.org/W4404784117",
+    "relevance_score": 41.538467
+  },
+  {
+    "title": "Three Towers: Flexible Contrastive Learning with Pretrained Image Models",
+    "doi": "10.52202/075280-1362",
+    "authors": [
+      "Jannik Kossen",
+      "Mark Collier",
+      "Basil Mustafa",
+      "Xiao Wang",
+      "Xiaohua Zhai"
+    ],
+    "year": 2023,
+    "publication_date": "2023-01-01",
+    "cited_by_count": 9,
+    "journal": "neural information processing systems",
+    "abstract": "We introduce Three Towers (3T), a flexible method to improve the contrastive learning of vision-language models by incorporating pretrained image classifiers. While contrastive models are usually trained from scratch, LiT (Zhai et al., 2022) has recently shown performance gains from using pretrained classifier embeddings. However, LiT directly replaces the image tower with the frozen embeddings, excluding any potential benefits from training the image tower contrastively. With 3T, we propose a m",
+    "openalex_id": "https://openalex.org/W7133236153",
+    "relevance_score": 40.620316
+  },
+  {
+    "title": "A Survey of Confidence Estimation and Calibration in Large Language Models",
+    "doi": "10.18653/v1/2024.naacl-long.366",
+    "authors": [
+      "Jiahui Geng",
+      "Fengyu Cai",
+      "Yuxia Wang",
+      "Heinz Koeppl",
+      "Preslav Nakov"
+    ],
+    "year": 2024,
+    "publication_date": "2024-01-01",
+    "cited_by_count": 87,
+    "journal": "Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)",
+    "abstract": "Jiahui Geng, Fengyu Cai, Yuxia Wang, Heinz Koeppl, Preslav Nakov, Iryna Gurevych. Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers). 2024.",
+    "openalex_id": "https://openalex.org/W4401042444",
+    "relevance_score": 37.727066
+  },
+  {
+    "title": "CGNet: Remote Sensing Instance Segmentation Method Using Contrastive Language–Image Pretraining and Gated Recurrent Units",
+    "doi": "10.3390/rs17193305",
+    "authors": [
+      "Hui Zhang",
+      "Tian Qi Zhao",
+      "Zhong Chen",
+      "Tianhang Liu",
+      "Xueru Xu"
+    ],
+    "year": 2025,
+    "publication_date": "2025-09-26",
+    "cited_by_count": 1,
+    "journal": "Remote Sensing",
+    "abstract": "Instance segmentation in remote sensing imagery is a significant application area within computer vision, holding considerable value in fields such as land planning and aerospace. The target scales of remote sensing images are often small, the contours of different categories of targets can be remarkably similar, and the background information is complex, containing more noise interference. Therefore, it is essential for the network model to utilize the background and internal instance informati",
+    "openalex_id": "https://openalex.org/W4414533516",
+    "relevance_score": 37.556236
+  },
+  {
+    "title": "Detecting Pretraining Data from Large Language Models",
+    "doi": "10.48550/arxiv.2310.16789",
+    "authors": [
+      "Weijia Shi",
+      "Anirudh Ajith",
+      "Mengzhou Xia",
+      "Yangsibo Huang",
+      "Daogao Liu"
+    ],
+    "year": 2023,
+    "publication_date": "2023-10-25",
+    "cited_by_count": 37,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Although large language models (LLMs) are widely deployed, the data used to train them is rarely disclosed. Given the incredible scale of this data, up to trillions of tokens, it is all but certain that it includes potentially problematic text such as copyrighted materials, personally identifiable information, and test data for widely reported reference benchmarks. However, we currently have no way to know which data of these types is included or in what proportions. In this paper, we study the ",
+    "openalex_id": "https://openalex.org/W4387985331",
+    "relevance_score": 36.979427
+  },
+  {
+    "title": "SimC3D: A Simple Contrastive 3D Pretraining Framework Using RGB Images",
+    "doi": "10.48550/arxiv.2412.05274",
+    "authors": [
+      "Jiahua Dong",
+      "Tong Wu",
+      "Rui Qian",
+      "Jiaqi Wang"
+    ],
+    "year": 2024,
+    "publication_date": "2024-12-06",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "The 3D contrastive learning paradigm has demonstrated remarkable performance in downstream tasks through pretraining on point cloud data. Recent advances involve additional 2D image priors associated with 3D point clouds for further improvement. Nonetheless, these existing frameworks are constrained by the restricted range of available point cloud datasets, primarily due to the high costs of obtaining point cloud data. To this end, we propose SimC3D, a simple but effective 3D contrastive learnin",
+    "openalex_id": "https://openalex.org/W4405172831",
+    "relevance_score": 36.280014
+  },
+  {
+    "title": "Contrastive Touch-to-Touch Pretraining",
+    "doi": "10.1109/icra55743.2025.11127980",
+    "authors": [
+      "Samanta Rodriguez",
+      "Yiming Dou",
+      "William van den Bogert",
+      "Miquel Oller",
+      "Kevin So"
+    ],
+    "year": 2025,
+    "publication_date": "2025-05-19",
+    "cited_by_count": 2,
+    "journal": "Proceedings - IEEE International Conference on Robotics and Automation/Proceedings",
+    "abstract": "Today's tactile sensors have a variety of different designs, making it challenging to develop general-purpose methods for processing touch signals. In this paper, we learn a unified representation that captures the shared information between different tactile sensors. Unlike current approaches that focus on reconstruction or task-specific supervision, we leverage contrastive learning to integrate tactile signals from two different sensors into a shared embedding space, using a dataset in which t",
+    "openalex_id": "https://openalex.org/W4413925025",
+    "relevance_score": 36.22729
+  }
+]

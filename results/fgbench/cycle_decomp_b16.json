@@ -1,0 +1,131 @@
+{
+  "rows": [
+    {
+      "dataset": "COCO",
+      "facet": "Entity",
+      "cycles": 2298,
+      "auc_raw": 0.9999,
+      "auc_debiased_oracle": 1.0,
+      "auc_2afc": 1.0,
+      "var_total": 0.00738,
+      "var_cycle_mean": 0.00036,
+      "share_cycle_mean": 0.049,
+      "share_interaction": 0.182,
+      "sd_cycle_mean": 0.0191,
+      "sd_delta": 0.0734,
+      "err_rate_by_mean_quintile": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "cycles": 114,
+      "auc_raw": 0.8649,
+      "auc_debiased_oracle": 0.9975,
+      "auc_2afc": 0.9649,
+      "var_total": 0.00147,
+      "var_cycle_mean": 0.0006,
+      "share_cycle_mean": 0.407,
+      "share_interaction": 0.826,
+      "sd_cycle_mean": 0.0246,
+      "sd_delta": 0.0701,
+      "err_rate_by_mean_quintile": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.174
+      ]
+    },
+    {
+      "dataset": "VG",
+      "facet": "Action",
+      "cycles": 181,
+      "auc_raw": 0.6081,
+      "auc_debiased_oracle": 0.8704,
+      "auc_2afc": 0.779,
+      "var_total": 0.00114,
+      "var_cycle_mean": 0.00102,
+      "share_cycle_mean": 0.892,
+      "share_interaction": 0.273,
+      "sd_cycle_mean": 0.032,
+      "sd_delta": 0.0354,
+      "err_rate_by_mean_quintile": [
+        0.216,
+        0.25,
+        0.25,
+        0.306,
+        0.083
+      ]
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "cycles": 14281,
+      "auc_raw": 0.7343,
+      "auc_debiased_oracle": 0.9215,
+      "auc_2afc": 0.8282,
+      "var_total": 0.00115,
+      "var_cycle_mean": 0.00074,
+      "share_cycle_mean": 0.645,
+      "share_interaction": 0.79,
+      "sd_cycle_mean": 0.0273,
+      "sd_delta": 0.0604,
+      "err_rate_by_mean_quintile": [
+        0.205,
+        0.167,
+        0.158,
+        0.156,
+        0.173
+      ]
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "cycles": 756,
+      "auc_raw": 0.5511,
+      "auc_debiased_oracle": 0.7333,
+      "auc_2afc": 0.6534,
+      "var_total": 0.00134,
+      "var_cycle_mean": 0.00127,
+      "share_cycle_mean": 0.948,
+      "share_interaction": 0.177,
+      "sd_cycle_mean": 0.0356,
+      "sd_delta": 0.0308,
+      "err_rate_by_mean_quintile": [
+        0.408,
+        0.325,
+        0.351,
+        0.344,
+        0.305
+      ]
+    }
+  ],
+  "detail": {
+    "COCO|Entity": {
+      "corr_mean_delta": -0.228,
+      "corr_mean_err": NaN
+    },
+    "COCO|Quantity": {
+      "corr_mean_delta": -0.373,
+      "corr_mean_err": 0.216
+    },
+    "VG|Action": {
+      "corr_mean_delta": 0.064,
+      "corr_mean_err": -0.051
+    },
+    "VG|Attribute": {
+      "corr_mean_delta": 0.031,
+      "corr_mean_err": -0.025
+    },
+    "VG|Relation": {
+      "corr_mean_delta": 0.006,
+      "corr_mean_err": -0.073
+    }
+  }
+}

@@ -1,0 +1,7 @@
+﻿dataset,facet,baseline,delta_pp,ci_lo,ci_hi,p_one_sided,p_holm,significant_holm
+VG,Attribute,cosine,3.5,3.4,3.61,0.0001,0.0006,True
+VG,Attribute,csls,2.9,2.8,3.0,0.0001,0.0006,True
+VG,Relation,cosine,1.6,1.25,1.96,0.0001,0.0006,True
+VG,Relation,csls,1.47,1.12,1.81,0.0001,0.0006,True
+COCO,Quantity,cosine,6.22,4.25,8.24,0.0001,0.0006,True
+COCO,Quantity,csls,0.5,-1.09,2.1,0.2692,0.2692,False

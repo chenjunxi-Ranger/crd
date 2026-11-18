@@ -1,0 +1,17 @@
+{
+  "backbone": "flava",
+  "dataset": "VG",
+  "facet": "Relation",
+  "parts": "both",
+  "seed": 0,
+  "lam": 2.0,
+  "r2_val": 0.4992,
+  "r2_test": 0.7995,
+  "auc_raw": 0.4988,
+  "auc_crd": 0.5004,
+  "auprc_raw": 0.5022,
+  "auprc_crd": 0.4994,
+  "acc2afc_raw": 0.492918,
+  "acc2afc_crd": 0.492918,
+  "delta_pp": 0.16
+}

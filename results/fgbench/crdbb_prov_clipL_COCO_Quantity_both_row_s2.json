@@ -1,0 +1,30 @@
+{
+  "backbone": "clipL",
+  "dataset": "COCO",
+  "facet": "Quantity",
+  "parts": "both",
+  "target": "row",
+  "seed": 2,
+  "data_seed": 0,
+  "manifest_sha": {
+    "train": "29d05c74e3298d9f",
+    "val": "2456f0ecbba2b97c",
+    "test": "f823e2ca42bf5e79"
+  },
+  "cache_sha": {
+    "U": "5fe64f5de483be40",
+    "V": "66ad11addec29dfa",
+    "S_train": "ab547acbe94df8f2",
+    "S_test": "09b6eb07178920d1"
+  },
+  "train_order_sha": "ca19699b3aa750f6",
+  "n_train_rows": 10000,
+  "n_val_rows": 476,
+  "n_test_rows": 456,
+  "mu": 0.2369665950536728,
+  "sd": 0.047132051305303575,
+  "lam": 1.0,
+  "steps": 1200,
+  "batch": 256,
+  "lr": 0.001
+}

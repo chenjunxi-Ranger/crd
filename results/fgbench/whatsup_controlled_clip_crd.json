@@ -1,0 +1,7 @@
+{
+  "subset": "controlled",
+  "model": "clip+crd",
+  "n": 412,
+  "options": 4,
+  "acc": 0.2888
+}

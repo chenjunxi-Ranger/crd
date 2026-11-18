@@ -1,0 +1,10 @@
+{
+  "model": "blipitm+crd",
+  "n": 6930,
+  "auroc_pos_is_aligned": 0.6549,
+  "auroc_neg_is_aligned": 0.3451,
+  "auprc_pos_is_aligned": 0.6629,
+  "auc_coco_t2i": 0.7088,
+  "auc_drawbench": 0.5924,
+  "auc_editbench": 0.6929
+}

@@ -1,0 +1,209 @@
+[
+  {
+    "title": "When Modality Gap Reduction Fails: Prediction-Level Hubness in CLIP",
+    "doi": "10.18653/2026.emnlp-main.1002",
+    "authors": [
+      "Shota Sato",
+      "Hajime Kiyama",
+      "Tosho Hirasawa",
+      "Mamoru Komachi"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-01",
+    "cited_by_count": 0,
+    "journal": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    "abstract": "Reducing the modality gap between image and text representations in CLIP is widely expected to improve cross-modal alignment and downstream performance.However, a smaller average image-text gap does not necessarily lead to consistent accuracy gains.We analyze this mismatch from the perspective of the decision structure in zero-shot classification, i.e. selecting the most similar class-text prototype for an input image.Zero-shot accuracy depends not only on average image-text alignment, but also ",
+    "openalex_id": "https://openalex.org/W7206193913",
+    "relevance_score": 31.527403
+  },
+  {
+    "title": "Retrieval Disagreement as a Signal: Diagnosing and Steering Multilingual Dense Embedders",
+    "doi": "10.48550/arxiv.2610.18526",
+    "authors": [
+      "Faeze Ghorbanpour",
+      "Shaghayegh Kolli",
+      "Jana Diesner",
+      "Alexander Fraser"
+    ],
+    "year": 2026,
+    "publication_date": "2026-10-13",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Multilingual dense retrievers place all languages in one shared space so that a question finds relevant documents, regardless of which language they are written in. We show that the same question, asked in different languages, retrieves substantially different documents, and this disagreement is not because of weak language understanding. Each language performs well on its own and ranks candidates consistently with the other languages; divergence appears only when languages share an index. We tr",
+    "openalex_id": "https://openalex.org/W7221766322",
+    "relevance_score": 28.77004
+  },
+  {
+    "title": "SATTC: Structure-Aware Label-Free Test-Time Calibration for Cross-Subject EEG-to-Image Retrieval",
+    "doi": "10.48550/arxiv.2603.20738",
+    "authors": [
+      "Qunjie Huang",
+      "Weina Zhu"
+    ],
+    "year": 2026,
+    "publication_date": "2026-03-21",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Cross-subject EEG-to-image retrieval for visual decoding is challenged by subject shift and hubness in the embedding space, which distort similarity geometry and destabilize top-k rankings, making small-k shortlists unreliable. We introduce SATTC (Structure-Aware Test-Time Calibration), a label-free calibration head that operates directly on the similarity matrix of frozen EEG and image encoders. SATTC combines a geometric expert, subject-adaptive whitening of EEG embeddings with an adaptive var",
+    "openalex_id": "https://openalex.org/W7140158293",
+    "relevance_score": 28.676943
+  },
+  {
+    "title": "The Neural Processes Underpinning Flexible Semantic Retrieval in Visual and Auditory Modalities",
+    "doi": "10.1002/hbm.70536",
+    "authors": [
+      "Ximing Shao",
+      "Meichao Zhang",
+      "Xiuyi Wang",
+      "André D. Gouws",
+      "Rebecca L. Jackson"
+    ],
+    "year": 2026,
+    "publication_date": "2026-04-15",
+    "cited_by_count": 1,
+    "journal": "Human Brain Mapping",
+    "abstract": "Contemporary accounts of semantic cognition propose that conceptual knowledge is supported by a heteromodal conceptual store and controlled retrieval processes. However, it remains unclear how the neural basis of semantic control varies across modalities. Recent models of cortical organisation suggest that control networks are distributed along a unimodal-to-heteromodal cortical gradient, with the semantic control network (SCN) located in more heteromodal cortex than the domain-general multiple ",
+    "openalex_id": "https://openalex.org/W4411541375",
+    "relevance_score": 28.44425
+  },
+  {
+    "title": "Hub-Spectral Activation of Latent Multimodal Knowledge",
+    "doi": null,
+    "authors": [
+      "Ying Guo",
+      "Haidong Chen",
+      "Linrui Xu",
+      "Xiaohao Liu",
+      "Chuancheng Shi"
+    ],
+    "year": 2026,
+    "publication_date": "2026-09-15",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Multimodal representation learning seeks shared representations for cross-modal retrieval and knowledge transfer. Hub-based binding reduces pairwise supervision costs, but separate hub connections cannot guarantee reliable alignment between modalities without direct joint training. We introduce Hub-Spectral Activation (HSA), a closed-form method for recovering and activating the hub-readable component of latent multimodal knowledge in frozen representations. We formalize this knowledge as source",
+    "openalex_id": "https://openalex.org/W7213473496",
+    "relevance_score": 27.6574
+  },
+  {
+    "title": "Nearest Neighbor Normalization Improves Multimodal Retrieval",
+    "doi": "10.18653/v1/2024.emnlp-main.1257",
+    "authors": [
+      "Neil Chowdhury",
+      "Franklin Wang",
+      "Sumedh Shenoy",
+      "Douwe Kiela",
+      "Sarah Schwettmann"
+    ],
+    "year": 2024,
+    "publication_date": "2024-01-01",
+    "cited_by_count": 3,
+    "journal": "Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    "abstract": "Multimodal models leverage large-scale pre-training to achieve strong but still imperfect performance on tasks such as image captioning, visual question answering, and cross-modal retrieval. In this paper, we present a simple and efficient method for correcting errors in trained contrastive image-text retrieval models with no additional training, called Nearest Neighbor Normalization (NNN). We show an improvement on retrieval metrics in both text retrieval and image retrieval for all of the cont",
+    "openalex_id": "https://openalex.org/W4404782161",
+    "relevance_score": 25.947739
+  },
+  {
+    "title": "Fusion Embedding: A Unified Embedding Space for Text, Image, Video, and Audio",
+    "doi": "10.48550/arxiv.2607.18666",
+    "authors": [
+      "Abdul Basit Tonmoy",
+      "Kazi Fardinul Hoque",
+      "Md Shahrier Islam Arham",
+      "Arman Luthra"
+    ],
+    "year": 2026,
+    "publication_date": "2026-07-21",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "A single embedding space that covers text, images, video, and audio lets one index serve every query a user can pose. Embedding models built on vision-language backbones now lead text/image/video retrieval benchmarks but lack audio entirely, while audio-text retrieval is led by specialist systems that serve no other modality. We present the Fusion Embedding family, which adds audio to a frozen vision-language embedding base whose parameters are never updated: generation 1 (fusion-embedding-1) tr",
+    "openalex_id": "https://openalex.org/W7170078541",
+    "relevance_score": 25.612848
+  },
+  {
+    "title": "Cross-modal linkage risk in clinical vision-language models",
+    "doi": "10.48550/arxiv.2606.02276",
+    "authors": [
+      "Soroosh Tayebi Arasteh",
+      "Mahshad Lotfinia",
+      "Sven Nebelung",
+      "Daniel Truhn"
+    ],
+    "year": 2026,
+    "publication_date": "2026-06-01",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Vision-language models (VLMs) trained on paired chest radiographs and radiology reports learn a shared embedding space that can preserve instance-level image-report correspondence. This poses a privacy risk in settings where radiographs and reports are deliberately kept separate after acquisition, such as image-only data sharing or access-controlled reports, because a de-identified image may be re-linked to its original narrative report through cosine similarity alone. We formalized this as imag",
+    "openalex_id": "https://openalex.org/W7163169342",
+    "relevance_score": 25.150177
+  },
+  {
+    "title": "HypRAG: Hyperbolic Dense Retrieval for Retrieval Augmented Generation",
+    "doi": "10.48550/arxiv.2602.07739",
+    "authors": [
+      "Hiren Madhu",
+      "Ngoc Bui",
+      "Ali Maatouk",
+      "Leandros Tassiulas",
+      "Smita Krishnaswamy"
+    ],
+    "year": 2026,
+    "publication_date": "2026-02-08",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Embedding geometry plays a fundamental role in retrieval quality, yet dense retrievers for retrieval-augmented generation (RAG) remain largely confined to Euclidean space. However, natural language exhibits hierarchical structure from broad topics to specific entities that Euclidean embeddings fail to preserve, causing semantically distant documents to appear spuriously similar and increasing hallucination risk. To address these limitations, we introduce hyperbolic dense retrieval, developing tw",
+    "openalex_id": "https://openalex.org/W7128533364",
+    "relevance_score": 25.069187
+  },
+  {
+    "title": "CHRep: Cross-modal Histology Representation and Post-hoc Calibration for Spatial Gene Expression Prediction",
+    "doi": "10.48550/arxiv.2604.21573",
+    "authors": [
+      "Changfan Wang",
+      "Xinran Wang",
+      "Donghai Liu",
+      "Fei Su",
+      "Lulu Sun"
+    ],
+    "year": 2026,
+    "publication_date": "2026-04-23",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Spatial transcriptomics (ST) enables spatially resolved gene profiling but remains expensive and low-throughput, limiting large-cohort studies and routine clinical use. Predicting spatial gene expression from routine hematoxylin and eosin (H&E) slides is a promising alternative, yet under realistic leave-one-slide-out evaluation, existing models often suffer from slide-level appearance shifts and regression-driven over-smoothing that suppress biologically meaningful variation. CHRep is a two-pha",
+    "openalex_id": "https://openalex.org/W7155536081",
+    "relevance_score": 24.790598
+  },
+  {
+    "title": "NOSE: Neural Olfactory-Semantic Embedding with Tri-Modal Orthogonal Contrastive Learning",
+    "doi": "10.18653/v1/2026.acl-long.898",
+    "authors": [
+      "Yanyi Su",
+      "Hongshuai Wang",
+      "Zhifeng Gao",
+      "Jun Cheng"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-01",
+    "cited_by_count": 0,
+    "journal": "Proceedings of the conference - Association for Computational Linguistics. Meeting",
+    "abstract": "Olfaction lies at the intersection of chemical structure, neural encoding, and linguistic perception, yet existing representation methods fail to fully capture this pathway.Current approaches typically model only isolated segments of the olfactory pathway, overlooking the complete chain from molecule to receptors to linguistic descriptions.Such fragmentation yields learned embeddings that lack both biological grounding and semantic interpretability.We propose NOSE (Neural Olfactory-Semantic Embe",
+    "openalex_id": "https://openalex.org/W7166866097",
+    "relevance_score": 24.554363
+  },
+  {
+    "title": "NOSE: Neural Olfactory-Semantic Embedding with Tri-Modal Orthogonal Contrastive Learning",
+    "doi": "10.48550/arxiv.2604.10452",
+    "authors": [
+      "Yanyi Su",
+      "Hongshuai Wang",
+      "Zhifeng Gao",
+      "Jun Cheng"
+    ],
+    "year": 2026,
+    "publication_date": "2026-04-12",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Olfaction lies at the intersection of chemical structure, neural encoding, and linguistic perception, yet existing representation methods fail to fully capture this pathway. Current approaches typically model only isolated segments of the olfactory pathway, overlooking the complete chain from molecule to receptors to linguistic descriptions. Such fragmentation yields learned embeddings that lack both biological grounding and semantic interpretability. We propose NOSE (Neural Olfactory-Semantic E",
+    "openalex_id": "https://openalex.org/W7154316924",
+    "relevance_score": 24.543064
+  }
+]

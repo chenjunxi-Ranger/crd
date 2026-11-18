@@ -1,0 +1,186 @@
+{
+  "tests": [
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "baseline": "cosine",
+      "delta_pp": 3.5,
+      "ci_lo": 3.4,
+      "ci_hi": 3.61,
+      "p_one_sided": 0.0001
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "baseline": "csls",
+      "delta_pp": 2.9,
+      "ci_lo": 2.8,
+      "ci_hi": 3.0,
+      "p_one_sided": 0.0001
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "baseline": "cosine",
+      "delta_pp": 1.6,
+      "ci_lo": 1.25,
+      "ci_hi": 1.96,
+      "p_one_sided": 0.0001
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "baseline": "csls",
+      "delta_pp": 1.47,
+      "ci_lo": 1.12,
+      "ci_hi": 1.81,
+      "p_one_sided": 0.0001
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "baseline": "cosine",
+      "delta_pp": 6.22,
+      "ci_lo": 4.25,
+      "ci_hi": 8.24,
+      "p_one_sided": 0.0001
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "baseline": "csls",
+      "delta_pp": 0.5,
+      "ci_lo": -1.09,
+      "ci_hi": 2.1,
+      "p_one_sided": 0.2692
+    }
+  ],
+  "thresholds": [
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "method": "cosine",
+      "auroc": 0.6806,
+      "auprc": 0.668,
+      "tpr@1%fpr": 0.9978,
+      "fpr_at_that_thr": 0.9776,
+      "f1": 0.526,
+      "precision": 0.6787,
+      "recall": 0.4293,
+      "thr_val_youden": -0.192,
+      "thr_val_1%": -0.3154
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "method": "csls",
+      "auroc": 0.6866,
+      "auprc": 0.6744,
+      "tpr@1%fpr": 0.9984,
+      "fpr_at_that_thr": 0.98,
+      "f1": 0.5006,
+      "precision": 0.6933,
+      "recall": 0.3918,
+      "thr_val_youden": -0.0867,
+      "thr_val_1%": -0.2126
+    },
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "method": "crd",
+      "auroc": 0.7156,
+      "auprc": 0.7124,
+      "tpr@1%fpr": 0.9995,
+      "fpr_at_that_thr": 0.9862,
+      "f1": 0.5015,
+      "precision": 0.7397,
+      "recall": 0.3794,
+      "thr_val_youden": -0.0439,
+      "thr_val_1%": -0.1576
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "method": "cosine",
+      "auroc": 0.5429,
+      "auprc": 0.5346,
+      "tpr@1%fpr": 0.9808,
+      "fpr_at_that_thr": 0.9656,
+      "f1": 0.3108,
+      "precision": 0.5563,
+      "recall": 0.2156,
+      "thr_val_youden": -0.2019,
+      "thr_val_1%": -0.3138
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "method": "csls",
+      "auroc": 0.5442,
+      "auprc": 0.5356,
+      "tpr@1%fpr": 0.9881,
+      "fpr_at_that_thr": 0.9828,
+      "f1": 0.3301,
+      "precision": 0.5519,
+      "recall": 0.2354,
+      "thr_val_youden": -0.0505,
+      "thr_val_1%": -0.1669
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "method": "crd",
+      "auroc": 0.5589,
+      "auprc": 0.5518,
+      "tpr@1%fpr": 0.9954,
+      "fpr_at_that_thr": 0.9914,
+      "f1": 0.3425,
+      "precision": 0.5777,
+      "recall": 0.2434,
+      "thr_val_youden": -0.0873,
+      "thr_val_1%": -0.1839
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "method": "cosine",
+      "auroc": 0.8305,
+      "auprc": 0.832,
+      "tpr@1%fpr": 1.0,
+      "fpr_at_that_thr": 0.9825,
+      "f1": 0.5337,
+      "precision": 0.8878,
+      "recall": 0.3816,
+      "thr_val_youden": -0.262,
+      "thr_val_1%": -0.3833
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "method": "csls",
+      "auroc": 0.8882,
+      "auprc": 0.8859,
+      "tpr@1%fpr": 1.0,
+      "fpr_at_that_thr": 0.9693,
+      "f1": 0.5494,
+      "precision": 0.9271,
+      "recall": 0.3904,
+      "thr_val_youden": 0.1057,
+      "thr_val_1%": -0.0156
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "method": "crd",
+      "auroc": 0.8932,
+      "auprc": 0.8945,
+      "tpr@1%fpr": 1.0,
+      "fpr_at_that_thr": 0.9561,
+      "f1": 0.5801,
+      "precision": 0.932,
+      "recall": 0.4211,
+      "thr_val_youden": 0.0057,
+      "thr_val_1%": -0.0966
+    }
+  ]
+}

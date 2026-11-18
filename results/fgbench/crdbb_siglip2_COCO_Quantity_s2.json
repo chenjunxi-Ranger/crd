@@ -1,0 +1,18 @@
+{
+  "backbone": "siglip2",
+  "dataset": "COCO",
+  "facet": "Quantity",
+  "target": "row",
+  "parts": "both",
+  "seed": 2,
+  "lam": 1.0,
+  "r2_val": 0.392,
+  "r2_test": 0.3789,
+  "auc_raw": 0.8947,
+  "auc_crd": 0.9249,
+  "auprc_raw": 0.8964,
+  "auprc_crd": 0.9364,
+  "acc2afc_raw": 0.982456,
+  "acc2afc_crd": 0.982456,
+  "delta_pp": 3.02
+}

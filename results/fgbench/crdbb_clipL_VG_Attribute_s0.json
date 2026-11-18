@@ -1,0 +1,17 @@
+{
+  "backbone": "clipL",
+  "dataset": "VG",
+  "facet": "Attribute",
+  "parts": "both",
+  "seed": 0,
+  "lam": 0.7,
+  "r2_val": 0.2411,
+  "r2_test": 0.5245,
+  "auc_raw": 0.6779,
+  "auc_crd": 0.714,
+  "auprc_raw": 0.6613,
+  "auprc_crd": 0.7116,
+  "acc2afc_raw": 0.826763,
+  "acc2afc_crd": 0.826763,
+  "delta_pp": 3.6
+}

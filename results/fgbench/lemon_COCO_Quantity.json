@@ -1,0 +1,12 @@
+{
+  "dataset": "COCO",
+  "facet": "Quantity",
+  "k": 32,
+  "library": 8000,
+  "n_test": 456,
+  "cos_auc": 0.8305,
+  "lemon_auc": 0.8495,
+  "delta": 0.0189,
+  "auprc": 0.8403,
+  "acc2afc": 0.9649
+}

@@ -1,0 +1,7 @@
+{
+  "subset": "two",
+  "model": "siglip2",
+  "n": 440,
+  "options": 2,
+  "acc": 0.4864
+}

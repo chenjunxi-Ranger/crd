@@ -4,3 +4,14 @@ __pycache__/
 .DS_Store
 *.ipynb_checkpoints/
 data/images/
+vg_split/
+vg_split2/
+results/gate/
+results/seed_audit/
+results/scsa_paired/
+results/fgbench/*.npz
+results/fgbench/*.pt
+results/fgbench/*.pth
+results/fgbench/*.parquet
+*.tar
+*.bin

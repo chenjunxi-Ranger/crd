@@ -1,0 +1,72 @@
+% ============================================================
+%  Method: Cross-modal Score Calibration (CRD)
+% ============================================================
+\subsection{CRD Overview}
+\label{sec:method}
+CRD is a post-hoc calibration layer. It modifies neither encoder, adds two small
+heads, and returns a corrected score for a single pair. Figure~\ref{fig:overview}
+shows the path: the pair is encoded, the additive heads are regressed onto the
+standardised similarity, and inference combines the raw score with one subtraction.
+No encoder parameter is updated, and inference never observes a label.
+
+\subsection{Frozen Features and Score Standardisation}
+For a pair $(I,T)$ we compute
+\begin{equation}
+  u = f_I(I), \qquad v = f_T(T), \qquad s(I,T) = \operatorname{sim}(u,v),
+\end{equation}
+with $\operatorname{sim}$ the cosine similarity. Because similarity scales differ
+between encoders, the score is standardised with statistics estimated on the
+training split alone,
+\begin{equation}
+  \mu = \operatorname*{mean}_{\mathcal{D}_{\text{train}}} s, \qquad
+  \sigma = \operatorname*{std}_{\mathcal{D}_{\text{train}}} s + 10^{-8}, \qquad
+  z = \frac{s-\mu}{\sigma}.
+  \label{eq:z}
+\end{equation}
+Validation and test pairs use the same $\mu,\sigma$; no statistic is computed on
+either split. Standardisation makes one $\lambda$ grid meaningful across backbones
+with different ranges and places the target on the scale of the residual.
+
+\subsection{Additive Score Estimation}
+The estimated component is a sum of two head outputs and a bias,
+\begin{equation}
+  g_\theta(I,T) \;=\; a_\phi(u) + b_\psi(v) + b_0,
+  \label{eq:g}
+\end{equation}
+where each head is a two-layer perceptron with one hidden layer of width $64$ and a
+GELU nonlinearity. The additive form is retained in preference to a joint residual
+network over concatenated features: a joint network can absorb part of the match term
+$m(I,T)$, so the constraint is a design choice rather than a mathematical necessity. Here $g_\theta$ is neither a second similarity nor an estimate of image or text
+noise; it is the component of $z$ predictable from the two sides jointly, with no
+cross-side interaction term.
+
+\subsection{Row-level Objective and Inference}
+Each training pair contributes one target, its own standardised score $z$:
+\begin{equation}
+  \mathcal{L}(\theta) = \frac{1}{|\mathcal{D}_{\text{train}}|}
+  \sum_{(I,T)} \operatorname{Huber}\!\left(g_\theta(I,T),\, z(I,T)\right).
+  \label{eq:loss}
+\end{equation}
+Supervising on the pair's own score, rather than on its cycle mean, is substantive:
+the matched and mismatched members of a cycle share the same cycle mean, so a
+cycle-mean target asks the heads to predict a quantity that is constant within the
+group being ranked. The encoders are frozen and only $\phi,\psi,b_0$ are optimised;
+the regression target involves no clean/noisy label. Labels enter at exactly one
+point, the selection of $\lambda$; the method is therefore not fully unsupervised and
+is not described as such.
+
+The calibrated score is
+\begin{equation}
+  z' \;=\; z \;-\; \lambda\, g_\theta(I,T),
+  \label{eq:calib}
+\end{equation}
+with $\lambda\ge0$ selected on a validation split (for Attribute, $2{,}084$ cycles)
+by maximising the AUROC of $z'$, over $\Lambda=\{0,0.1,\dots,2.0\}$. The grid
+includes zero, so validation can decide that no calibration is warranted; in the
+placebo runs it does. Selected values are not restricted to $[0,1]$ (they range from
+$0.8$ to $1.4$ across our cells), so the operation is a scaled subtraction rather
+than an exact removal. Inference is pair-local: the features are encoded once, the two heads
+are evaluated, and \eqref{eq:calib} is returned, with no reference bank, partner
+caption or test-time threshold. The heads hold $65{,}795$ parameters and cost
+$0.2$\,ms; end to end the calibrated score adds $0.83$\,ms ($5.5\%$) to a
+$15.1$\,ms CLIP ViT-B/16 pass. Training details are given in Section~\ref{sec:exp}.

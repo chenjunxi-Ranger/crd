@@ -1,0 +1,7 @@
+{
+  "subset": "one",
+  "model": "clip",
+  "n": 2247,
+  "options": 2,
+  "acc": 0.5189
+}

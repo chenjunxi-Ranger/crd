@@ -1,0 +1,21 @@
+{
+  "dataset": "COCO",
+  "rows": [
+    {
+      "facet": "Entity",
+      "cycles": 2298,
+      "acc2afc": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0,
+      "median_margin": 0.3180786371231079
+    },
+    {
+      "facet": "Quantity",
+      "cycles": 114,
+      "acc2afc": 0.9649122807017544,
+      "ci_lo": 0.9298245614035088,
+      "ci_hi": 0.9912280701754386,
+      "median_margin": 0.07530929148197174
+    }
+  ]
+}

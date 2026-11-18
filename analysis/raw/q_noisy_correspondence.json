@@ -1,0 +1,211 @@
+[
+  {
+    "title": "Deep Evidential Learning with Noisy Correspondence for Cross-modal Retrieval",
+    "doi": "10.1145/3503161.3547922",
+    "authors": [
+      "Yang Qin",
+      "Dezhong Peng",
+      "Xi Peng",
+      "Xu Wang",
+      "Peng Hu"
+    ],
+    "year": 2022,
+    "publication_date": "2022-10-10",
+    "cited_by_count": 105,
+    "journal": "ACM International Conference on Multimedia (ACM MM)",
+    "abstract": "Cross-modal retrieval has been a compelling topic in the multimodal community. Recently, to mitigate the high cost of data collection, the co-occurred pairs (e.g., image and text) could be collected from the Internet as a large-scaled cross-modal dataset, e.g., Conceptual Captions. However, it will unavoidably introduce noise (i.e., mismatched pairs) into training data, dubbed noisy correspondence. Unquestionably, such noise will make supervision information unreliable/uncertain and remarkably d",
+    "openalex_id": "https://openalex.org/W4304014355",
+    "relevance_score": 185.97908
+  },
+  {
+    "title": "Cross-Modal Retrieval With Noisy Correspondence via Consistency Refining and Mining",
+    "doi": "10.1109/tip.2024.3374221",
+    "authors": [
+      "Xinran Ma",
+      "Mouxing Yang",
+      "Yunfan Li",
+      "Peng Hu",
+      "Jiancheng Lv"
+    ],
+    "year": 2024,
+    "publication_date": "2024-01-01",
+    "cited_by_count": 42,
+    "journal": "IEEE Transactions on Image Processing",
+    "abstract": "The success of existing cross-modal retrieval (CMR) methods heavily rely on the assumption that the annotated cross-modal correspondence is faultless. In practice, however, the correspondence of some pairs would be inevitably contaminated during data collection or annotation, thus leading to the so-called Noisy Correspondence (NC) problem. To alleviate the influence of NC, we propose a novel method termed Consistency REfining And Mining (CREAM) by revealing and exploiting the difference between ",
+    "openalex_id": "https://openalex.org/W4393170802",
+    "relevance_score": 161.684
+  },
+  {
+    "title": "Geometry-Aware Noisy Correspondence Mitigation for Cross-Modal Text-Based Person Retrieval",
+    "doi": "10.1609/aaai.v40i15.38218",
+    "authors": [
+      "Xinpan Yuan",
+      "Shaomin Xie",
+      "Liujie Hua",
+      "Chengyuan Zhang",
+      "Guihu Zhao"
+    ],
+    "year": 2026,
+    "publication_date": "2026-03-14",
+    "cited_by_count": 2,
+    "journal": "Proceedings of the AAAI Conference on Artificial Intelligence",
+    "abstract": "Text-Based Person Retrieval (TBPR) aims to accurately retrieve target individuals from large-scale image databases using only textual descriptions. Existing methods typically assume a ground-truth correspondence between text and images (i.e., strongly correlated). However, in real-world scenarios, this assumption may not be able to hold for the cross-modal matching due to weak or even corrupted correlations between textual descriptions and visual content, referred to as noisy correspondence (NC)",
+    "openalex_id": "https://openalex.org/W7137950371",
+    "relevance_score": 136.47437
+  },
+  {
+    "title": "Pseudo-Text Guided Robust Learning for Noisy Correspondence in Cross-Modal Retrieval",
+    "doi": "10.1109/tip.2026.3675497",
+    "authors": [
+      "Dan Shi",
+      "Zechao Li",
+      "Lei Zhu",
+      "Jinhui Tang"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-01",
+    "cited_by_count": 1,
+    "journal": "IEEE Transactions on Image Processing",
+    "abstract": "Noisy Correspondence (NC), caused by mismatched pairs in multimedia datasets, poses major challenges for cross-modal retrieval, especially under high noise levels. Existing solutions often suffer from substantial performance degradation as noise levels increase. To address this issue, we propose Pseudo-Text guided Robust Learning (PTRL), a novel framework designed to identify noisy pairs and enhance model robustness. Specifically, PTRL leverages pseudo-text as explicit supervision signals and in",
+    "openalex_id": "https://openalex.org/W7140180476",
+    "relevance_score": 135.3983
+  },
+  {
+    "title": "Geometry-Aware Noisy Correspondence Mitigation for Cross-Modal Text-Based Person Retrieval",
+    "doi": "10.48448/ryek-2q29",
+    "authors": [
+      "Association for Artificial Intelligence 2026",
+      "Liujie Hua",
+      "Lin Yuanbo Wu",
+      "Shaomin Xie",
+      "Xinpan Yuan"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-07",
+    "cited_by_count": 0,
+    "journal": "Underline Science Inc.",
+    "abstract": "Text-Based Person Retrieval (TBPR) aims to accurately retrieve target individuals from large-scale image databases using only textual descriptions. Existing methods typically assume a ground-truth correspondence between text and images (i.e., strongly correlated). However, in real-world scenarios, this assumption may not be able to hold for the cross-modal matching due to weak or even corrupted correlations between textual descriptions and visual content, referred to as noisy correspondence (NC)",
+    "openalex_id": "https://openalex.org/W7128687109",
+    "relevance_score": 133.39119
+  },
+  {
+    "title": "Learning with noisy correspondence for cross-modal retrieval: A skew-adaptive consistency refinement framework",
+    "doi": "10.1016/j.neucom.2026.134444",
+    "authors": [
+      "Shiyuan Yang",
+      "Zhixin Li"
+    ],
+    "year": 2026,
+    "publication_date": "2026-07-06",
+    "cited_by_count": 0,
+    "journal": "Neurocomputing",
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W7167492403",
+    "relevance_score": 131.77103
+  },
+  {
+    "title": "Dual Division for Noisy Correspondence Learning in Cross-Modal Retrieval",
+    "doi": "10.1109/tmm.2026.3730255",
+    "authors": [
+      "Jie Zhu",
+      "Jiaming Li",
+      "Chun-Ru Dong",
+      "Qiang Hua",
+      "Feng Zhang"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-01",
+    "cited_by_count": 0,
+    "journal": "IEEE Transactions on Multimedia",
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W7206187343",
+    "relevance_score": 130.7716
+  },
+  {
+    "title": "476 - Geometry-Aware Noisy Correspondence Mitigation for Cross-Modal Text-Based Person Retrieval",
+    "doi": "10.48448/h7pw-fz43",
+    "authors": [
+      "Association for Artificial Intelligence 2026",
+      "Liujie Hua",
+      "Lin Yuanbo Wu",
+      "Shaomin Xie",
+      "Xinpan Yuan"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-07",
+    "cited_by_count": 0,
+    "journal": "Underline Science Inc.",
+    "abstract": "Text-Based Person Retrieval (TBPR) aims to accurately retrieve target individuals from large-scale image databases using only textual descriptions. Existing methods typically assume a ground-truth correspondence between text and images (i.e., strongly correlated). However, in real-world scenarios, this assumption may not be able to hold for the cross-modal matching due to weak or even corrupted correlations between textual descriptions and visual content, referred to as noisy correspondence (NC)",
+    "openalex_id": "https://openalex.org/W7128692558",
+    "relevance_score": 129.1488
+  },
+  {
+    "title": "Correspondence Calibrating and Dynamic Consistency Learning for Noisy Cross-Modal Retrieval",
+    "doi": "10.1109/tmm.2026.3664974",
+    "authors": [
+      "Tao Yao",
+      "Yizhen Wu",
+      "Liang Zhang",
+      "Guorui Sheng",
+      "Yanfang Li"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-01",
+    "cited_by_count": 1,
+    "journal": "IEEE Transactions on Multimedia",
+    "abstract": "Cross-modal retrieval has drawn an increasing amount of attention due to its effective ability for searching semantic relative data points with different modalities. In spite of some progress obtained, such methods often require the data pair maintaining the correct cross-modal correspondence in the training process, which is impractical in real application. To tackle this issue, we propose a Correspondence Calibrating and Dynamic Consistency Learning Network (CCDCL), aiming at optimizing the co",
+    "openalex_id": "https://openalex.org/W7131415337",
+    "relevance_score": 125.54987
+  },
+  {
+    "title": "PC 2 : Pseudo-Classification Based Pseudo-Captioning for Noisy Correspondence Learning in Cross-Modal Retrieval",
+    "doi": "10.1145/3664647.3680860",
+    "authors": [
+      "Yue Duan",
+      "Zhangxuan Gu",
+      "Zhenzhe Ying",
+      "Lei Qi",
+      "Changhua Meng"
+    ],
+    "year": 2024,
+    "publication_date": "2024-10-26",
+    "cited_by_count": 10,
+    "journal": "ACM International Conference on Multimedia (ACM MM)",
+    "abstract": "In the realm of cross-modal retrieval, seamlessly integrating diverse modalities within multimedia remains a formidable challenge, especially given the complexities introduced by noisy correspondence learning (NCL). Such noise often stems from mismatched data pairs, which is a significant obstacle distinct from traditional noisy labels. This paper introduces Pseudo-Classification based Pseudo-Captioning (PC$^2$) framework to address this challenge. PC$^2$ offers a threefold strategy: firstly, it",
+    "openalex_id": "https://openalex.org/W4401978738",
+    "relevance_score": 124.79255
+  },
+  {
+    "title": "Noisy Correspondence Learning with Modality Gap Direction Correction",
+    "doi": "10.1609/aaai.v40i12.37984",
+    "authors": [
+      "Wuyuqing Wang",
+      "Zeyuan Gu",
+      "Erkun Yang"
+    ],
+    "year": 2026,
+    "publication_date": "2026-03-14",
+    "cited_by_count": 0,
+    "journal": "Proceedings of the AAAI Conference on Artificial Intelligence",
+    "abstract": "Cross-modal retrieval is crucial for discovering latent correspondences across different modalities. However, existing methods typically assume that training data are well-aligned, an unrealistic assumption since real-world datasets inevitably contain noisy correspondences. Many current approaches attempt to handle noise using strategies borrowed from single-modal classification, such as the small-loss trick, to identify clean training pairs. However, our experiments reveal that such small-loss-",
+    "openalex_id": "https://openalex.org/W7138142192",
+    "relevance_score": 72.335915
+  },
+  {
+    "title": "Noisy Correspondence Learning with Modality Gap Direction Correction",
+    "doi": "10.48448/hb5w-c016",
+    "authors": [
+      "Association for Artificial Intelligence 2026",
+      "Zeyuan Gu",
+      "WuYuQing Wang",
+      "Erkun Yang"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-07",
+    "cited_by_count": 0,
+    "journal": "Underline Science Inc.",
+    "abstract": "Cross-modal retrieval is crucial for discovering latent correspondences across different modalities. However, existing methods typically assume that training data are well-aligned, an unrealistic assumption since real-world datasets inevitably contain noisy correspondences. Many current approaches attempt to handle noise using strategies borrowed from single-modal classification, such as the small-loss trick, to identify clean training pairs. However, our experiments reveal that such small-loss-",
+    "openalex_id": "https://openalex.org/W7128683408",
+    "relevance_score": 70.74316
+  }
+]

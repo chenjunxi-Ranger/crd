@@ -1,0 +1,16 @@
+{
+  "add_obj": 0.9481,
+  "add_att": 0.8627,
+  "replace_obj": 0.9794,
+  "replace_att": 0.9239,
+  "replace_rel": 0.8471,
+  "swap_obj": 0.8327,
+  "swap_att": 0.9324,
+  "overall": 0.9205,
+  "model": "blipitm+crd",
+  "n": 7511,
+  "n_seen": 5830,
+  "n_unseen": 1681,
+  "acc_seen": 0.9225,
+  "acc_unseen": 0.9137
+}

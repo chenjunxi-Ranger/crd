@@ -1,0 +1,17 @@
+{
+  "backbone": "siglip2",
+  "dataset": "VG",
+  "facet": "Attribute",
+  "parts": "both",
+  "seed": 1,
+  "lam": 0.8,
+  "r2_val": 0.2902,
+  "r2_test": 0.5663,
+  "auc_raw": 0.7026,
+  "auc_crd": 0.7507,
+  "auprc_raw": 0.6886,
+  "auprc_crd": 0.7459,
+  "acc2afc_raw": 0.862965,
+  "acc2afc_crd": 0.862965,
+  "delta_pp": 4.82
+}

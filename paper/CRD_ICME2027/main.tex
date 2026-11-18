@@ -1,0 +1,59 @@
+% ============================================================
+%  CRD - IEEE ICME 2027 submission draft
+%  Template : IEEEtran conference class (generic IEEE conference template)
+%  Build    : pdflatex -> bibtex -> pdflatex x2   (see README.md)
+%
+%  NOTE  ICME 2027 has not yet published its own LaTeX kit or page limit.
+%        This file uses the generic IEEE conference template only.
+%        Author block / anonymity / copyright are placeholders.
+% ============================================================
+\documentclass[conference]{IEEEtran}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{needspace}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{fig/}}
+\setlength{\textfloatsep}{2pt plus 1pt minus 1pt}
+\setlength{\floatsep}{2pt plus 1pt minus 1pt}
+\setlength{\intextsep}{2pt plus 1pt minus 1pt}
+
+\begin{document}
+
+\title{CRD: Cross-Modal Residual Debiasing for\\
+Global Noisy Image--Text Pair Detection}
+
+% TODO: replace with the real author block once ICME 2027 publishes the
+% author / anonymity / copyright requirements.
+\author{\IEEEauthorblockN{Anonymous Submission}
+\IEEEauthorblockA{Paper ID 0000}}
+
+\maketitle
+
+\input{sec/0_abstract}
+
+\begin{IEEEkeywords}
+noisy image--text pairs, cross-modal similarity, score calibration,
+vision--language models, data curation, benchmark
+\end{IEEEkeywords}
+
+\input{fig/fig1}
+\input{sec/1_intro}
+\input{sec/2_related}
+\input{sec/3_problem}
+\input{fig/fig2}
+\input{sec/4_method}
+\input{sec/5_fgbench}
+\input{sec/6_experiments}
+\input{sec/8_conclusion}
+
+{\small
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+}
+
+\end{document}

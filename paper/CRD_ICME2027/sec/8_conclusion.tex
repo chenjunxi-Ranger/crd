@@ -1,0 +1,21 @@
+% ============================================================
+%  Conclusion
+% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+Global clean/noisy detection presupposes that two unrelated pairs share a similarity
+scale. We documented a case in which this fails under a frozen encoder ($31.9\%$ of
+Attribute comparisons ordered backwards) and traced part of the effect to a score
+component predictable from the image and text features. CRD estimates it with two
+additive heads, without updating the encoder, using a reference bank, or consuming
+pair labels beyond $\lambda$.
+
+On FGBench, the calibration improves AUROC on the three reported Attribute backbones
+and leaves cycle-level 2AFC unchanged. FGBench manifests, audit artifacts, and the
+CRD implementation will be released upon acceptance. The ablations locate the gain in the joint
+use of the two heads and in the per-pair regression target, the shuffled control
+removes it, and the two parameter-free debiasing baselines do not reproduce the
+Attribute gain. The boundary is equally explicit: CSLS remains ahead on Quantity and,
+under the seed-mean convention only, on Entity; the Action comparison against TRACED
+is not significant; relational conflicts remain difficult; and the labels are silver.

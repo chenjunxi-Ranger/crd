@@ -1,0 +1,30 @@
+{
+  "backbone": "clip",
+  "dataset": "COCO",
+  "facet": "Entity",
+  "parts": "both",
+  "target": "row",
+  "seed": 1,
+  "data_seed": 0,
+  "manifest_sha": {
+    "train": "29d05c74e3298d9f",
+    "val": "2456f0ecbba2b97c",
+    "test": "f823e2ca42bf5e79"
+  },
+  "cache_sha": {
+    "U": "5041fddc8f73a28e",
+    "V": "b0b2ebd0766ab719",
+    "S_train": "5fd5b023d0f28c18",
+    "S_test": "ebb7fd40c0b21f92"
+  },
+  "train_order_sha": "620c69020f8a4eeb",
+  "n_train_rows": 32000,
+  "n_val_rows": 9164,
+  "n_test_rows": 9192,
+  "mu": 0.2343551516532898,
+  "sd": 0.08520836638046264,
+  "lam": 0.8,
+  "steps": 1200,
+  "batch": 256,
+  "lr": 0.001
+}

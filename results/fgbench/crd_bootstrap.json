@@ -1,0 +1,73 @@
+{
+  "rows": [
+    {
+      "dataset": "VG",
+      "facet": "Attribute",
+      "cycles": 14281,
+      "cosine": 0.6806,
+      "csls": 0.6866,
+      "crd": 0.7094,
+      "d_crd_cos": 0.0288,
+      "ci_crd_cos": [
+        0.0279,
+        0.0298
+      ],
+      "p_crd_gt_cos": 1.0,
+      "d_crd_csls": 0.0228,
+      "ci_crd_csls": [
+        0.0218,
+        0.0239
+      ],
+      "p_crd_gt_csls": 1.0,
+      "lam": 1.0,
+      "lam_csls": 0.2,
+      "max_abs_2afc_change": 8.94e-08
+    },
+    {
+      "dataset": "VG",
+      "facet": "Relation",
+      "cycles": 756,
+      "cosine": 0.5429,
+      "csls": 0.5442,
+      "crd": 0.5549,
+      "d_crd_cos": 0.0121,
+      "ci_crd_cos": [
+        0.009,
+        0.0147
+      ],
+      "p_crd_gt_cos": 1.0,
+      "d_crd_csls": 0.0107,
+      "ci_crd_csls": [
+        0.0077,
+        0.0135
+      ],
+      "p_crd_gt_csls": 1.0,
+      "lam": 0.5,
+      "lam_csls": 0.3,
+      "max_abs_2afc_change": 8.94e-08
+    },
+    {
+      "dataset": "COCO",
+      "facet": "Quantity",
+      "cycles": 114,
+      "cosine": 0.8305,
+      "csls": 0.8882,
+      "crd": 0.8838,
+      "d_crd_cos": 0.0533,
+      "ci_crd_cos": [
+        0.0336,
+        0.0717
+      ],
+      "p_crd_gt_cos": 1.0,
+      "d_crd_csls": -0.0043,
+      "ci_crd_csls": [
+        -0.0188,
+        0.0096
+      ],
+      "p_crd_gt_csls": 0.25,
+      "lam": 1.1,
+      "lam_csls": 0.6,
+      "max_abs_2afc_change": 1.19e-07
+    }
+  ]
+}

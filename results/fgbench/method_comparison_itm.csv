@@ -1,0 +1,22 @@
+﻿facet,method,n,auroc,auprc,acc2afc,delta_pp,ci_lo,ci_hi
+VG/Attribute,itm_raw,57124.0,0.8207,0.8124,0.936839,,,
+VG/Attribute,gmm,57124.0,0.8207,0.8124,0.928857,,,
+VG/Attribute,lemon_hybrid,57124.0,0.8263,0.8173,0.934178,,,
+VG/Attribute,crd,57124.0,0.8482,0.8441,0.936839,,,
+VG/Attribute,crd - itm_raw,,,,,2.75,2.65,2.84
+VG/Attribute,crd - gmm,,,,,2.75,2.65,2.84
+VG/Attribute,crd - lemon_hybrid,,,,,2.18,2.08,2.27
+VG/Relation,itm_raw,2824.0,0.6467,0.6382,0.766289,,,
+VG/Relation,gmm,2824.0,0.6454,0.6378,0.74221,,,
+VG/Relation,lemon_hybrid,2824.0,0.6488,0.6367,0.763456,,,
+VG/Relation,crd,2824.0,0.6586,0.652,0.766289,,,
+VG/Relation,crd - itm_raw,,,,,1.2,0.89,1.55
+VG/Relation,crd - gmm,,,,,1.33,1.01,1.67
+VG/Relation,crd - lemon_hybrid,,,,,0.99,0.63,1.41
+COCO/Quantity,itm_raw,456.0,0.9859,0.9882,0.991228,,,
+COCO/Quantity,gmm,456.0,0.9859,0.9882,0.982456,,,
+COCO/Quantity,lemon_hybrid,456.0,0.9867,0.9889,0.991228,,,
+COCO/Quantity,crd,456.0,0.9885,0.9897,0.991228,,,
+COCO/Quantity,crd - itm_raw,,,,,0.26,-0.3,0.84
+COCO/Quantity,crd - gmm,,,,,0.26,-0.3,0.84
+COCO/Quantity,crd - lemon_hybrid,,,,,0.17,-0.38,0.72

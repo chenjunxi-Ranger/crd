@@ -1,0 +1,210 @@
+[
+  {
+    "title": "SQUARE: Semantic Query‑Augmented Fusion and Efficient Batch Reranking for Training-free Zero-shot Composed Image Retrieval",
+    "doi": "10.2139/ssrn.6210923",
+    "authors": [
+      "Ren-Di Wu",
+      "Yu-Yen Lin",
+      "Huei‐Fang Yang"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-01",
+    "cited_by_count": 1,
+    "journal": "SSRN Electronic Journal",
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W7128482835",
+    "relevance_score": 61.887074
+  },
+  {
+    "title": "AutoConcept: Training-Free Concept-Guided Reranking for Metadata-Available Composed Image Retrieval",
+    "doi": "10.48550/arxiv.2609.01456",
+    "authors": [
+      "Tianyu Wang",
+      "Tianjiao Wu"
+    ],
+    "year": 2026,
+    "publication_date": "2026-09-01",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Composed image retrieval (CIR) retrieves a target image from a reference image and a text modification. This paper studies metadata-available CIR reranking, where a fixed CIR model first returns a candidate pool and gallery metadata is then used for second-stage concept-guided scoring. We introduce AutoConcept, a training-free reranker that converts concept evidence into an interpretable memory. AutoConcept filters noisy concepts, activates query-relevant positive constraints with an auxiliary n",
+    "openalex_id": "https://openalex.org/W7206169650",
+    "relevance_score": 57.956036
+  },
+  {
+    "title": "Training-free Zero-shot Composed Image Retrieval with Local Concept Reranking",
+    "doi": "10.48550/arxiv.2312.08924",
+    "authors": [
+      "Shitong Sun",
+      "Fanghua Ye",
+      "Shaogang Gong"
+    ],
+    "year": 2023,
+    "publication_date": "2023-12-14",
+    "cited_by_count": 2,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Composed image retrieval attempts to retrieve an image of interest from gallery images through a composed query of a reference image and its corresponding modified text. It has recently attracted attention due to the collaboration of information-rich images and concise language to precisely express the requirements of target images. Most current composed image retrieval methods follow a supervised learning approach to training on a costly triplet dataset composed of a reference image, modified t",
+    "openalex_id": "https://openalex.org/W4389820801",
+    "relevance_score": 56.01212
+  },
+  {
+    "title": "CLIP is Almost All You Need: Towards Parameter-Efficient Scene Text Retrieval without OCR",
+    "doi": "10.1109/cvpr52734.2025.02316",
+    "authors": [
+      "Xugong Qin",
+      "Peng Zhang",
+      "Jun Ru Yang",
+      "Gangyan Zeng",
+      "Yubo Li"
+    ],
+    "year": 2025,
+    "publication_date": "2025-06-10",
+    "cited_by_count": 5,
+    "journal": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+    "abstract": "Scene Text Retrieval (STR) seeks to identify all images containing a given query string. Existing methods typically rely on an explicit Optical Character Recognition (OCR) process of text spotting or localization, which is susceptible to complex pipelines and accumulated errors. To settle this, we resort to the Contrastive Language-Image Pre-training (CLIP) models, which have demonstrated the capacity to perceive and understand scene text, making it possible to achieve strictly OCR-free STR. Fro",
+    "openalex_id": "https://openalex.org/W4413156579",
+    "relevance_score": 51.189346
+  },
+  {
+    "title": "Beyond Similarity: Foundation Models as an Efficient Backbone for Training-Free Composed Video Retrieval",
+    "doi": "10.48550/arxiv.2609.10008",
+    "authors": [
+      "Dmitry Demidov",
+      "Muhammad Zaigham Zaheer",
+      "Omkar Thawakar",
+      "Abdelrahman Shaker",
+      "Rao Muhammad Anwer"
+    ],
+    "year": 2026,
+    "publication_date": "2026-09-09",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Composed video retrieval (CoVR) searches a gallery for the target video that realizes a natural-language modification of a source clip. However, at gallery scale, this creates a fundamental tension: compact embeddings enable efficient, reusable search but can miss the transient actions, state changes, and subtle constraints that demand fine-grained video reasoning, whereas applying large multimodal models uniformly sacrifices scalability. To address these limitations, we propose that frozen foun",
+    "openalex_id": "https://openalex.org/W7212188181",
+    "relevance_score": 49.59483
+  },
+  {
+    "title": "A Decomposed Retrieval-Edit-Rerank Framework for Chord Generation",
+    "doi": "10.1145/3805622.3810672",
+    "authors": [
+      "Qiqi He",
+      "Dichucheng Li",
+      "Xiaoheng Sun",
+      "Anqi Huang"
+    ],
+    "year": 2026,
+    "publication_date": "2026-06-15",
+    "cited_by_count": 0,
+    "journal": "International Conference on Multimedia Retrieval",
+    "abstract": "Chord generation is an inherently constrained creative task that requires balancing stylistic diversity with music-theoretic feasibility. Existing approaches typically entangle candidate generation and constraint enforcement within a single model, making the diversity–feasibility trade-off difficult to control and interpret.",
+    "openalex_id": "https://openalex.org/W7160897386",
+    "relevance_score": 44.88976
+  },
+  {
+    "title": "UniCVR: From Alignment to Reranking for Unified Zero-Shot Composed Visual Retrieval",
+    "doi": "10.48550/arxiv.2604.20318",
+    "authors": [
+      "Haokun Wen",
+      "Xuemeng Song",
+      "Haoyu Zhang",
+      "Weili Guan",
+      "Xiangyu Zhao"
+    ],
+    "year": 2026,
+    "publication_date": "2026-04-22",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Composed image retrieval, multi-turn composed image retrieval, and composed video retrieval all share a common paradigm: composing the reference visual with modification text to retrieve the desired target. Despite this shared structure, the three tasks have been studied in isolation, with no prior work proposing a unified framework, let alone a zero-shot solution. In this paper, we propose UniCVR, the first unified zero-shot composed visual retrieval framework that jointly addresses all three t",
+    "openalex_id": "https://openalex.org/W7155414113",
+    "relevance_score": 44.24798
+  },
+  {
+    "title": "Contrastive Retrieval Heads for Improved Attention-Based Reranking",
+    "doi": "10.48550/arxiv.2510.02219",
+    "authors": [
+      "Linh Quang Tran",
+      "Yulong Li",
+      "Radu Florian",
+      "Stacy Patterson",
+      "Ana Milanova"
+    ],
+    "year": 2025,
+    "publication_date": "2025-10-02",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "The strong zero-shot and long-context capabilities of recent Large Language Models (LLMs) have paved the way for highly effective re-ranking systems. Attention-based re-rankers leverage attention weights from transformer heads to produce relevance scores, but not all heads are created equally: many contribute noise and redundancy, thus limiting performance. To address this, we introduce CoRe heads, a small set of retrieval heads identified via a contrastive scoring metric that explicitly rewards",
+    "openalex_id": "https://openalex.org/W4414825089",
+    "relevance_score": 44.007603
+  },
+  {
+    "title": "Pinpoint: Grounded Worldwide Image Geolocation via Cross-Source Retrieval and Reranking",
+    "doi": "10.48550/arxiv.2606.04133",
+    "authors": [
+      "Nika Chuzhoy",
+      "Brian Hu",
+      "Amit A. Arora",
+      "Jae Ro",
+      "Sarthak S. Sahu"
+    ],
+    "year": 2026,
+    "publication_date": "2026-06-02",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Image geolocation aims to estimate where a photograph was taken from its visual content. At worldwide scale, this remains challenging because visual evidence is often ambiguous, diverse, and unevenly distributed. Prior work has typically treated geolocation of ordinary internet photos and street-view imagery as separate tasks, despite their complementary strengths: internet photos better match the appearance distribution of user-captured queries, while street-view imagery provides denser, geogra",
+    "openalex_id": "https://openalex.org/W7163572962",
+    "relevance_score": 43.937347
+  },
+  {
+    "title": "Multimodal Video-to-Music Recommendation via Semantic Retrieval and Temporal Reranking",
+    "doi": "10.48550/arxiv.2607.05971",
+    "authors": [
+      "SeungHeon Doh",
+      "Min-Hee Lee",
+      "Sangmoon Lee",
+      "Ben Sangbae Chon",
+      "Juhan Nam"
+    ],
+    "year": 2026,
+    "publication_date": "2026-07-07",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "We present VTMR, a two-stage framework for Video-To-Music Recommendation. In Stage~1, VTMR aligns comprehensive video and music signals in a joint audio-visual-text representation space and efficiently retrieves semantically compatible candidates using coarse global embeddings. In Stage~2, it reranks the retrieved candidates by attending to the temporal sequences of both video and music, thereby capturing fine-grained temporal correspondence. Evaluated on the video-to-music recommendation task, ",
+    "openalex_id": "https://openalex.org/W7167663798",
+    "relevance_score": 41.330425
+  },
+  {
+    "title": "Enhancing Video Retrieval with Robust CLIP-Based Multimodal System",
+    "doi": "10.1145/3628797.3629011",
+    "authors": [
+      "Minh-Dung Le-Quynh",
+      "Anh-Tuan Nguyen",
+      "Anh-Tuan Quang-Hoang",
+      "Van-Huy Dinh",
+      "Tien-Huy Nguyen"
+    ],
+    "year": 2023,
+    "publication_date": "2023-12-06",
+    "cited_by_count": 14,
+    "journal": "International Symposium on Information and Communication Technology",
+    "abstract": "In the rapidly evolving landscape of multimedia data, the need for efficient content-based video retrieval has become increasingly vital. To tackle this challenge, we introduce an interactive video retrieval system designed to retrieve data from vast online video collections efficiently. Our solution encompasses rich textual to visual descriptions, advanced human detection capabilities, and a novel Sketch-Text retrieval mechanism, rendering the search process comprehensive and precise. At its co",
+    "openalex_id": "https://openalex.org/W4389374124",
+    "relevance_score": 40.537056
+  },
+  {
+    "title": "Towards Vision-Free CIR: Attribute-Augmented Scoring and LLM-Based Reranking for Zero-Shot Composed Image Retrieval",
+    "doi": "10.48550/arxiv.2607.12621",
+    "authors": [
+      "Ryotaro Shimada",
+      "Yu-Chieh Lin",
+      "Y. Nozawa",
+      "Youyang Ng",
+      "Osamu Torii"
+    ],
+    "year": 2026,
+    "publication_date": "2026-07-14",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Recent work has shown that \"Vision-Free'' approaches (representing images as text) can be effective for standard image retrieval tasks. However, it remains unclear whether this paradigm can effectively handle a more complex, multimodal task, Composed Image Retrieval (CIR), due to the inherent information loss in textual descriptions. In this paper, we introduce a Vision-Free CIR framework that addresses this challenge through two key techniques: (1) Attribute-Augmented Hybrid Scoring, which comp",
+    "openalex_id": "https://openalex.org/W7168408947",
+    "relevance_score": 39.500683
+  }
+]

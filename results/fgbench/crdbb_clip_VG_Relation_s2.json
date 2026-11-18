@@ -1,0 +1,18 @@
+{
+  "backbone": "clip",
+  "dataset": "VG",
+  "facet": "Relation",
+  "target": "row",
+  "parts": "both",
+  "seed": 2,
+  "lam": 0.4,
+  "r2_val": -0.2437,
+  "r2_test": 0.692,
+  "auc_raw": 0.5413,
+  "auc_crd": 0.553,
+  "auprc_raw": 0.5323,
+  "auprc_crd": 0.5449,
+  "acc2afc_raw": 0.650142,
+  "acc2afc_crd": 0.650142,
+  "delta_pp": 1.17
+}

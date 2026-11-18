@@ -1,0 +1,207 @@
+[
+  {
+    "title": "Rethinking Misalignment in Vision-Language Model Adaptation from a Causal Perspective",
+    "doi": "10.52202/079017-1238",
+    "authors": [
+      "Yanan Zhang",
+      "Jiangmeng Li",
+      "Lixiang Liu",
+      "Wenwen Qiang"
+    ],
+    "year": 2024,
+    "publication_date": "2024-01-01",
+    "cited_by_count": 9,
+    "journal": "neural information processing systems",
+    "abstract": "Foundational Vision-Language models such as CLIP have exhibited impressive generalization in downstream tasks. However, CLIP suffers from a two-level misalignment issue, i.e., task misalignment and data misalignment, when adapting to specific tasks. Soft prompt tuning has mitigated the task misalignment, yet the data misalignment remains a challenge. To analyze the impacts of the data misalignment, we revisit the pre-training and adaptation processes of CLIP and develop a structural causal model",
+    "openalex_id": "https://openalex.org/W4415797781",
+    "relevance_score": 53.71894
+  },
+  {
+    "title": "Semantic Misalignment in Vision-Language Models under Perceptual Degradation",
+    "doi": "10.48550/arxiv.2601.08355",
+    "authors": [
+      "Guo Cheng",
+      "Huang Li"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-13",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Vision-Language Models (VLMs) are increasingly deployed in autonomous driving and embodied AI systems, where reliable perception is critical for safe semantic reasoning and decision-making. While recent VLMs demonstrate strong performance on multimodal benchmarks, their robustness to realistic perception degradation remains poorly understood. In this work, we systematically study semantic misalignment in VLMs under controlled degradation of upstream visual perception, using semantic segmentation",
+    "openalex_id": "https://openalex.org/W7124173247",
+    "relevance_score": 53.553463
+  },
+  {
+    "title": "Sarah: Hallucination detection for large vision language models with semantic information locator and purifier in uncertainty quantification method",
+    "doi": "10.1016/j.imavis.2026.105938",
+    "authors": [
+      "Fang Yue",
+      "Yang Zhang",
+      "Yawen Liu",
+      "Yetian Yu"
+    ],
+    "year": 2026,
+    "publication_date": "2026-02-16",
+    "cited_by_count": 1,
+    "journal": "Image and Vision Computing",
+    "abstract": "",
+    "openalex_id": "https://openalex.org/W7129031849",
+    "relevance_score": 51.28264
+  },
+  {
+    "title": "Detecting Misbehaviors of Large Vision-Language Models by Evidential Uncertainty Quantification",
+    "doi": "10.48550/arxiv.2602.05535",
+    "authors": [
+      "Tao Huang",
+      "Rui Wang",
+      "Xiaofei Liu",
+      "Yi Qin",
+      "Li Duan"
+    ],
+    "year": 2026,
+    "publication_date": "2026-02-05",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "%Large vision-language models (LVLMs) have shown substantial advances in multimodal understanding and generation. However, when presented with incompetent or adversarial inputs, they frequently produce unreliable or even harmful content, such as fact hallucinations or dangerous instructions. This misalignment with human expectations, referred to as \\emph{misbehaviors} of LVLMs, raises serious concerns for deployment in critical applications. These misbehaviors are found to stem from epistemic un",
+    "openalex_id": "https://openalex.org/W7127971432",
+    "relevance_score": 49.30246
+  },
+  {
+    "title": "Cross-modal Proxy Evolving for OOD Detection with Vision-Language Models",
+    "doi": "10.1609/aaai.v40i18.38608",
+    "authors": [
+      "Hao Tang",
+      "Yu Liu",
+      "Shuanglin Yan",
+      "Fei Shen",
+      "Shengfeng He"
+    ],
+    "year": 2026,
+    "publication_date": "2026-03-14",
+    "cited_by_count": 20,
+    "journal": "Proceedings of the AAAI Conference on Artificial Intelligence",
+    "abstract": "Reliable zero-shot detection of out-of-distribution (OOD) inputs is critical for deploying vision-language models in open-world settings. However, the lack of labeled negatives in zero-shot OOD detection necessitates proxy signals that remain effective under distribution shift. Existing negative-label methods rely on a fixed set of textual proxies, which (i) sparsely sample the semantic space beyond in-distribution (ID) classes and (ii) remain static while only visual features drift, leading to ",
+    "openalex_id": "https://openalex.org/W7138470740",
+    "relevance_score": 47.61388
+  },
+  {
+    "title": "DoReMi: Grounding Language Model by Detecting and Recovering from Plan-Execution Misalignment",
+    "doi": "10.1109/iros58592.2024.10802284",
+    "authors": [
+      "Y. F. Guo",
+      "Yen‐Jen Wang",
+      "Lihan Zha",
+      "Jianyu Chen"
+    ],
+    "year": 2024,
+    "publication_date": "2024-10-14",
+    "cited_by_count": 33,
+    "journal": "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+    "abstract": "Large language models (LLMs) encode a vast amount of semantic knowledge and possess remarkable understanding and reasoning capabilities. Previous work has explored how to ground LLMs in robotic tasks to generate feasible and executable textual plans. However, low-level execution in the physical world may deviate from the high-level textual plan due to environmental perturbations or imperfect controller design. In this paper, we propose DoReMi, a novel language model grounding framework that enab",
+    "openalex_id": "https://openalex.org/W4405786713",
+    "relevance_score": 45.995037
+  },
+  {
+    "title": "CAPT: Confusion-Aware Prompt Tuning for Reducing Vision-Language Misalignment",
+    "doi": "10.48550/arxiv.2603.02557",
+    "authors": [
+      "M. Shao",
+      "Yutong Gao",
+      "Xinyang Huang",
+      "Chuang Zhu",
+      "Lijuan Sun"
+    ],
+    "year": 2026,
+    "publication_date": "2026-03-03",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Vision-language models like CLIP have achieved remarkable progress in cross-modal representation learning, yet suffer from systematic misclassifications among visually and semantically similar categories. We observe that such confusion patterns are not random but persistently occur between specific category pairs, revealing the model's intrinsic bias and limited fine-grained discriminative ability. To address this, we propose CAPT, a Confusion-Aware Prompt Tuning framework that enables models to",
+    "openalex_id": "https://openalex.org/W7133560080",
+    "relevance_score": 45.1912
+  },
+  {
+    "title": "VERA: Explainable Video Anomaly Detection via Verbalized Learning of Vision-Language Models",
+    "doi": "10.1109/cvpr52734.2025.00811",
+    "authors": [
+      "Muchao Ye",
+      "Weiyang Liu",
+      "Pan He"
+    ],
+    "year": 2025,
+    "publication_date": "2025-06-10",
+    "cited_by_count": 49,
+    "journal": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+    "abstract": "The rapid advancement of vision-language models (VLMs) has established a new paradigm in video anomaly detection (VAD): leveraging VLMs to simultaneously detect anomalies and provide comprehendible explanations for the decisions. Existing work in this direction often assumes the complex reasoning required for VAD exceeds the capabilities of pretrained VLMs. Consequently, these approaches either incorporate specialized reasoning modules during inference or rely on instruction tuning datasets thro",
+    "openalex_id": "https://openalex.org/W4413155334",
+    "relevance_score": 45.074043
+  },
+  {
+    "title": "AdaNeg: Adaptive Negative Proxy Guided OOD Detection with Vision-Language Models",
+    "doi": "10.52202/079017-1224",
+    "authors": [
+      "Yabin Zhang",
+      "Lei Zhang"
+    ],
+    "year": 2024,
+    "publication_date": "2024-01-01",
+    "cited_by_count": 11,
+    "journal": "neural information processing systems",
+    "abstract": "Recent research has shown that pre-trained vision-language models are effective at identifying out-of-distribution (OOD) samples by using negative labels as guidance. However, employing consistent negative labels across different OOD datasets often results in semantic misalignments, as these text labels may not accurately reflect the actual space of OOD images. To overcome this issue, we introduce \\textit{adaptive negative proxies}, which are dynamically generated during testing by exploring act",
+    "openalex_id": "https://openalex.org/W4415798104",
+    "relevance_score": 44.43659
+  },
+  {
+    "title": "Cross-modal Proxy Evolving for OOD Detection with Vision-Language Models",
+    "doi": "10.48550/arxiv.2601.08476",
+    "authors": [
+      "Hao Tang",
+      "Yu Liu",
+      "Shuanglin Yan",
+      "Fei Shen",
+      "Shengfeng He"
+    ],
+    "year": 2026,
+    "publication_date": "2026-01-13",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Reliable zero-shot detection of out-of-distribution (OOD) inputs is critical for deploying vision-language models in open-world settings. However, the lack of labeled negatives in zero-shot OOD detection necessitates proxy signals that remain effective under distribution shift. Existing negative-label methods rely on a fixed set of textual proxies, which (i) sparsely sample the semantic space beyond in-distribution (ID) classes and (ii) remain static while only visual features drift, leading to ",
+    "openalex_id": "https://openalex.org/W7124176004",
+    "relevance_score": 43.89097
+  },
+  {
+    "title": "Robustness of Internal Signals for Hallucination Detection in Vision-Language Models",
+    "doi": "10.48550/arxiv.2610.27041",
+    "authors": [
+      "Allison Chen",
+      "William Yang",
+      "Salma Abdel Magid",
+      "Jonathan Williams",
+      "Olga Russakovsky"
+    ],
+    "year": 2026,
+    "publication_date": "2026-10-19",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "When given an image and a text prompt, vision-language models (VLMs) can produce seemingly sophisticated text responses. However, they are also prone to hallucinate objects in their output, which can have detrimental consequences in safety-critical applications. To detect these hallucinations, certain methods interestingly leverage internal signals from the VLM as it generates the text response; potentially, these methods use the same signals that led to a hallucination to detect it. We conduct ",
+    "openalex_id": "https://openalex.org/W7223116579",
+    "relevance_score": 43.04779
+  },
+  {
+    "title": "Self-Refining Vision Language Model for Robotic Failure Detection and Reasoning",
+    "doi": "10.48550/arxiv.2602.12405",
+    "authors": [
+      "Carl Qi",
+      "Xiaojie Wang",
+      "Silong Yong",
+      "Stephen Sheng",
+      "Huitan Mao"
+    ],
+    "year": 2026,
+    "publication_date": "2026-02-12",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Reasoning about failures is crucial for building reliable and trustworthy robotic systems. Prior approaches either treat failure reasoning as a closed-set classification problem or assume access to ample human annotations. Failures in the real world are typically subtle, combinatorial, and difficult to enumerate, whereas rich reasoning labels are expensive to acquire. We address this problem by introducing ARMOR: Adaptive Round-based Multi-task mOdel for Robotic failure detection and reasoning. ",
+    "openalex_id": "https://openalex.org/W7128988871",
+    "relevance_score": 41.692974
+  }
+]

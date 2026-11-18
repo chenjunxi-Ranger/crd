@@ -1,0 +1,10 @@
+{
+  "backbone": "b16",
+  "val_mode": "random",
+  "lam": 1.2,
+  "r2_val": 0.4425,
+  "r2_test": 0.4404,
+  "cos_auc": 0.6806,
+  "crd_auc": 0.7102,
+  "acc2afc": 0.828163
+}

@@ -1,0 +1,27 @@
+% ============================================================
+%  Abstract
+% ============================================================
+\begin{abstract}
+Curating web-scale image--text data usually amounts to thresholding a frozen
+vision--language similarity, which presupposes that scores are comparable across
+pairs. On the Attribute facet of a controlled benchmark, raw CLIP similarity orders
+$31.9\%$ of all clean/noisy pair combinations backwards, although the same encoder
+separates the two classes far above chance. We attribute part of this behaviour to
+additive score components that are predictable from the image and text features and
+largely unrelated to whether a pair matches. CRD (cross-modal residual debiasing),
+a post-hoc calibration, fits two small additive heads on the frozen features and
+subtracts a scaled estimate of the component from the standardised similarity; inference needs
+one pair, no reference bank, and labels only to select one scalar. We also present
+FGBench, $88{,}024$ reciprocal cycles over five factual facets from COCO and Visual
+Genome, with silver labels. On the three reported Attribute backbones CRD raises
+AUROC (CLIP ViT-B/16: $0.6806\to0.7187$; SigLIP2: $0.7026\to0.7509$); $21$ of $24$
+paired comparisons survive Holm, or $17$ of $20$ independent comparisons once four
+monotone GMM duplicates are excluded. Two parameter-free debiasing baselines do not
+reproduce the Attribute gain. A logistic-regression probe trained on a
+$32{,}000$-row labeled subset is $0.47$ and $1.60$ points higher on Attribute and
+Quantity, and an MLP probe $7.62$ higher on the exploratory Action facet, at the cost
+of about four times CRD's label budget; at CRD's budget the logistic-regression probe
+falls $4.36$ points below CRD on Attribute. The method leaves cycle-level forced-choice
+accuracy (2AFC) unchanged by construction and does not surpass CSLS on Quantity or
+Entity.
+\end{abstract}

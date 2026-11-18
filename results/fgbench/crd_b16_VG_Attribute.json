@@ -1,0 +1,16 @@
+{
+  "dataset": "VG",
+  "facet": "Attribute",
+  "parts": "text",
+  "lam_from_val": 0.4,
+  "r2_val": -0.4109,
+  "mae_val": 0.0219,
+  "r2_test": 0.3595,
+  "mae_test": 0.0171,
+  "cos_auc": 0.6805804825157458,
+  "crd_auc": 0.6928079312003086,
+  "cos_2afc": 0.8281632938869827,
+  "crd_2afc": 0.8281632938869827,
+  "auprc_cos": 0.668,
+  "auprc_crd": 0.6854
+}

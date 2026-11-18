@@ -1,0 +1,47 @@
+% ============================================================
+%  Introduction
+% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+Vision--language models~\cite{radford2021clip,li2022blip} are now the standard
+instrument for assembling image--text corpora: a candidate pool is encoded, every
+pair receives a similarity, and pairs below a threshold are discarded or queued for
+relabelling. This presumes that a similarity can be compared \emph{across} pairs,
+that a pair scoring $0.33$ is noisier than one scoring $0.25$. The premise fails.
+Figure~\ref{fig:motivation} shows a correctly matched pair scoring $0.252$ and a
+pair whose caption misstates the number of animals scoring $0.331$ under the same
+frozen encoder.
+
+Existing detectors intervene on the encoder or on the neighbourhood. CSLS
+re-normalises a score against a neighbour set, matching heads replace it with a
+learned score, and LEMoN judges a pair by its agreement with multimodal neighbours,
+while TRACED edits the caption and reads the resulting similarity trajectory. Each improves the signal that is subsequently
+thresholded, and each leaves one question unanswered: for a fixed signal, do two
+unrelated pairs share a scale? Capacity does not settle it within the zero-shot CLIP
+family: ViT-L/14, with $427.6$M parameters against $149.6$M, leaves Attribute AUROC
+at $0.6779$ against $0.6806$. The deficiency is not the representation but the
+absence of an explicit model of the score component that should not enter a global
+comparison.
+
+We therefore model the additively predictable part of the standardised similarity
+as $g_\theta=a_\phi(u)+b_\psi(v)+b_0$, fit it to each pair's own score without using
+a label, and subtract it at inference, $z'=z-\lambda g_\theta$. The
+encoder is frozen; inference consumes one pair, with no reference bank, partner
+caption or cycle; labels enter only the selection of $\lambda$. We evaluate on
+FGBench, $88{,}024$ reciprocal cycles over five factual facets derived from COCO and
+Visual Genome.
+
+\needspace{5\baselineskip}
+\noindent\textbf{Contributions.}
+\begin{itemize}
+  \item \textbf{Method.} CRD, a post-hoc calibration that estimates additive
+  image- and text-conditioned score components with two lightweight heads over a
+  frozen encoder and subtracts them from the standardised similarity, improving
+  global discrimination without any reference structure at inference.
+  \item \textbf{Benchmark.} FGBench, an $88{,}024$-cycle reciprocal benchmark with
+  five factual facets, explicit split hygiene and an automatic split/leakage audit.
+  \item \textbf{Analysis.} Paired tests against five same-backbone detectors and two
+  parameter-free debiasing baselines, ablations, selected frozen backbones, and an
+  explicit account of where the calibration stops helping.
+\end{itemize}

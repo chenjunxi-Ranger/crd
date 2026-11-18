@@ -1,0 +1,209 @@
+[
+  {
+    "title": "DEPICT: Scoring Text-to-Image Alignment by Answer Agreement",
+    "doi": "10.48550/arxiv.2610.03617",
+    "authors": [
+      "Vasco Ramos",
+      "Sandra Godinho Silva",
+      "Joao Magalhaes",
+      "Ricardo Rei",
+      "Pedro Henrique Martins"
+    ],
+    "year": 2026,
+    "publication_date": "2026-10-02",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Image-text alignment is a core problem in computer vision with applications in caption evaluation, hallucination detection, data curation, and the benchmarking of text-to-image (T2I) generators. As T2I models improve, benchmarking has become demanding, requiring metrics capable of finding a series of issues like missing objects, swapped attributes, miscounts, and ignored negations. Recent work addresses this by fine-tuning evaluators on preference data or by prompting a vision-language model, ei",
+    "openalex_id": "https://openalex.org/W7220387513",
+    "relevance_score": 66.04934
+  },
+  {
+    "title": "BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation",
+    "doi": "10.48550/arxiv.2201.12086",
+    "authors": [
+      "Junnan Li",
+      "Dongxu Li",
+      "Caiming Xiong",
+      "Steven C. H. Hoi"
+    ],
+    "year": 2022,
+    "publication_date": "2022-01-28",
+    "cited_by_count": 1741,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Vision-Language Pre-training (VLP) has advanced the performance for many vision-language tasks. However, most existing pre-trained models only excel in either understanding-based tasks or generation-based tasks. Furthermore, performance improvement has been largely achieved by scaling up the dataset with noisy image-text pairs collected from the web, which is a suboptimal source of supervision. In this paper, we propose BLIP, a new VLP framework which transfers flexibly to both vision-language u",
+    "openalex_id": "https://openalex.org/W4226182655",
+    "relevance_score": 61.234074
+  },
+  {
+    "title": "Vision-by-Language for Training-Free Compositional Image Retrieval",
+    "doi": "10.48550/arxiv.2310.09291",
+    "authors": [
+      "Shyamgopal Karthik",
+      "Karsten Roth",
+      "Massimiliano Mancini",
+      "Zeynep Akata"
+    ],
+    "year": 2023,
+    "publication_date": "2023-10-13",
+    "cited_by_count": 9,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Given an image and a target modification (e.g an image of the Eiffel tower and the text \"without people and at night-time\"), Compositional Image Retrieval (CIR) aims to retrieve the relevant target image in a database. While supervised approaches rely on annotating triplets that is costly (i.e. query image, textual modification, and target image), recent research sidesteps this need by using large-scale vision-language models (VLMs), performing Zero-Shot CIR (ZS-CIR). However, state-of-the-art a",
+    "openalex_id": "https://openalex.org/W4387715049",
+    "relevance_score": 56.232235
+  },
+  {
+    "title": "CLIP-GEN: Language-Free Training of a Text-to-Image Generator with CLIP",
+    "doi": "10.48550/arxiv.2203.00386",
+    "authors": [
+      "Zihao Wang",
+      "Wei Liu",
+      "Qian He",
+      "Wu, Xinglong",
+      "Yi, Zili"
+    ],
+    "year": 2022,
+    "publication_date": "2022-03-01",
+    "cited_by_count": 34,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Training a text-to-image generator in the general domain (e.g., Dall.e, CogView) requires huge amounts of paired text-image data, which is too expensive to collect. In this paper, we propose a self-supervised scheme named as CLIP-GEN for general text-to-image generation with the language-image priors extracted with a pre-trained CLIP model. In our approach, we only require a set of unlabeled images in the general domain to train a text-to-image generator. Specifically, given an image without tex",
+    "openalex_id": "https://openalex.org/W4221143397",
+    "relevance_score": 54.546093
+  },
+  {
+    "title": "When Language Overwrites Vision: Over-Alignment and Geometric Debiasing in Vision-Language Models",
+    "doi": "10.48550/arxiv.2605.08245",
+    "authors": [
+      "Harshvardhan Saini",
+      "Samyak Jha",
+      "Yiming Tang",
+      "Dianbo Liu"
+    ],
+    "year": 2026,
+    "publication_date": "2026-05-07",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Vision-Language Models (VLMs) increasingly power high-stakes applications, from medical imaging to autonomous systems, yet they routinely hallucinate, confidently describing content not present in the input. We investigate the root causes of these failure modes with a mechanistic analysis focusing on the decoder-based VLMs. We trace these failure modes to a geometric over-alignment: to bridge the modality gap required by attention mechanisms, decoder-based VLMs over-align visual embeddings with ",
+    "openalex_id": "https://openalex.org/W7160926782",
+    "relevance_score": 54.413124
+  },
+  {
+    "title": "Grounded Language-Image Pre-training",
+    "doi": "10.1109/cvpr52688.2022.01069",
+    "authors": [
+      "Liunian Harold Li",
+      "Pengchuan Zhang",
+      "Haotian Zhang",
+      "Jianwei Yang",
+      "Chunyuan Li"
+    ],
+    "year": 2022,
+    "publication_date": "2022-06-01",
+    "cited_by_count": 1175,
+    "journal": "IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings - IEEE Computer Society Conference on Computer Vision and Pattern Recognition/Proceedings",
+    "abstract": "This paper presents a grounded language-image pretraining (GLIP) model for learning object-level, language-aware, and semantic-rich visual representations. GLIP unifies object detection and phrase grounding for pre-training. The unification brings two benefits: 1) it allows GLIP to learn from both detection and grounding data to improve both tasks and bootstrap a good grounding model; 2) GLIP can leverage massive image-text pairs by generating grounding boxes in a self-training fashion, making t",
+    "openalex_id": "https://openalex.org/W4226167525",
+    "relevance_score": 54.388905
+  },
+  {
+    "title": "VLP: A Survey on Vision-language Pre-training",
+    "doi": "10.1007/s11633-022-1369-5",
+    "authors": [
+      "Feilong Chen",
+      "Duzhen Zhang",
+      "Minglun Han",
+      "Xiu-Yi Chen",
+      "Jing Cheng Shi"
+    ],
+    "year": 2023,
+    "publication_date": "2023-01-10",
+    "cited_by_count": 283,
+    "journal": "Machine Intelligence Research",
+    "abstract": "Abstract In the past few years, the emergence of pre-training models has brought uni-modal fields such as computer vision (CV) and natural language processing (NLP) to a new era. Substantial works have shown that they are beneficial for downstream uni-modal tasks and avoid training a new model from scratch. So can such pre-trained models be applied to multi-modal tasks? Researchers have explored this problem and made significant progress. This paper surveys recent advances and new frontiers in v",
+    "openalex_id": "https://openalex.org/W4225832925",
+    "relevance_score": 53.288
+  },
+  {
+    "title": "Multi-Task Paired Masking With Alignment Modeling for Medical Vision-Language Pre-Training",
+    "doi": "10.1109/tmm.2023.3325965",
+    "authors": [
+      "Ke Zhang",
+      "Yan Qin Yang",
+      "Jun Yu",
+      "Hanliang Jiang",
+      "Jianping Fan B"
+    ],
+    "year": 2023,
+    "publication_date": "2023-10-19",
+    "cited_by_count": 52,
+    "journal": "IEEE Transactions on Multimedia",
+    "abstract": "In recent years, the growing demand for medical imaging diagnosis has placed a significant burden on radiologists. As a solution, Medical Vision-Language Pre-training (Med-VLP) methods have been proposed to learn universal representations from medical images and reports, benefiting downstream tasks without requiring fine-grained annotations. However, existing methods have overlooked the importance of cross-modal alignment in joint image-text reconstruction, resulting in insufficient cross-modal ",
+    "openalex_id": "https://openalex.org/W4387789891",
+    "relevance_score": 50.830395
+  },
+  {
+    "title": "Bootstrapping Interactive Image–Text Alignment for Remote Sensing Image Captioning",
+    "doi": "10.1109/tgrs.2024.3359316",
+    "authors": [
+      "Cong Yang",
+      "Zuchao Li",
+      "Lefei Zhang"
+    ],
+    "year": 2024,
+    "publication_date": "2024-01-01",
+    "cited_by_count": 64,
+    "journal": "IEEE Transactions on Geoscience and Remote Sensing",
+    "abstract": "Recently, remote sensing image captioning has gained significant attention in the remote sensing community. Due to the significant differences in spatial resolution of remote sensing images, existing methods in this field have predominantly concentrated on the fine-grained extraction of remote sensing image features, but they cannot effectively handle the semantic consistency between visual features and textual features. To efficiently align the image-text, we propose a novel two-stage vision-la",
+    "openalex_id": "https://openalex.org/W4391305855",
+    "relevance_score": 50.689705
+  },
+  {
+    "title": "Hierarchical Vision-Language Alignment for Text-to-Image Generation via Diffusion Models",
+    "doi": "10.48550/arxiv.2501.00917",
+    "authors": [
+      "Emily Johnson",
+      "Noah Wilson"
+    ],
+    "year": 2025,
+    "publication_date": "2025-01-01",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Text-to-image generation has witnessed significant advancements with the integration of Large Vision-Language Models (LVLMs), yet challenges remain in aligning complex textual descriptions with high-quality, visually coherent images. This paper introduces the Vision-Language Aligned Diffusion (VLAD) model, a generative framework that addresses these challenges through a dual-stream strategy combining semantic alignment and hierarchical diffusion. VLAD utilizes a Contextual Composition Module (CC",
+    "openalex_id": "https://openalex.org/W4406032696",
+    "relevance_score": 50.132385
+  },
+  {
+    "title": "PromptEcho: Annotation-Free Reward from Vision-Language Models for Text-to-Image Reinforcement Learning",
+    "doi": "10.48550/arxiv.2604.12652",
+    "authors": [
+      "Jinlong Liu",
+      "Wanggui He",
+      "Peng Zhang",
+      "Mushui Liu",
+      "Hao Jiang"
+    ],
+    "year": 2026,
+    "publication_date": "2026-04-14",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Reinforcement learning (RL) can improve the prompt following capability of text-to-image (T2I) models, yet obtaining high-quality reward signals remains challenging: CLIP Score is too coarse-grained, while VLM-based reward models (e.g., RewardDance) require costly human-annotated preference data and additional fine-tuning. We propose PromptEcho, a reward construction method that requires \\emph{no} annotation and \\emph{no} reward model training. Given a generated image and a guiding query, Prompt",
+    "openalex_id": "https://openalex.org/W7154490662",
+    "relevance_score": 49.88333
+  },
+  {
+    "title": "Language-Image Alignment with Fixed Text Encoders",
+    "doi": "10.48550/arxiv.2506.04209",
+    "authors": [
+      "Jingfeng Yang",
+      "Ziyang Wu",
+      "Yue Zhao",
+      "Yi Ma"
+    ],
+    "year": 2025,
+    "publication_date": "2025-06-04",
+    "cited_by_count": 0,
+    "journal": "arXiv (Cornell University)",
+    "abstract": "Currently, the most dominant approach to establishing language-image alignment is to pre-train text and image encoders jointly through contrastive learning, such as CLIP and its variants. In this work, we question whether such a costly joint training is necessary. In particular, we investigate if a pre-trained fixed large language model (LLM) offers a good enough text encoder to guide visual representation learning. That is, we propose to learn Language-Image alignment with a Fixed Text encoder ",
+    "openalex_id": "https://openalex.org/W4416075251",
+    "relevance_score": 49.50786
+  }
+]

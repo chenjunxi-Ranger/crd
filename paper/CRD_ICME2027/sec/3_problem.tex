@@ -1,0 +1,46 @@
+% ============================================================
+%  Problem Formulation and Motivation
+% ============================================================
+\section{Problem and Method}
+\label{sec:problem}
+
+\subsection{Task Definition}
+Let $f_I$ and $f_T$ be frozen image and text encoders and $u=f_I(I)$, $v=f_T(T)$.
+The raw score is the cosine similarity $s(I,T)=\operatorname{sim}(u,v)$, and each
+pair carries a binary label $y\in\{0,1\}$ (clean or noisy). The task is to construct
+$q(I,T)$ whose ranking separates the classes better than $s$. Two properties
+distinguish it from same-image candidate ranking: the comparison is \emph{global}
+(the two pairs share neither image nor caption) and scoring is \emph{pair-local}
+($q$ may not depend on which other pairs are present). We therefore report cross-pair
+AUROC and cycle-level 2AFC (two-alternative forced choice) separately.
+
+\subsection{Empirical Limitation of Raw Similarity}
+Figure~\ref{fig:motivation} shows a COCO Quantity example scored by one frozen CLIP
+ViT-B/16: the correct pair scores $0.252$, the pair whose caption misstates the
+number of animals $0.331$. A single case proves little, so we quantify it on the
+largest facet where the effect is measurable, Visual Genome Attribute. Comparing every clean
+pair with every noisy pair, $31.9\%$ of the comparisons place the noisy pair above
+the clean one, which equals $1-\mathrm{AUROC}$ ($1-0.6806$); the corresponding value
+for Quantity is $16.9\%$ ($1-0.8305$). Within one reciprocal cycle, replacing the
+caption of a fixed image changes the score ($0.324\to0.188$) and replacing the image
+changes it too ($0.324\to0.253$), so the score depends on which image and caption are
+involved, not solely on whether they correspond. These are conditioned variations,
+not measurements of an isolated modality bias.
+
+\subsection{Hypothesis: Additive Score Components}
+Suppose the standardised score decomposes as
+\begin{equation}
+  z \;=\; \underbrace{m(I,T)}_{\text{cross-modal match}} \;+\;
+         \underbrace{c(I,T)}_{\text{additive component}},
+  \label{eq:decomp}
+\end{equation}
+where $c$ is predictable from $u$ and $v$ and largely independent of whether they
+correspond. Under \eqref{eq:decomp}, a stronger encoder raises the first term while
+the ordering of unrelated pairs remains governed by the second, consistent with the
+unchanged Attribute AUROC of ViT-L/14. The decomposition also explains why a monotone
+recalibration cannot help: it acts on $z$ as a whole. Equation~\eqref{eq:decomp} is a
+modelling assumption, not a generative account, and we do not claim that $c$ is
+identifiable as image or text noise. What is tested is its operative consequence: if
+a component of $z$ is predictable from $u$ and $v$ alone, removing that prediction
+should improve global discrimination, and a control fitted to permuted targets
+should not.

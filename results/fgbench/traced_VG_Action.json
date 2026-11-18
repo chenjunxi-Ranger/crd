@@ -1,0 +1,10 @@
+{
+  "dataset": "VG",
+  "facet": "Action",
+  "n_train": 1596,
+  "n_test": 664,
+  "auc_cosine": 0.5913,
+  "auc_traced": 0.6102,
+  "delta": 0.0189,
+  "acc2afc_traced": 0.753
+}

@@ -1,0 +1,9 @@
+{
+  "device": "cuda",
+  "itc_ms": 33.32,
+  "itm_ms": 54.42,
+  "crd_head_ms": 0.615,
+  "crd_params": 33027,
+  "itc_crd_ms": 33.94,
+  "itm_crd_ms": 55.04
+}

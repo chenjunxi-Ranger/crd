@@ -1,0 +1,10 @@
+{
+  "model": "clip",
+  "n": 6930,
+  "auroc_pos_is_aligned": 0.6178,
+  "auroc_neg_is_aligned": 0.3822,
+  "auprc_pos_is_aligned": 0.6334,
+  "auc_coco_t2i": 0.5787,
+  "auc_drawbench": 0.6266,
+  "auc_editbench": 0.6486
+}

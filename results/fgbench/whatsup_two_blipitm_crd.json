@@ -1,0 +1,7 @@
+{
+  "subset": "two",
+  "model": "blipitm+crd",
+  "n": 440,
+  "options": 2,
+  "acc": 0.5818
+}
