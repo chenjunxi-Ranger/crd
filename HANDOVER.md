@@ -1,453 +1,495 @@
-# 图文错标检测项目 · 交接文档
+# CRD / FGBench 项目交接文档
 
-> 最后更新：2026-11-06
-> 读者：接手这个课题的同学
-> **这份文档不依赖任何一台具体电脑的路径。** 它说明：这个项目在做什么、做到哪一步、数据从哪来、代码跑起来需要改哪几行、以及下一步该干什么。
-
----
-
-## 0. 一句话说清项目
-
-在一个**冻结的视觉语言模型**（CLIP 或 FG-CLIP）之上，用**它的图文相似度评分**，判断一个图文对是否"错配"——即 caption 不属于这张图（来自别的图），或 caption 的内容与图不符。
-
-四个评测集：**COCO、Flickr30k、MM-IMDb、FOIL-COCO**。
+> 更新时间：2026-11-19  
+> 交接对象：接手代码、实验或论文投稿的同学  
+> 一句话：这是一个在冻结 CLIP 上做**全局图文错标配对检测**的项目；核心方法是 CRD，核心数据是 FGBench，当前论文已压到英文 6 页。
 
 ---
 
-## 1. 开工前你要准备的三样东西
+## 0. 先看这里：10 分钟了解全貌
 
-### 1.1 原始数据集（全部是公开数据集，需自行下载）
+### 这个项目在做什么
 
-| 名称 | 用途 | 你需要拿到什么 |
-|---|---|---|
-| **MS-COCO 2014** | COCO 行级任务 | `train2014/`、`val2014/` 图片；`captions_train2014.json`、`captions_val2014.json`；`instances_*.json`（类别标注，用于构造 donor） |
-| **Flickr30k** | Flickr 行级任务 | 图片（`flickr30k-images/`）+ 每图 5 条 caption（`results_20130124.token` 或同源 CSV） |
-| **MM-IMDb** | 电影海报任务 | 海报图片 + 剧情简介（`plot`）+ 电影 `genre` 多标签 + `imdbId` |
-| **FOIL-COCO** | 同图反事实二选一 | `pairs_train.csv` / `pairs_test.csv`：每行 `path, positive_caption, negative_caption`（同一张图，一句真一句假） |
+给定一对 `(image, caption)`，判断它们是否**错配**（caption 不属于这张图，或内容与图不符）。
 
-> FOIL 也可以自己构造：取同一条 caption，替换其中一个名词/属性生成反事实版本。但**若要和本项目的数字对齐，必须用官方 FOIL-COCO 的划分**。
+和普通“同一张图内选 caption”的任务不同，这里比较的是**两个互不相关的图文对**：
 
-### 1.2 模型权重（公开，可用 HuggingFace 直接下）
-
-| 代号 | HuggingFace 仓库 | 约大小 | 说明 |
-|---|---|---|---|
-| `clip-vit-base-patch32` | `openai/clip-vit-base-patch32` | 600 MB | 主基座 |
-| `clip-vit-base-patch16` | `openai/clip-vit-base-patch16` | 600 MB | 对照基座 |
-| `clip-vit-large-patch14` | `openai/clip-vit-large-patch14` | 1.71 GB | 对照基座（最强） |
-| `fg-clip-base` | FG-CLIP 官方仓库（需 `trust_remote_code`） | 600 MB | 细粒度基座，带自定义 `modeling_fgclip.py` |
-
-**下载注意事项（都是踩过的坑）：**
-
-1. `huggingface_hub.snapshot_download` 在部分网络下会报 `LocalEntryNotFoundError`，但**直链 `https://huggingface.co/<repo>/resolve/main/<file>` 是可用的**。仓库里有 `scripts/fetch_clip.py` 就是干这个的，支持断点续传。
-2. 必须下 **`model.safetensors`**。`.bin` 在 torch < 2.6 上会被 transformers 拒绝加载（报 `require torch>=2.6`）。若某仓库只有 `.bin`，可用 `torch.load(..., weights_only=True)` 读进来再 `safetensors.torch.save_file` 转一份。
-3. 每个 CLIP 目录至少要包含：`config.json`、`preprocessor_config.json`、`tokenizer_config.json`、`vocab.json`、`merges.txt`、`special_tokens_map.json`、`model.safetensors`。
-
-### 1.3 Python 环境
-
-本项目验证过的组合：**Python 3.10 / torch 2.5.1+cu121 / transformers 4.53 / numpy 1.26 / pandas 2.2 / scikit-learn 1.5 / safetensors**。
-
-显存：8 GB 级显卡够跑 ViT-B/32 与 ViT-B/16 的 LoRA 微调；**ViT-L/14 必须把 batch 降到 8**，否则 OOM。
-
-**重要**：一张卡上**不要并行跑两个 GPU 进程**，会互相抢显存导致整体慢十倍以上，务必串行。
-
----
-
-## 2. 目录布局：代码假设的固定结构
-
-代码里 `src/protocol.py` 顶部写死了几个相对位置，**它假设你的项目根目录（记作 `<ROOT>`）长这样**：
-
-```
-<ROOT>/
-├── mymodel7/                      ← 本项目代码（本仓库）
-│   ├── src/
-│   ├── scripts/
-│   ├── results/
-│   ├── data/                      ← 小文件（FOIL val 清单等）
-│   └── HANDOVER.md                ← 本文档
-├── <weights_dir>/                 ← 模型权重（名字随意，改常量即可）
-│   ├── clip-vit-base-patch32/
-│   ├── clip-vit-base-patch16/
-│   ├── clip-vit-large-patch14/
-│   └── fg-clip-base/
-└── <data_dir>/                    ← 派生数据（由原始数据生成）
-    └── derived/
-        ├── mscoco/
-        ├── flickr30k/
-        └── mmimdb/
+```text
+pair A = (image A, caption A)
+pair B = (image B, caption B)
 ```
 
-### 你要改的 5 个常量（`src/protocol.py` 第 18–34 行附近）
+模型只能看单对，不能看另一对，也不能依赖参考库。这就是论文里的 **global + pair-local** 设定。
 
-```python
-PROJECT   = Path(__file__).resolve().parents[2]   # <ROOT>
-DATA_DIR  = MYMODEL7 / "data"
-RESULTS_DIR = MYMODEL7 / "results"
-CLIP_DIR  = PROJECT / "<weights_dir>" / "clip-vit-base-patch32"   # ← 改成你的权重目录
-DERIVED   = PROJECT / "<data_dir>" / "derived"                    # ← 改成你的派生数据目录
-BENCH_CSV = {...}       # 三个派生 CSV 的路径
-FOIL_VAL  = DATA_DIR / "foil_val_10k.csv"
-FOIL_TEST = PROJECT / "<data_dir>" / "FOIL-COCO" / "pairs_test.csv"
-THRESHOLDS = {"coco":0.960, "flickr":0.960, "mmimdb":0.880, "foil":0.920}  # 旧门槛，仅留档
+### 核心方法
+
+CRD 不训练 CLIP，只在冻结特征上拟合两个小型加性头：
+
+```text
+g(u, v) = a(u) + b(v) + b0
+z' = z - λ g(u, v)
 ```
 
-改完这几行，**所有脚本都不需要再改路径**（其余脚本都从这里 import）。
-若要用别的骨干，训练脚本支持 `--model-dir <你的某个权重目录>`，不需要改常量。
+- `u`、`v` 是冻结 CLIP 的图像/文本特征；
+- `z` 是训练集统计量标准化后的余弦分数；
+- `g` 回归 `z` 中可从两侧特征预测的加性成分；
+- `λ` 在验证集上选，标签只用于选这一个标量；
+- 推理只需要单对，不需要 reference bank。
 
----
+### 当前最重要的文件
 
-## 3. 派生数据：本项目自己构造的"错配版"数据集
-
-这是全项目的基石。原始 COCO/Flickr 是全干净的；**噪声是本项目按规则注入的**，不是数据集自带的。
-
-### 3.1 文件命名规则
-
+```text
+README.md                         项目入口
+HANDOVER.md                       本文档
+paper/CRD_ICME2027/main.pdf       英文 6 页投稿版
+paper/CRD_ICME2027/cn/main_cn.pdf 中文对应版
+results/fgbench/paper_ready/      论文主表/官方 baseline/joint 消融
+fgbench/models/crd_backbone.py    CRD 主实现
+fgbench/data/fgbench_v1_strict/   FGBench manifest
 ```
-{数据集}__{噪声类型}__lvl{噪声比例}__seed{种子}.csv
-例：mscoco__cat__lvl0.40__seed0.csv
-    flickr30k__noun__lvl0.40__seed0.csv
-    mmimdb__cat__lvl0.40__seed0.csv
+
+### 不要做的事
+
+- 不要写“CRD 改善下游数据清洗/检索”：P1 是负结果；
+- 不要写“human agreement / Cohen's κ”：P0-A 只标了 89/400，未完成；
+- 不要把 `TRACED-style` 说成 official TRACED；
+- 不要把 official TRACED 的 BLIP backbone 和主表 CLIP 混在一起；
+- 不要把个人 GitHub URL 写进双盲论文，论文里用 `anonymous.4open.science`。
+
+---
+
+## 1. 项目背景与目标
+
+### 1.1 问题背景
+
+CLIP 等双模态模型的余弦相似度是“同一张图内排序”的常用分数，但在**跨对比较**时并不可比：
+
+- 不同图像/文本的分数尺度不同；
+- 一对图的分数高低，可能主要由图像侧或文本侧的加性成分决定；
+- 这种成分与“是否匹配”无关，却会改变全局排序。
+
+论文把这一现象写成：
+
+```text
+z = m(I,T) + c(I,T)
 ```
 
-- **噪声类型**：`cat`＝按类别相似选 donor，`noun`＝按 caption 共享名词选 donor，`random`＝随机 donor；
-- **lvl0.40**＝40% 的样本被判为噪声；
-- **seed0/1/2**＝三次独立抽样（用于检验构造稳健性）。
+其中 `m` 是跨模态匹配项，`c` 是可由 `u`、`v` 预测的加性成分。
 
-**主评测统一用 `seed0`**（`protocol.py` 里配的是 seed0）。注意：捐体（donor）相关的诊断脚本历史上用的是 `seed1`，两者是**不同的噪声实现**，数字不可混比——这是已知的一致性问题，见 §12。
+### 1.2 方法目标
 
-### 3.2 每一行的字段与含义
+- 去掉可预测的加性成分；
+- 不训练编码器；
+- 不用 reference bank；
+- 推理只依赖单对；
+- 在全局 AUROC 上提升，同时保持 cycle-level 2AFC 不变。
 
-| 字段 | 含义 |
+### 1.3 论文贡献
+
+1. **CRD 方法**：两个加性头 + 标准化 + 单标量校准；
+2. **2AFC 不变性**：加性校准对 cycle 内两侧求和不改变排序；
+3. **FGBench**：88,024 个 reciprocal cycle、五个事实维度、显式划分与审计；
+4. **实验**：五维主表、配对 bootstrap + Holm、跨基座、head/target 消融、joint-head 对照、边界分析。
+
+### 1.4 当前论文状态
+
+```text
+英文：paper/CRD_ICME2027/main.pdf                 6 页
+英文副本：CRD_ICME2027_6pages.pdf                 6 页
+中文：paper/CRD_ICME2027/cn/main_cn.pdf           7 页
+```
+
+英文是投稿版；中文是内容对应版，排版比英文多约 1 页。
+
+---
+
+## 2. 仓库与代码结构
+
+### 2.1 顶层目录
+
+```text
+fgbench/              FGBench 构建、模型、评估、实验
+src/                  CLIP encoder 和 scoring 基础层
+scripts/              数据准备、分析、审计、历史探索脚本
+data/                 小型 FOIL 数据
+results/fgbench/      paper-ready CSV 与小型结果
+paper/CRD_ICME2027/   LaTeX 源文件、图、最终 PDF
+handoff_fgb/          FGBench 数据管线 handoff bundle
+analysis/             分析与作图
+figures/              论文图
+```
+
+### 2.2 核心代码模块
+
+| 路径 | 作用 |
 |---|---|
-| `image_id` | 目标图 id |
-| `filename` / `path` | 目标图文件路径 |
-| `gold_sentence` | 这张图**本来**的 caption（干净版） |
-| `sentence` | **实际给模型的 caption**（干净样本＝gold；噪声样本＝donor 的句子） |
-| `is_mislabel` | 1＝噪声（来源错配），0＝干净 |
-| `donor_image_id` / `donor_filename` | 噪声样本的 caption 来自哪张图 |
-| `donor_sentence` | 被移植过来的那句话（工程上等于 `sentence`） |
-| `split` | `train` / `val` / `test` |
-| `cat_labels`（仅 MM-IMDb） | 电影类型多标签，list 字符串 |
+| `fgbench/models/crd_backbone.py` | CRD 主实现：加性头、标准化、训练、λ 选择、评估 |
+| `fgbench/models/crd_action.py` | Action 专用：内部 train/val 划分、图像不重叠 |
+| `fgbench/models/gmm_filter.py` | GMM 单调对照 |
+| `fgbench/models/crd_v2.py` | 早期 CRD 变体，保留作历史参考 |
+| `fgbench/evaluate/strict_main_table.py` | 主 AUROC 表；需要冻结特征张量 |
+| `fgbench/evaluate/final_stats_strict.py` | cycle-clustered paired bootstrap + Holm |
+| `fgbench/evaluate/traced_fgbench.py` | TRACED-style：CLIP + 删除轨迹 + LR |
+| `fgbench/evaluate/lemon_fgbench.py` | LEMoN-style：邻居一致性特征 + LR |
+| `fgbench/evaluate/gmm_filter.py` | GMM 对照 |
+| `fgbench/evaluate/csls_gmm_blip.py` | CSLS/GMM 辅助 |
+| `fgbench/experiments/joint_ablation.py` | additive vs joint MLP 同预算消融 |
+| `src/encoders.py` | CLIP / SigLIP2 / FLAVA 编码器封装 |
+| `src/protocol.py` | 数据路径、数据行、bootstrap 辅助 |
+| `scripts/` | 大量历史实验；**不是所有脚本都属于最终论文** |
 
-### 3.3 构造规则（拿不到原始生成脚本时，按这个重建）
+### 2.3 哪些是最终论文主线
 
-**COCO / Flickr（跨图 donor）**
+优先看：
 
-1. 对每个 split，按比例 40% 选样本作为噪声；
-2. 为目标图选一张 donor 图：
-   - `cat`：与目标图有相同 COCO 类别的其他图；
-   - `noun`：caption 与目标图 caption 至少共享一个内容名词的其他图；
-   - `random`：随机其他图；
-3. **donor 必须 ≠ 目标图**（本项目实测同图率 0%）；
-4. 用 donor 的一条 caption 替换目标的 caption，写入 `sentence`，并记录 `donor_*`。
+```text
+fgbench/models/crd_backbone.py
+fgbench/models/crd_action.py
+fgbench/evaluate/strict_main_table.py
+fgbench/evaluate/final_stats_strict.py
+fgbench/evaluate/traced_fgbench.py
+fgbench/evaluate/lemon_fgbench.py
+fgbench/experiments/joint_ablation.py
+results/fgbench/paper_ready/
+paper/CRD_ICME2027/
+```
 
-**MM-IMDb（跨电影 donor）**
+`scripts/` 里很多是早期路线、失败实验、数据下载/上传、审计工具。不要因为文件名多就全部重跑；先看 `RESULTS.md` 和 `paper_ready/`。
 
-1. 选另一部**至少共享一个 genre** 的电影作为 donor（本项目实测：100% 至少共享一个类型，8.2% 类型完全相同）；
-2. 用该电影的 plot summary 替换本片 plot；
-3. 记录电影 id 与 genre。
+---
 
-**FOIL**：官方提供同图 true/foil 对，直接用，不做改造。
+## 3. 数据与当前结果
 
-### 3.4 重建后必须校验的不变量
+### 3.1 FGBench
 
-| 检查 | 期望值 |
+```text
+full v1-strict:   88,024 cycles / 352,096 pairs
+strict test:      17,565 cycles / 70,260 pairs
+```
+
+五个 facet：
+
+```text
+COCO Entity
+COCO Quantity
+VG Attribute
+VG Action
+VG Relation
+```
+
+每个 reciprocal cycle 有 4 行：2 个 clean、2 个 noisy。图像和 caption 在 clean/noisy 两侧各出现一次，因此任何单侧分数在两类上的条件分布相同。
+
+### 3.2 主表（seed-mean）
+
+| Facet | CRD | LEMoN official | TRACED-style |
+|---|---:|---:|---:|
+| COCO Entity | 0.9995 | 0.9990 | 0.9985 |
+| COCO Quantity | 0.8837 | 0.8266 | 0.8412 |
+| VG Attribute | 0.7187 | 0.6755 | 0.6875 |
+| VG Action | 0.6145 | 0.5923 | 0.6102 |
+| VG Relation | 0.5530 | 0.5218 | 0.5356 |
+
+Attribute 原始余弦：
+
+```text
+0.6806 -> 0.7187（+3.81 points）
+```
+
+统计：
+
+```text
+24 个 Holm cells 中 21 个显著
+扣除 4 个 GMM 单调重复后，17/20 independent
+例外：Entity vs CSLS、Quantity vs CSLS、Action vs TRACED
+```
+
+### 3.3 官方 baseline 的口径
+
+- **LEMoN**：official adapter，完整 FGBench test split，五维；主表用 official。
+- **TRACED**：主表用 `TRACED-style`（CLIP + 删除轨迹 + LR），是 lower bound。
+- **official TRACED**：COCO Entity/Quantity 有完整结果；VG 只有 100-pair pilot；backbone 是 BLIP COCO ITM，不能和主表 CLIP 直接比。
+- 详细见 `results/fgbench/paper_ready/REPORT_official_baselines.md`。
+
+### 3.4 joint-head 消融
+
+- additive：65,795 参数；
+- joint MLP `[u;v]`：65,665 参数；
+- 四个共享缓存 facet，3 seeds；
+- joint 没有超过 additive；Quantity 最明显（0.8759 vs 0.8866）；
+- additive 列是 same-cache re-run，和 Table II 最多差 0.003 AUROC（Quantity；Relation ≤0.001）。
+
+### 3.5 P1 负结果
+
+P1 在 `results/fgbench/paper_ready/p1_negative/`：
+
+- classification probe：CRD 0.9543 < Cosine 0.9560；
+- hard P1：CRD 不是非 Oracle 最优；
+- full retrieval R@1：CRD 0.1010 < Cosine 0.1090，seed2 CI 排除 0（负方向）。
+
+结论：**不要写 downstream utility claim**。
+
+---
+
+## 4. 当前已完成的工作与进度
+
+| 项 | 状态 |
 |---|---|
-| 噪声比例 | ≈0.40 |
-| 同图 donor 比例 | 0（COCO/Flickr） |
-| MM-IMDb 类型重叠率 | 100% |
-| MM-IMDb `sentence == donor_sentence` | 100% |
-
-任一条不符，说明构造和本项目不一致，**数字不可直接与本文档的表格比较**。
-
----
-
-## 4. `data/foil_val_10k.csv` 是什么
-
-FOIL 的 validation 清单：10,000 组同图对，列名 `path, positive, negative, image_id`（用于组内二选一准确率，以及图像组 bootstrap）。
-它由 FOIL-COCO 官方 val 抽样得到，**只含清单不含图片**，图片路径指向你本地的 FOIL-COCO 目录。
-
-若你没有这份清单，可用 `pairs_test.csv` 的前 10,000 行替代，注意保持 `image_id` 唯一性用于聚类 bootstrap。
-
----
-
-## 5. 评测协议（改之前先读）
-
-| 项 | 规定 |
-|---|---|
-| 行级指标 | **AUROC**（异常分数越大越可疑） |
-| FOIL 指标 | **同图二选一准确率**（true 的异常分数应低于 foil），**不是** pooled AUROC，两者不可混算 |
-| 置信区间 | 一律**按 `image_id` 聚类 bootstrap**（同图多 caption 不是独立样本） |
-| 主门槛（C5，已修订） | 相对**同一基座余弦**的归一化改善 $G_d=\dfrac{M_d-B_d}{1-B_d}\ge 10\%$，且配对 CI 下界 > 0 |
-| 禁止 | 用 test 反选门槛；只报点估计不报 CI |
-
-> **口径变化会让结论翻转。** 旧口径要求绝对 AUROC ≥0.96/0.96/0.88/0.92，那时结论是"几乎全不达标"；改成相对改善后，同一批结果变成"3/4 通过"。所以引用数字时**必须注明口径**。
+| FGBench v1-strict 构建与审计 | 完成 |
+| 五维主表 + 三 seeds | 完成 |
+| 2AFC 不变性证明 | 完成 |
+| 配对 bootstrap + Holm | 完成 |
+| official LEMoN 五维 | 完成 |
+| TRACED-style 五维 | 完成 |
+| official TRACED COCO Entity/Quantity | 完成 |
+| official TRACED VG | 只有 100-pair pilot |
+| joint vs additive 消融 | 完成 |
+| 跨基座 Attribute（3 backbones） | 完成 |
+| P1 classification / hard / retrieval | 完成，负结果 |
+| P0-A 人工标注 | 未完成（89/400） |
+| 英文 6 页版 | 完成 |
+| 中文对应版 | 完成（7 页） |
+| 匿名审稿包 | 在 `anonymous-release` 分支 |
+| 4open 匿名链接 | 待生成 |
 
 ---
 
-## 6. 当前状态（先看这一节判断值不值得接手）
+## 5. 已知问题与待办事项
 
-### 6.1 已经做到
+### 5.1 论文/投稿相关
 
-| 项 | 结果 |
-|---|---|
-| 行级最强（自训练） | **R200-LoRA：0.9723 / 0.9707 / 0.8886**（三种子均值） |
-| 行级最强（换基座） | **FG-CLIP + CSLS：0.9804 / 0.9778 / 0.8909** |
-| FOIL 最好 | **0.9415**（ViT-L/14 纯余弦） |
-| 诊断工具 | TRACED 复现、配对循环、无 donor 恢复、人工盲标 310 条，全部完成 |
+1. **4open 链接未生成**  
+   仓库 `main` 是正常代码；匿名包在 `anonymous-release` 分支。  
+   论文里不要写 `github.com/chenjunxi-Ranger/crd`，要用 4open 包装 `anonymous-release`。
 
-### 6.2 没做到（真正的开放问题）
+2. **TRACED 引用缺 arXiv 号**  
+   `references.bib` 里 `afriat2025traced` 只有 arXiv preprint，没有真实 arXiv ID；投稿前必须补。
 
-1. **没有配置能同时满足四列**：COCO 需要 CSLS（+2.3 pp），FOIL 必须去掉 CSLS（−4.6 pp），同一骨干上互斥。
-2. **FOIL 是唯一短板**：换任何训练目标都卡在 0.86–0.90。
-3. **没有提出可称得上方法贡献的新机制**（十余个候选全部被否证，见 §8）。
+3. **official TRACED 的 CLIP 版没跑**  
+   主表只有 `TRACED-style`；不要声称与 official TRACED 完全持平。
 
----
+4. **official LEMoN 的 train 段是子集**  
+   逐行文件 test 完整；Entity/Attribute train 是 32k 行子集，Relation 是 8k 行。主表 test 数值不受影响，但不要把它说成“完整训练库”。
 
-## 7. 主线结论（这些是站稳的）
+5. **Action 协议偏差**  
+   Action 官方 validation 只有 2 cycles；当前用 80-cycle 内部划分，是单次固定划分，标为 exploratory。
 
-### 7.1 四个 benchmark 其实是三种任务
+### 5.2 数据/复现相关
 
-| 数据集 | 负样本构造 | 实际检测目标 | 局部视觉可验证性 |
-|---|---|---|---|
-| COCO / Flickr | 跨图 donor（相似图的高相似描述） | 来源错配 ∩ 语义错配 | 高 |
-| FOIL | 同图反事实（true vs foil） | **纯语义矛盾**（极细粒度） | 高但极细 |
-| MM-IMDb | 跨电影 donor，**100% 同类型** | **影片身份关联** | **低** |
+1. **仓库不含原始图片**  
+   COCO/VG 需要从官方源下载；`image_index.parquet` 和 manifest 给出对应关系。
 
-这是全项目最重要的一条：MM-IMDb 考的是"这段简介是不是这部电影"，不是"海报上能不能看到剧情"。所以换基座只涨 2.25 点、局部 patch 证据是负增量。
+2. **仓库不含特征缓存**  
+   `*.npz`、`*.pt`、trajectory dump 没上传；重新训练需要重新提特征或从原工作区拷贝。
 
-### 7.2 密度项 $r_c$ 存在跨协议极性冲突
+3. **`strict_main_table.py` 不能只靠本包单独跑**  
+   它需要冻结特征张量（`crdx_b16_test.npz`、`bank_b16_*.npz` 等），这些没有随包。论文数字看 `results/fgbench/paper_ready/main_table_strict.csv`。
 
-异常分数 $A=-s+\lambda(r_I+r_c)$，其中 $r_I$ 是图像侧库密度、$r_c$ 是文本侧库密度。
+4. **代码里仍有原工作区路径**  
+   很多脚本按原 `mymodel7/` 目录布局写死；接手后先全局搜索 `D:\`、`/mnt/d/`、`mymodel7`，按本机路径改。
 
-| 分数 | COCO | Flickr | MM-IMDb | FOIL(组内) |
-|---|---:|---:|---:|---:|
-| 余弦 | 0.9310 | 0.9534 | 0.8174 | **0.9274** |
-| 仅图像侧 $r_I$ | 0.9566 | 0.9630 | 0.8334 | 0.9274（恒等抵消） |
-| 仅文本侧 $r_c$ | 0.9544 | 0.9622 | 0.8639 | **0.8856** |
-| 完整 CSLS | 0.9677 | 0.9669 | 0.8810 | 0.8856 |
+5. **`_cloud_ssh.py` 已删除**  
+   原文件含明文服务器地址和密码；不要恢复，也不要提交任何凭据。
 
-- 行级：噪声的 $r_c$ **更高** → 加号有用；
-- FOIL：**正确描述的 $r_c$ 更高**（mean Δr_c = +0.017，70% 样本如此）→ 加号等于惩罚正确描述；
-- **任何对 $r_c$ 的单调变换都救不了**：增函数保留错误极性，减函数会把行级翻过来。
+### 5.3 仓库/Git 相关
 
-### 7.3 FOIL 的损失是"边际覆盖"
-
-翻转（余弦对、CSLS 错）的充要条件是
-
-$$0.8\,\Delta r_c > \Delta s$$
-
-83% 的翻转集中在 $|\Delta s|<0.035$ 的最小边际档。不是"极性随边际改变"，是"小边际被覆盖"。
-
-### 7.4 换骨干是唯一稳定有效的手段
-
-| 骨干 | COCO 余弦 | COCO+CSLS | FOIL 余弦 | FOIL+CSLS |
-|---|---:|---:|---:|---:|
-| ViT-B/32 | 0.9390 | 0.9716 | 0.9025 | 0.8595 |
-| ViT-B/16 | 0.9424 | 0.9718 | 0.9220 | 0.8825 |
-| ViT-L/14 | **0.9533** | **0.9762** | **0.9415** | 0.8950 |
-| FG-CLIP B/16 | 0.9642 | 0.9804 | 0.9131 | 0.8789 |
-
-规律：**换大骨干抬高的是余弦本身**；CSLS 在 FOIL 上始终是 −4~−5 pp（三个骨干一致）。
+- `main`：正常代码仓库（给同伴 clone）；
+- `anonymous-release`：匿名审稿包（给 4open 用）；
+- 本地可能还有未推送的清理提交；clone 前先确认 `git log -1` 和远端一致。
+- 不要把 `release/CRD_code.zip` 或大特征文件提交到 Git。
 
 ---
 
-## 8. 已证伪的路线（**不要重做**）
+## 6. 运行与部署方式
 
-| 机制 | 结论 | 关键数字 |
-|---|---|---|
-| SCSA-B（把 CSLS 写进训练目标） | 无增益 | ΔFOIL = −0.0004 |
-| Image-only（删掉 $r_c$） | MM-IMDb 崩 | −4.8 pp |
-| $g_c$（top-k − 随机背景） | 与 $r_c$ 相关 0.86，方向未变 | — |
-| 条件极性交互 $w_\phi(s)$ | 分层证据不支持共享门控 | — |
-| BCAE（Gibbs 匹配边缘概率） | 相对 CSLS +0.33 / +0.03 pp | 跨基座不一致 |
-| BCPR（双向条件残差） | 增量在 1e-4 级 | 与余弦同源 |
-| CMPI（跨模态二阶交互 κ） | 五格全负 | −0.0004 ~ −0.0017 |
-| LPR（训练阶段轨迹） | 增益来自初始检查点＝模型集成 | — |
-| MBPI-Net（门控交互头 + 合成负样本） | 三列全低于 CSLS | 训练损失归零 |
-| SEML-LoRA（跨环境元学习） | 参数几乎没动（空操作） | — |
-| SCPA（相似度分位匹配） | 消融 Δ ≤ 0.0008 | 机制不成立 |
-| ES-LoRA（按文本聚类分层采样） | COCO +0.04 / Flickr +0.03 / MM-IMDb +0.51 pp | 不是统一机制 |
-| RC-LoRA（拉格朗日双关系约束） | 行级 0.9628 < 0.965 | 差 0.2 pp |
-| FMP-LoRA（函数空间投影） | **约束一次都没触发**，结果与对照逐位相同 | margin 只变 −6e-6 |
-| R2R-LoRA（关系回放） | 与对照逐位相同（结论待定，见 §12 缺陷 2） | — |
+### 6.1 环境
 
-> **FMP 的教训（重要）**：它想解决"学 FOIL 会破坏来源能力"的冲突，但实测**这个冲突不存在**——从已训练模型出发只微调 FOIL 200 步，来源 margin 只掉 6e-6。
-> 所以：**任何"保护/约束"类设计，先测被保护的量到底会不会变。**
+建议：
 
----
+```text
+Python 3.12
+PyTorch 2.5.x + CUDA
+transformers 4.46.x
+timm 0.9.x
+faiss-cpu
+scikit-learn
+pandas / pyarrow
+```
 
-## 9. 当前最强数字（对比、写论文都用这些）
-
-| 配置 | COCO | Flickr | MM-IMDb | FOIL |
-|---|---:|---:|---:|---:|
-| 冻结 CLIP 余弦 | 0.9287 | 0.9505 | 0.8340 | 0.8997 |
-| CLIP + CSLS | 0.9678 | 0.9698 | 0.8838 | 0.8789 |
-| **R200-LoRA + CSLS** | **0.9723** | **0.9707** | **0.8886** | 0.8723 |
-| FG-CLIP 余弦 | 0.9642 | 0.9768 | 0.8565 | 0.9131 |
-| **FG-CLIP + CSLS(0.8)** | **0.9804** | **0.9778** | **0.8909** | 0.8789 |
-| FG-CLIP + 每数据集学到的 $(\lambda_I,\lambda_c)$ | 0.9807 | 0.9801 | 0.8926 | 0.9146 |
-| ViT-L/14 余弦 | 0.9533 | 未测 | 未测 | **0.9415** |
-
-**R200-LoRA 的配方**（要复现就照这个）：LoRA 注入最后两个 transformer block 的 Q/V，`r=4, α=8`；训练 200 步、batch 24、AdamW(1e-3)；损失 = clean/noisy 排序 `softplus(0.1 - s_clean + s_noisy)` + 权重 5.0 的教师锚束；**不用 FOIL 反事实负样本、不用 in-batch NCE**。
-
----
-
-## 10. 未解问题（新同学从这里选一个）
-
-### Q1（最重要）：FOIL 上 CSLS 为什么必然负贡献？
-
-已定位到 $r_c$ 的极性冲突，但**没找到能同时服务行级和 FOIL 的替代统计量**。
-可试：把 $r_c$ 换成"与该图其他候选 caption 的相对位置"而非"与全库的密度"——但这已接近 LEMoN 的领域。
-
-### Q2：FOIL 微调为什么只能涨 0.7–0.8 pp？
-
-三种训练方式（仅 FOIL / 加保护 / 双关系回放）都停在 0.9105（余弦）。
-**先排除实现问题**：这些微调用的是手写 SGD(η=1e-4)，而 R200 用 AdamW(1e-3)，步长差一个数量级。
-**第一件该做的事**：把微调优化器换成 AdamW 重跑，确认"三种机制结果逐位相同"是不是假象。
-
-### Q3：MM-IMDb 的影片身份能否从海报恢复？
-
-donor 100% 同类型，视觉线索被中和。突破口可能是引入电影元数据——但这会破坏"基座无关"的定位。
-
-### Q4：跨基座迁移是否成立？
-
-诊断显示配对信息确实存在于表示中（见 §11），但**没有方法验证过"在 CLIP 上学到的检测器能否零样本用于 FG-CLIP"**。
-
----
-
-## 11. 诊断型实验的证据（不是方法，是论据）
-
-| 实验 | 做法 | 结论 |
-|---|---|---|
-| **TRACED 复现** | 按论文机制实现"贪心删词轨迹 + 轨迹特征 + 轻量分类器" | 总体 +2.7~+3.5 pp，但 **62–95% 的增益来自 easy+/easy− 这一格**；hard+/hard− 权重仅 0.4–0.6% |
-| **配对循环** | 用真实 donor 构造 2×2：$\Delta_{cycle}=s(I_a,c_a)+s(I_b,c_b)-s(I_a,c_b)-s(I_b,c_a)$ | CycleAcc **98.6%（COCO）/ 99.4%（Flickr）/ 99.8%（FG-CLIP）**，困难组仍有 91.9%–100% → **表示里确实有来源配对信息**，只是单行分数用不上 |
-| **无 donor 恢复** | 只给 caption，在 5,000 张无标签库里找回 donor 图 | Recall@1 **30%**（CLIP，随机水平 0.02%）、63.7%（Flickr/1014 库）、45%（FG-CLIP） |
-| **人工盲标 310 条** | 单人盲标 match/mismatch，比较"持续困难组"与"低负担对照组" | **无富集**：率比 0.94 [0.56,1.56]（COCO）、1.16 [0.63,2.44]（Flickr） |
-| **任务构造审计** | 读派生数据统计 donor 关系 | 四 benchmark = 三种任务；MM-IMDb donor 100% 同类型 |
-
----
-
-## 12. 已知缺陷与待修（接手第一周该处理的）
-
-1. **输出文件名不含骨干标识** → 换骨干跑会覆盖旧结果（本项目已发生过一次）。跑不同骨干务必加 `--tag`。
-2. **微调优化器不一致**：R200 用 AdamW(1e-3)，而 `fmp_lora.py` / `rc_lora.py` 的微调用手写 SGD(1e-4)。这直接导致 M1/M2/R2R 结果**逐位相同**，那组对比目前**不可作为机制结论**。
-3. **派生数据 seed 混用**：主评测用 `seed0`，donor 诊断脚本历史上用 `seed1`。两者是不同的噪声实现，跨文档引用数字前要确认来源。
-4. **人工标注是单人**，没有 intra-rater κ（重测清单已抽好 50 条，但**尚未执行**）。
-5. **FOIL 子集与全量不可混用**：2,000 对子集与 10,000 对全量会差 1–2 个百分点。
-
----
-
-## 13. 代码地图
-
-### 核心库（`src/`）
-
-| 文件 | 作用 |
-|---|---|
-| `protocol.py` | 路径常量、`load_split(bench, split, limit)`、`load_foil_val(n)`、JSON 写出 |
-| `encoders.py` | `JointEncoder(model_dir)`：图像/文本批量编码 |
-| `scorer.py` | **统一打分接口** `score(image, caption) -> float`（带调用计数），两个基座同一契约 |
-
-### 训练类（`scripts/`）
-
-| 脚本 | 作用 | 主要参数 |
-|---|---|---|
-| `lora_stage1.py` | LoRA 定义与注入（`LoRALinear`、`inject`） | — |
-| `seml_lora.py` | **R200 配方**、按文本聚类采样、换骨干、保存 adapter | `--bench --model-dir --save-adapter --no-eval --sample env|global` |
-| `rc_lora.py` | 双关系 + 拉格朗日约束（含 `--calib` 标定 τ） | `--mode src|fixed|dual` |
-| `fmp_lora.py` | 函数空间投影 / 关系回放 | `--mode foil\|fmp\|r2r --teacher --eps --tol` |
-
-### 评分与诊断（`scripts/`）
-
-| 脚本 | 作用 |
-|---|---|
-| `component_audit.py` | 四分量（cos / $r_I$ / $r_c$ / full）审计 |
-| `foil_decomp.py` | FOIL 四分量与组内分解 |
-| `foil_signed_audit.py` | 有符号 $\Delta r_c$ 归因（极性证据） |
-| `conditional_polarity.py` | 条件极性分层审计 |
-| `ranking_burden.py` / `burden_stable.py` | 样本级排序负担、四组划分、盲标材料导出 |
-| `operating_point_audit.py` | 固定 FPR 下 TPR 对比 |
-| `traced_repro.py` / `traced_failure.py` | TRACED 复现与失效图谱 |
-| `cycle_diag.py` | 真实 donor 配对循环 |
-| `sbcra.py` | 无 donor 来源恢复 |
-| `backbone_full.py` / `fg_csls.py` | FG-CLIP 全量评测与 CSLS |
-| `task_audit.py` | 四个 benchmark 的构造审计 |
-| `fetch_clip.py` | 直链下载 HF 权重（支持续传） |
-
-### 人工标注（`scripts/` + `results/audit/`）
-
-| 文件 | 作用 |
-|---|---|
-| `make_formal_batch.py` | 抽样、打乱、生成盲标表与私有映射表 |
-| `annotation_enrichment.py` | 分层加权富集 + 图像组 bootstrap |
-| `*_blind.csv` | 盲标材料（只有 id / 图片 / 描述） |
-| `*_key.csv` | **私有映射，含分组与标签，不得外发** |
-
-### 约束文件
-
-`CONSTRAINTS.md` —— **动手前必读**。里面是 C1–C8（方法层）与 M1–M5（定位层），历次修订的原因与日期都在。
-
----
-
-## 14. 接手 checklist
-
-**Day 1：让一切能跑**
+安装：
 
 ```bash
-# 1) 数据能读（应打印 5 行）
-python -c "import sys;sys.path.insert(0,'.');from src.protocol import load_split;print(load_split('coco','val',5))"
-
-# 2) 两个基座都能打分
-python -c "import sys;sys.path.insert(0,'.');from src.scorer import build_scorer;from src.protocol import load_split;d=load_split('coco','val',4);[print(k,build_scorer(k).score_many(d.path.tolist(),d.caption.tolist())) for k in ('clip','fg')]"
-
-# 3) 复现最强基线（约 6 分钟，期望 auc_csls ≈ 0.972）
-python scripts/seml_lora.py --bench coco --mode erm --match none --sample env \
-  --steps 200 --batch 24 --train 6000 --seed 0
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
-**Day 2：读三份文档**
-1. `analysis/task_audit_report.md` —— 四个数据集其实是三种任务；
-2. `analysis/foil_decomp_report.md` —— FOIL 的损失 100% 来自 $r_c$；
-3. `analysis/conditional_polarity_report.md` —— 极性冲突的证据。
+### 6.2 数据与权重
 
-**Day 3：复现 FOIL 现象**
+需要准备：
+
+```text
+COCO 2014 train/val 图片与 captions/instances
+Visual Genome 图片（VG_100K / VG_100K_2）
+CLIP ViT-B/16 权重（主表）
+可选：CLIP L/14、SigLIP2、BLIP-ITM（对照）
+```
+
+仓库已包含：
+
+```text
+fgbench/data/fgbench_v1_strict/*.parquet
+fgbench/data/fgbench_v1_strict/*.json
+fgbench/data/intermediate/vg/image_index.parquet
+```
+
+不包含原始图片和特征缓存。
+
+### 6.3 环境变量
+
+代码里路径不完全统一，建议先设置：
+
+```text
+VG_ROOT           Visual Genome 根目录
+COCO_ANN          COCO annotations 目录
+FGBENCH_BENCH     FGBench manifest 目录
+FGBENCH_OUT       派生数据输出目录
+CRD_WEIGHTS       CLIP/BLIP 权重根目录
+CLIP_DIR          CLIP 权重目录
+```
+
+### 6.4 关键命令
+
+单 facet 训练 CRD（示例）：
 
 ```bash
-python scripts/foil_decomp.py --limit 2000 --seed 1
-# 期望：余弦约 0.927 > 完整 CSLS 约 0.886
+python fgbench/models/crd_backbone.py \
+  --backbone clip --dataset VG --facet Attribute \
+  --cycles 8000 --target row --seed 0
 ```
 
-**Day 4–5：选一个 Q 往下做**
-优先 **Q2**：把微调优化器统一成 AdamW，重跑"仅 FOIL"与"关系回放"两组。
-- 若仍完全相同 → FOIL 提升已饱和，转 Q1；
-- 若关系回放明显更好 → 值得继续。
+Action 专用：
+
+```bash
+python fgbench/models/crd_action.py --seed 0
+```
+
+joint 消融：
+
+```bash
+python fgbench/experiments/joint_ablation.py \
+  --facets Entity,Quantity,Attribute,Relation --seeds 3
+```
+
+主表/统计（需要原工作区特征张量）：
+
+```bash
+python fgbench/evaluate/strict_main_table.py
+python fgbench/evaluate/final_stats_strict.py
+```
+
+论文编译：
+
+```powershell
+cd paper/CRD_ICME2027
+powershell -ExecutionPolicy Bypass -File tools/build.ps1
+```
+
+### 6.5 复现边界
+
+**能直接核验：**
+
+- `results/fgbench/paper_ready/main_table_strict.csv`
+- `official_lemon_stats.csv`
+- `joint_vs_additive.csv`
+- `fgbench/data/fgbench_v1_strict/*.parquet` 的计数/审计
+- `p1_negative/*.csv` 的负结果
+
+**不能一键重训：**
+
+- 从原始图片重提 CLIP 特征；
+- 重跑完整 trajectory / official TRACED；
+- 重跑 `strict_main_table.py`（缺特征张量）。
+
+交接时先让同伴用 CSV/manifest 对齐，再决定是否重提特征。
 
 ---
 
-## 15. 三条经验（省你几个月）
+## 7. 交接给同伴时需要特别说明的事
 
-1. **先确认前提，再设计机制。** FMP 花了整轮去"保护"一个根本不存在的损害（margin 只变 6e-6）。任何保护/约束类设计，先测被保护的量会不会变。
-2. **换骨干是最便宜的有效手段，但它不是方法贡献。** FOIL 从 0.9025→0.9415 全靠 ViT-L/14，而 CSLS 在 FOIL 上始终 −4~−5 pp。
-3. **不要在同一个排序损失上反复修补。** 已经试过：加密度项、换密度项、加约束、加回放、加投影、加元学习、加环境采样——**都没用**。要么换监督信号（FOIL 的监督密度不足），要么换接口（允许 batch 或中间层，代价是放弃"基座无关"）。
+1. **先读 `README.md` + 本文档 + `RESULTS.md`**，不要先跑 `scripts/` 里的所有历史脚本。
+2. **最终论文只看 `paper_ready/` 和 `paper/CRD_ICME2027/`**；`scripts/` 里很多是失败路线。
+3. **`TRACED-style` 不是 official TRACED**：它是 CLIP + 删除轨迹 + LR，定位是 lower bound。
+4. **official TRACED 的 BLIP backbone 不能和主表 CLIP 混比**；VG official 只有 100-pair pilot。
+5. **不要写 P1 下游收益、human κ**；这些是明确的负结果/未完成项。
+6. **主表 CRD 的 `auroc_seedmean` 与 `auroc` 不同**：论文正文用 seed-mean，integrated score 在 CSV 里另列。
+7. **joint 表的 additive 是 same-cache re-run**，和 Table II 最多差 0.003 AUROC，不要误写成完全相同的实验。
+8. **数据/特征很大，不要提交 Git**：只提交代码、manifest、paper-ready CSV、最终 PDF。
+9. **凭据不要入仓库**：`_cloud_ssh.py` 已移除；不要恢复。
+10. **Git 分支**：`main` 给同伴；`anonymous-release` 给 4open；不要把 `main` 当成匿名包。
 
 ---
 
-## 16. 产物索引
+## 8. 建议接手顺序
 
+### 第 1 天
+
+1. Clone/解压代码；
+2. 读 `README.md`、本文档、`RESULTS.md`；
+3. 检查 `results/fgbench/paper_ready/main_table_strict.csv`；
+4. 安装依赖，确认 `torch.cuda.is_available()`；
+5. 下载 COCO/VG，设置环境变量；
+6. 只跑一个 facet（建议 Attribute）验证数据路径。
+
+### 第 2 天
+
+1. 重提 CLIP B/16 特征（或从原工作区拷贝缓存）；
+2. 重跑 `crd_backbone.py --target row`；
+3. 用 `final_stats_strict.py` 对齐主表；
+4. 检查 joint 表是否需要重跑。
+
+### 第 3 天
+
+1. 补 official TRACED/LEMoN 的 supplement；
+2. 生成 4open 链接；
+3. 补 TRACED arXiv 号；
+4. 重新编译英文 6 页版。
+
+---
+
+## 9. 关键文件索引
+
+```text
+README.md
+HANDOVER.md
+METHOD.md
+RESULTS.md
+CONSTRAINTS.md
+requirements.txt
+
+fgbench/models/crd_backbone.py
+fgbench/models/crd_action.py
+fgbench/evaluate/strict_main_table.py
+fgbench/evaluate/final_stats_strict.py
+fgbench/evaluate/traced_fgbench.py
+fgbench/evaluate/lemon_fgbench.py
+fgbench/experiments/joint_ablation.py
+
+fgbench/data/fgbench_v1_strict/
+fgbench/data/intermediate/vg/image_index.parquet
+
+results/fgbench/paper_ready/main_table_strict.csv
+results/fgbench/paper_ready/official_lemon_stats.csv
+results/fgbench/paper_ready/joint_vs_additive.csv
+results/fgbench/paper_ready/p1_negative/
+
+paper/CRD_ICME2027/main.pdf
+paper/CRD_ICME2027/main.tex
+paper/CRD_ICME2027/cn/main_cn.pdf
+paper/CRD_ICME2027/cn/main_cn.tex
 ```
-analysis/                     每个实验一份结论文档
-  task_audit_report.md        四 benchmark = 三种任务（最重要）
-  foil_decomp_report.md       FOIL 归因到 r_c
-  conditional_polarity_report.md
-  traced_failure_map.md       TRACED 失效图谱
-  cycle_diag_report.md
-  sbcra_report.md
-  annotation_result_report.md
-  mbpi_report.md / seml_report.md / scpa_report.md / eslora_report.md
 
-results/
-  bench/    跨脚本汇总指标（component_audit / task_audit / annotation_*）
-  gate/     各机制的准入结果（json + 逐样本 npz）
-  audit/    人工标注的盲标表、私有映射表、分组表
-```
+---
 
-> 所有"关闭"决定都有对应的 json 与文档，**不要凭记忆推翻**，先读 `analysis/` 下对应文档。
+## 10. 一句话交接
+
+> 先以 `results/fgbench/paper_ready/` 的冻结结果为准；代码用于审计和重训。不要重新打开已经证伪的 P1/utility 路线，不要把 `-style` 写成 official，不要在论文里暴露个人 GitHub URL。

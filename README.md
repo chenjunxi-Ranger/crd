@@ -3,6 +3,11 @@
 Research code for cross-modal residual debiasing (CRD) and the FGBench
 benchmark for global noisy image--text pair detection.
 
+## Start here
+
+Read `HANDOVER.md` first: it summarizes the project goal, module map, completed
+work, known issues, run instructions, and handover cautions.
+
 ## Repository layout
 
 ```text
